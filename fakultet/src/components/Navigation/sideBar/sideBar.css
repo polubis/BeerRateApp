@@ -1,0 +1,44 @@
+.side-bar-container{
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    width: 35%;
+    box-sizing: border-box;    
+    z-index: 10;
+    top: 0;
+    padding: 0 20px;
+    background-color:#fff;
+    font-family: 'Do Hyeon', sans-serif;
+    transition: 0.5s all linear;
+}
+.side-bar-open{
+    animation: show 0.4s linear forwards;
+}
+.side-bar-closed{
+    animation: hide 0.4s linear forwards;
+}
+
+@keyframes show {
+    0%{
+        right: 0;
+    }
+    50%{
+        right: -50vh;
+    }
+    100%{
+        right: -100vh;
+    }
+
+}
+@keyframes hide {
+    0%{
+        right: -100vh;
+    }
+    50%{
+        right: -50vh;
+    }
+    100%{
+        right: 0;
+    }
+
+}

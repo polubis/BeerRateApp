@@ -21,7 +21,7 @@ Nazwy klas CSS
     Jeżeli dana klasa jest stworzona tylko po to, żeby być containerem innych elementów HTML,a
     to powinna się nazywać nazwa-container np. root-container
 
-W innym przypadku nazwy camelCase
+W innym przypadku nazwy nazwa-klasy
 
 services - to folder w którym trzymane będą wszystkie funkcje, które mogą się do czegoś przydać globalnie, np walidacja. Konwencja nazw NazwaPliku. Nie tworzyć tam dodatkowych folderów. Poprostu dodawać pliki.
 

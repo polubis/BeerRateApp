@@ -1,0 +1,23 @@
+.home-page-container{
+    width: 100%;
+    position: relative;
+}
+.home-page-container main{
+    width: 100%;
+}
+.block-container{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+}
+.page-desc-container{
+    width: 35%;
+    background-color: transparent;
+}
+.page-desc-second-container{
+    width: 65%;
+    padding: 100px;
+    box-sizing: border-box;
+}

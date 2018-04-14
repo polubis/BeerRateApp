@@ -1,0 +1,23 @@
+.navigation-container{
+    display: flex;
+    width: 35%;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+.navigation-buttons{
+    padding: 15px;
+    font-size: 22px;
+    width: 40%;
+    border: none;
+    letter-spacing: 1px;
+    transition: 1s all ease-in;
+    border-radius: 5px;
+}
+.navigation-button-with-pic-back{
+    color: white;
+    background-color: Transparent;
+}
+.last-navigation{
+    background-color: teal;
+    color: white;
+}
