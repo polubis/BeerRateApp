@@ -3,6 +3,20 @@
     position: fixed;
     top: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     box-sizing: border-box;
+    padding: 20px 0;
+    align-items: center;
+}
+.logo{
+    font-size: 42px !important;
+    color: white;
+    margin-left: 35px;
+    cursor: pointer;
+}
+.logo-title{
+    font-size: 26px;
+    color: white;
+    margin-left: 30px;
+    cursor: pointer;
 }

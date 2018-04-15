@@ -1,8 +1,11 @@
-.navigation-container{
+.left-navigation-container{
+    display: flex;
+    width: 30%;
+}
+.right-navigation-container{
     display: flex;
     width: 35%;
     justify-content: space-around;
-    padding: 20px 0;
 }
 .navigation-buttons{
     padding: 15px;
@@ -20,4 +23,5 @@
 .last-navigation{
     background-color: teal;
     color: white;
+    opacity: 0.8;
 }

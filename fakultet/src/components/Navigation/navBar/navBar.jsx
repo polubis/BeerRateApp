@@ -3,17 +3,20 @@ import './navBar.css';
 import '../Navigation.css';
 import { navBarNavItemsBeforeLogingIn } from '../../../consts/HelpfullArrays';
 const navBar = (props) => {
-    console.log(props.show);
     const btnsLook = "navigation-buttons " + (props.show === 2 ?
          "last-navigation" : "navigation-button-with-pic-back")
     return(
-        <header className="nav-bar-container">
-            <nav className="navigation-container">
+        <nav className="nav-bar-container">
+            <div className="left-navigation-container">
+                <i className="fa fa-beer logo"></i>
+                <b className="logo-title">piwopinie.pl</b>
+            </div>
+            <div className="right-navigation-container">
                 {navBarNavItemsBeforeLogingIn.map(i => {
                     return <button className={btnsLook} key={i}>{i}</button>;
                 })}
-            </nav>
-        </header>
+            </div>
+        </nav>
     );
 }
  

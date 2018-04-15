@@ -19,3 +19,63 @@ button:focus{
   outline: none;
   cursor: pointer;
 }
+input[type="text"],
+input[type="password"]{
+  padding: 10px;
+  font-size: 18px;
+}
+label{
+ padding: 5px; 
+ font-size: 18px;
+}
+.orange-link{
+  color: orangered;
+}
+.blue-link{
+  color: blue;
+}
+.blue-link,
+.orange-link{
+  cursor: pointer;
+}
+
+
+/*Animacje*/
+
+.side-bar-buttons::before{
+  border: 1px solid orangered;
+}
+.navigation-button-with-pic-back::before{
+  border: 1px solid white;
+}
+.side-bar-buttons::before,
+.navigation-button-with-pic-back::before{
+  content: '';
+  width: 0%;
+  opacity: 0;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.navigation-button-with-pic-back::before{
+  animation: sheen 1s linear forwards;
+}
+.side-bar-buttons:hover::before{
+  animation: sheen 0.5s linear forwards;
+}
+@keyframes sheen{
+  0%{
+      width: 0;
+      opacity: 0;
+  }
+  50%{
+      width: 50%;
+      opacity: 0.5;
+  }
+  100%{
+      width: 100%;
+      opacity: 1;
+      
+  }
+}

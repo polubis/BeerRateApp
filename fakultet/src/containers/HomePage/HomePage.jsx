@@ -11,7 +11,8 @@ class HomePage extends Component {
         super(props);
         this.state = {
             showSideBar: true,
-            whichScrollBlock: 1
+            whichScrollBlock: 1,
+            showFooter: false
         }
         this.windowScrollHandler = this.windowScrollHandler.bind(this);
     }
@@ -31,18 +32,33 @@ class HomePage extends Component {
             whichBlockScrollBlock = 1;
         }
         this.setState({showSideBar: window.scrollY >= h ? false : true, 
-            whichScrollBlock: whichBlockScrollBlock});
+            whichScrollBlock: whichBlockScrollBlock, 
+            showFooter: window.scrollY === 3*h ? true : false});
     }
+
     render() { 
         return ( 
             <div className="home-page-container">
-                <Navbar show={this.state.whichScrollBlock}/>
+                
+                <header>
+                    <Navbar show={this.state.whichScrollBlock}/>
+                    <Transition 
+                    mountOnEnter 
+                    unmountOnExit 
+                    in={this.state.showSideBar}
+                    timeout={400}>
+                        {state => (
+                            <SideBar show={this.state.showSideBar}/>
+                        )}
+                    </Transition>
+                </header>
+                
                 <main>
                     <div style={{backgroundImage: `url(${HomePageBeer})`,
                     backgroundAttachment: this.state.showSideBar ? 'fixed' : 'unset'}}
                     className="block-container">
                         <div className="page-desc-second-container">
-                            
+                            <p>Łączy nas pasja do piwa...</p>
                         </div>
                          
                     </div>
@@ -61,17 +77,12 @@ class HomePage extends Component {
                             
                         </div>
                     </div>
-                    
+
+                    <footer>
+                        Stopka
+                    </footer>
                 </main>
-                <Transition 
-                mountOnEnter 
-                unmountOnExit 
-                in={this.state.showSideBar}
-                timeout={400}>
-                    {state => (
-                        <SideBar show={this.state.showSideBar}/>
-                    )}
-                </Transition>
+                
                 
 
                 

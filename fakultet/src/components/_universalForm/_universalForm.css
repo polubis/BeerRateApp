@@ -1,0 +1,14 @@
+.login-form-container form{
+    padding: 10px;
+}
+.login-form-container form section{
+    width: 70%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+.login-form-container input[type="submit"]{
+    width: 70%;    
+    margin-top: 30px;
+}
+
