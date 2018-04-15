@@ -30,6 +30,16 @@
     background-color: transparent;
     position: relative;
 }
+.side-bar-button-active::before{
+    content: '';
+    border: 1px solid orangered;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
 @keyframes show {
     0%{
         right: 0;

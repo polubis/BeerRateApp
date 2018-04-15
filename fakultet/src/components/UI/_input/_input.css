@@ -1,5 +1,4 @@
 .validation-input-error{
-    border: 2px solid red;
-    background-color: rgba(214, 145, 145, 0.5);
+    border: 2px solid red !important;
     outline: none;
 }

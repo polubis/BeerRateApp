@@ -6,7 +6,8 @@ const submitButton = (props) => (
         <input 
         className="submit-button"
         value={props.name}
-        type="submit" />
+        type="submit"
+        />
     </Aux>
     
 );

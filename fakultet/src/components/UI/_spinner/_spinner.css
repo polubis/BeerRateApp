@@ -1,20 +1,23 @@
 .spinner {
-    width: 120px;
-    height: 50px;
+    width: 150px;
+    height: 90px;
     position: absolute;
     left: 0;
     right: 0;
-    margin: 0 auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     display: flex;
     align-items: center;
     flex-flow: column;
+    justify-content: space-around;
 }
 .spinner .fa-beer{
     font-size: 48px;
     animation: spin 2s linear infinite;
 }
 .spinner-message{
-    font-size: 15px;
+    font-size: 18px;
 }
 @keyframes spin {
     0% { transform: rotate(0deg); }
