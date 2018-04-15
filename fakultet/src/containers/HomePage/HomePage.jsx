@@ -12,9 +12,12 @@ class HomePage extends Component {
         this.state = {
             showSideBar: true,
             whichScrollBlock: 1,
-            showFooter: false
+            actualBlock: "Logowanie"
         }
         this.windowScrollHandler = this.windowScrollHandler.bind(this);
+    }
+    onClickHandler = (event) => {
+        this.setState({actualBlock: event.target.id});
     }
     componentDidMount(){
         window.addEventListener('scroll', this.windowScrollHandler);
@@ -48,7 +51,9 @@ class HomePage extends Component {
                     in={this.state.showSideBar}
                     timeout={400}>
                         {state => (
-                            <SideBar show={this.state.showSideBar}/>
+                            <SideBar changeBlock={this.onClickHandler}
+                            show={this.state.showSideBar} 
+                            actualBlock={this.state.actualBlock} />
                         )}
                     </Transition>
                 </header>
