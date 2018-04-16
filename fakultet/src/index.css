@@ -10,10 +10,6 @@ body {
 .root-container ul{
   list-style: none;
 }
-p{
-  word-break: break-all;
-  white-space: normal;
-}
 button,
 button:focus{
   outline: none;
@@ -37,6 +33,9 @@ label{
 }
 .blue-link{
   color: blue;
+}
+.red-link{
+  color: red;
 }
 .blue-link,
 .orange-link{

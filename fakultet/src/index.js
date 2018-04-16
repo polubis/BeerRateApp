@@ -7,12 +7,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import LogingReducer from './store/Loging/Reducers';
+import RegisterReducer from './store/Register/Reducers';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    LogingReducer: LogingReducer
+    LogingReducer: LogingReducer,
+    RegisterReducer: RegisterReducer
 }); 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 

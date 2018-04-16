@@ -18,7 +18,8 @@ const sidebar = props => {
     </p>);
 
     const loginFormAdnotation = (
-        <p className="p-blue-link-container">lub <b className="blue-link">załóż nowe konto</b></p>
+        <p className="p-blue-link-container">lub <b 
+        onClick={props.changeBlock} className="blue-link">załóż nowe konto</b></p>
     );
 
     const loginForm = (
@@ -28,21 +29,14 @@ const sidebar = props => {
         formHeader="Zaloguj się"
         formFooter={loginFormFooter} 
         formAdnotation={loginFormAdnotation}
-        validationArray={loginFormValidationArray} />
-    );
-    const registerFormFooter = (
-        <div className="checkboxes-container">
-            <input type="checkbox" value="coding" />
-            <label htmlFor="coding">Oświadczam, że zapoznałem się z regulaminem <i className="orange-link">piwopinie</i></label>
-        </div>
+        validationArray={[...loginFormValidationArray]} />
     );
     const registerForm = (
         <UniversalForm 
         items={registerFormItems}
         submitName="Dołącz do nas"
-        formHeader="Rejestracja"
-        formFooter={registerFormFooter} 
-        validationArray={registerFormValidationItems} />
+        formHeader="Rejestracja" 
+        validationArray={[...registerFormValidationItems]} />
     );
 
    
