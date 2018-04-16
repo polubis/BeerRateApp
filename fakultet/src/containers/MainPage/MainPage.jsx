@@ -12,6 +12,7 @@ class MainPage extends Component {
     componentDidUpdate(prevProps){
         if(prevProps.history.location.pathname
             !== this.props.history.location.pathname){  
+            return true;
         }
     }
     onClick = () => {
