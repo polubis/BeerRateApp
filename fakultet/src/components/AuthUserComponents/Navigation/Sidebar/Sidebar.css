@@ -1,60 +1,99 @@
-.main-page-nav{
-    background-color: rgba(0,0,0,0.7);
+.side-page-nav{
+    color: white;
     width: 18%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
     box-shadow: 0 2px 3px black;
+    font-family: 'Alegreya', serif;
 }
+.socials-container{
+    display: flex;
+    justify-content: space-between;
+    
+    width: 80px;
+    margin: 20px auto 0 auto;
+}
+.socials-container i{
+    font-size: 32px;
+}
+
 .first-div-container{
     display: flex;
     height: 220px;
     justify-content: space-around;
     flex-flow: column;
-    margin-top: 120px;
+    animation: animatebuttons 2s linear forwards;
+    margin-top: 40px;
 }
 
-.main-page-nav button{
+.side-page-nav button{
     position: relative;
-    color: white;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Alegreya', serif;
     border: none;
     font-size: 25px;
     background: transparent;
+    color: white;
     letter-spacing: 1px;
-    animation: animatebuttons 2s linear forwards;
+    
  }
 
-.main-page-nav button::after{
+.side-page-nav button::after{
     content: '';
-    border: 1px solid white;
     width: 99.5%;
     display: block;
-    margin-top: 5px;
+    margin-top: 10px;
     position: absolute;
     left: 0;
   }
 
-.main-page-nav button:hover::after{
+.side-page-nav button:hover::after{
     animation: sheen 0.5s linear forwards;
     border: 1px solid white;
 }
 
 
-@keyframes sheen{
-    0%{
-        width: 100%;
-        opacity: 1;
-        
-    }
-    50%{
-        width: 50%;
-        opacity: 0.5;
-    }
-    100%{
-        width: 0;
-        opacity: 0;
-        
-    }
-  }
-  
+
+
+ .search-bar-container{
+    display: flex;
+    flex-flow: column;
+    margin-top: 50px;
+    height: 250px;
+    justify-content: space-around;
+    box-sizing: border-box;
+    animation: animatebuttons 2s linear forwards;
+}
+
+.search-bar-container div{
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
+    
+}
+.search-bar-container div label{
+    
+    margin-left: 10px;
+    font-size: 24px;
+    
+}
+
+.search-bar-container input[type="checkbox"]{
+    transform: scale(1.7);
+    cursor: pointer;
+}
+
+.search-bar-container input[type="text"]{
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+    font-style: inherit;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
 
 
 

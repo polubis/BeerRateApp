@@ -21,6 +21,7 @@ input[type="email"]{
   padding: 10px;
   font-size: 18px;
   border: 2px solid #ccc;
+  outline: none;
   border-radius: 4px;
   font-family: inherit;
 }
@@ -82,18 +83,4 @@ label{
       opacity: 1;
       
   }
-}
-
-
-.logo{
-  font-size: 42px !important;
-  color: white;
-  margin-left: 35px;
-  cursor: pointer;
-}
-.logo-title{
-  font-size: 26px;
-  color: white;
-  margin-left: 30px;
-  cursor: pointer;
 }

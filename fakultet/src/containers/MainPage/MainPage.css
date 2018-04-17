@@ -1,7 +1,12 @@
 .main-page-container{
     height: 100vh;
     width: 100%;
-    background-color: #f57d3d;
-    background-image: linear-gradient(166deg, #f57d3d 38%, #F7CE68 99%);
     display: flex;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.place-holder-block{
+    width: 18%;
 }
