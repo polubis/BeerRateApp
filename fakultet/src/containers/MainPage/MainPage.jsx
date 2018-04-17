@@ -3,18 +3,6 @@ import './MainPage.css';
 import { withRouter } from 'react-router-dom';
 
 class MainPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-
-        }
-    }
-    componentDidUpdate(prevProps){
-        if(prevProps.history.location.pathname
-            !== this.props.history.location.pathname){  
-            return true;
-        }
-    }
     onClick = () => {
         localStorage.clear();
         this.props.history.push('/');

@@ -7,13 +7,16 @@ const navBar = (props) => {
          "last-navigation" : "navigation-button-with-pic-back")
     return(
         <nav className="nav-bar-container">
-            <div className="left-navigation-container">
+            <div onClick={props.scrollUp} className="left-navigation-container">
                 <i className="fa fa-beer logo"></i>
                 <b className="logo-title">piwopinie.pl</b>
             </div>
             <div className="right-navigation-container">
                 {navBarNavItemsBeforeLogingIn.map(i => {
-                    return <button className={btnsLook} key={i}>{i}</button>;
+                    return <button 
+                    value={i}
+                    onClick={props.scrollUp}
+                    className={btnsLook} key={i}>{i}</button>;
                 })}
             </div>
         </nav>

@@ -1,4 +1,4 @@
-import { emailPattern } from '../consts/regexPaterns';
+import { emailPattern, onlyLettersAndNumbers } from '../consts/regexPaterns';
 
 export const validateOneInput = (inputText, isNullable, inputName, min, inputType) => {
     
@@ -10,14 +10,20 @@ export const validateOneInput = (inputText, isNullable, inputName, min, inputTyp
         return "Pole " + inputName + " posiada za mało znaków";
     }
 
+    if(inputName === "Nazwa użytkownika"){
+        return !onlyLettersAndNumbers.test(inputText) ?
+                "Pole " + inputName + " posiada zły format" : "";
+    }
     switch(inputType){
         case "email":
             return !emailPattern.test(inputText) ?
                 "Pole " + inputName + " posiada zły format" : "";
         default:
-            
             break;
     }
+    
+    
+
     return "";
 }
 

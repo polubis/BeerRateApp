@@ -5,6 +5,9 @@ import HomePageBeer from '../../assets/BeerBackground.jpg';
 import NextHomePageBeer from '../../assets/beers.jpg';
 import LastHomePageBeer from '../../assets/HomePageBeer.jpg';
 import Transition from 'react-transition-group/Transition';
+import { connect } from 'react-redux';
+import { logingIn, register} from '../../store/Authentication/Actions';
+
 import './HomePage.css';
 class HomePage extends Component {
     constructor(props){
@@ -16,8 +19,15 @@ class HomePage extends Component {
         }
         this.windowScrollHandler = this.windowScrollHandler.bind(this);
     }
+    componentDidUpdate(prevState){
+        if(prevState.actualBlock !== this.state.actualBlock){
+            this.props.Register([]);
+            this.props.Loging([]);
+        }
+    }
     onClickHandler = (event) => {
-        this.setState({actualBlock: event.target.id});
+
+        this.setState({actualBlock: event.target.id ? event.target.id : "Rejestracja"});
     }
     componentDidMount(){
         window.addEventListener('scroll', this.windowScrollHandler);
@@ -38,13 +48,22 @@ class HomePage extends Component {
             whichScrollBlock: whichBlockScrollBlock, 
             showFooter: window.scrollY === 3*h ? true : false});
     }
-
+    ControlViewPortHandler = (e) => {
+        window.scroll({
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+          });
+        this.setState({actualBlock: e.target.value}); 
+    }
     render() { 
         return ( 
             <div className="home-page-container">
                 
                 <header>
-                    <Navbar show={this.state.whichScrollBlock}/>
+                    <Navbar 
+                    scrollUp={e => this.ControlViewPortHandler(e)}
+                    show={this.state.whichScrollBlock}/>
                     <Transition 
                     mountOnEnter 
                     unmountOnExit 
@@ -98,4 +117,13 @@ class HomePage extends Component {
     }
 }
  
-export default HomePage;
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        Register: (registerObject) => dispatch(logingIn(registerObject)),
+        Loging: (logingObject) => dispatch(register(logingObject))
+
+    };
+}
+export default connect(null, mapDispatchToProps)(HomePage);

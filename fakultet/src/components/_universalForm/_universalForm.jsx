@@ -10,19 +10,20 @@ import { withRouter } from 'react-router-dom';
 import { measuringTextStrength } from '../../services/measuringTextStrength';
 import Checkbox from '../UI/_checkbox/_checkbox';
 import { connect } from 'react-redux';
-import { registerActionCreator } from '../../store/Register/Actions';
-import { logingInActionCreator } from '../../store/Loging/Actions';
-
+import { logingInActionCreator, registerActionCreator } from '../../store/Authentication/Actions';
+import ErrorPrompt from '../UI/_errorPrompt/_errorPrompt';
 
 class UniversalForm extends Component {
     state = {
         validationResultArray: [...this.props.validationArray],
-        spinner: false
+        loginSpinner: false,
+        showBackdrop: false, 
+        registerSpinner: false
     }
     componentDidUpdate(prevProps){
         if(prevProps.registerResult !== this.props.registerResult ||
             prevProps.loginResult !== this.props.loginResult){
-            this.setState({spinner: false});
+            this.setState({loginSpinner: false, registerSpinner: false});
         }
     }
     onChangeHandler = (event) => {     
@@ -56,10 +57,16 @@ class UniversalForm extends Component {
         this.setState({validationResultArray: newValidationResultArray});
     }
     onSubmitHandler = (e) => {
-        console.log(this.Validate());
         e.preventDefault();
         if(this.Validate()){
-            this.setState({spinner: true});
+            if(this.props.formHeader === "Rejestracja")
+            {
+                this.setState({registerSpinner: true, showBackdrop: true});
+            }
+            else{
+                this.setState({loginSpinner: true, showBackdrop: true});
+            }
+            
             this.isRedirectOnClickHandler();
         }
         else{
@@ -68,7 +75,6 @@ class UniversalForm extends Component {
     }
     Validate = () => {
         const resultArray = this.state.validationResultArray;
-        console.log(resultArray);
         for(let i = 0; i < resultArray.length; i++){
             if(resultArray[i].type === "checkbox" ){
                 if(!resultArray[i].error)
@@ -107,7 +113,9 @@ class UniversalForm extends Component {
             this.props.Loging(this.state.validationResultArray, this.props.history);
         }
     }
-
+    closeBackdrop = () => {
+        this.setState({showBackdrop: false});
+    }
     render() {
         
         return (  
@@ -115,7 +123,7 @@ class UniversalForm extends Component {
             '0 30px' : '30px'}} className="universal-form-container">
                 <h1>{this.props.formHeader}</h1>
                 {this.props.formAdnotation}
-                <form onSubmit={(e) => this.onSubmitHandler(e)}>
+                <form id="form" onSubmit={(e) => this.onSubmitHandler(e)}>
 
                     {this.props.items.map(i => {
                         return (<section key={i.id}>
@@ -157,10 +165,17 @@ class UniversalForm extends Component {
                 </form>
                 
 
-                <Backdrop showBackdrop={this.state.spinner}>
-                    <Spinner
-                    spinnerContent={this.props.formHeader === "Rejestracja" ? 
-                    "jesteś rejestrowany..." : "trwa logowanie..."} color="white" fontSize="32px"/>
+                <Backdrop closeBackdrop={this.closeBackdrop}
+                showBackdrop={this.state.showBackdrop}>
+                    {this.state.loginSpinner ? 
+                    <Spinner 
+                    spinnerContent="trwa logowanie..."
+                    color="white" fontSize="32px" /> : this.props.loginResult[0] ? 
+                    <ErrorPrompt message={this.props.loginResult[0]}/> : null }
+                    
+                    {this.state.registerSpinner ? 
+                    <Spinner color="white" fontSize="32px" spinnerContent="trwa rejestracja..." /> : this.props.registerResult[0] ? 
+                    <ErrorPrompt message={this.props.registerResult[0]}/> : null }
                 </Backdrop>
             </div>
         );
@@ -169,7 +184,7 @@ class UniversalForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        registerResult: state.RegisterReducer.registerResult,
+        registerResult: state.LogingReducer.registerResult,
         loginResult: state.LogingReducer.loginResult
     };
 }

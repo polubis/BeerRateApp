@@ -2,7 +2,7 @@ import React from 'react';
 import './_backdrop.css';
 const backdrop = props => (
     props.showBackdrop ? 
-    <div className="backdrop">
+    <div onClick={props.closeBackdrop} className="backdrop">
         {props.children}
     </div> : null
 );

@@ -12,7 +12,7 @@ export const loginFormValidationArray = [ // służa do walidacji inputów
 ];
 
 export const registerFormItems = [
-    {id: 0, name: "Login", type: "text", placeholder:"miejsce na nazwe użytkownika...", max: 20, styleReq: "*"},
+    {id: 0, name: "Nazwa użytkownika", type: "text", placeholder:"miejsce na nazwe użytkownika...", max: 20, styleReq: "*"},
     {id: 1, name: "Adres email", type: "email", placeholder:"miejsce na adres email...", max: 30, styleReq: "*"},
     {id: 2, name: "Hasło", type: "password", placeholder:"miejsce na hasło...", max: 20, styleReq: "*"},
     {id: 3, name: "Powtórz hasło", type: "password", placeholder:"miejsce na powtórzone hasło...", max: 20, styleReq: "*"},
