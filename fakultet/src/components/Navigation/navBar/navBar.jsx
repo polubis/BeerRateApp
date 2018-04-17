@@ -2,7 +2,8 @@ import React from 'react';
 import './navBar.css';
 import '../Navigation.css';
 import { navBarNavItemsBeforeLogingIn } from '../../../consts/HelpfullArrays';
-const navBar = (props) => {
+
+const navBar = props => {
     const btnsLook = "navigation-buttons " + (props.show === 2 ?
          "last-navigation" : "navigation-button-with-pic-back")
     return(

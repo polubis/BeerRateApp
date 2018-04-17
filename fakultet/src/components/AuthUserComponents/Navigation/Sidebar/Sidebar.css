@@ -1,0 +1,77 @@
+.main-page-nav{
+    background-color: rgba(0,0,0,0.7);
+    width: 18%;
+    box-shadow: 0 2px 3px black;
+}
+.first-div-container{
+    display: flex;
+    height: 220px;
+    justify-content: space-around;
+    flex-flow: column;
+    margin-top: 120px;
+}
+
+.main-page-nav button{
+    position: relative;
+    color: white;
+    font-family: 'Indie Flower', cursive;
+    border: none;
+    font-size: 25px;
+    background: transparent;
+    letter-spacing: 1px;
+    animation: animatebuttons 2s linear forwards;
+ }
+
+.main-page-nav button::after{
+    content: '';
+    border: 1px solid white;
+    width: 99.5%;
+    display: block;
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+  }
+
+.main-page-nav button:hover::after{
+    animation: sheen 0.5s linear forwards;
+    border: 1px solid white;
+}
+
+
+@keyframes sheen{
+    0%{
+        width: 100%;
+        opacity: 1;
+        
+    }
+    50%{
+        width: 50%;
+        opacity: 0.5;
+    }
+    100%{
+        width: 0;
+        opacity: 0;
+        
+    }
+  }
+  
+
+
+
+
+
+
+@keyframes animatebuttons {
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.25;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+    }
+}
