@@ -22,8 +22,6 @@ export const logingInActionCreator = (logingObject, historyObject) => {
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem('loggedUserData', JSON.stringify(response.data.successResult));
             }
-            
-           
             dispatch(logingIn(zeroError));
             historyObject.push(afterLogingInPage);
         }).catch(error => {
@@ -51,9 +49,17 @@ export const registerActionCreator = (registerObject, historyObject) => {
         const zeroError = [];
         axios.post('api/account/register', formObject).then(response => {
             dispatch(register(zeroError));
+            dispatch(changeRegisterStatus(true));
         }).catch(error => {
             dispatch(register(error.response.data.errors));
+            dispatch(changeRegisterStatus(false));
         })
     }
+}
+export const changeRegisterStatus = (status) => {
+    return {
+        type: actionsTypes.CHANGE_REGISTER_STATUS,
+        registerStatus: status
+    };
 }
 

@@ -6,13 +6,13 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import LogingReducer from './store/Authentication/Reducers';
+import AuthenticationReducer from './store/Authentication/Reducers';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    LogingReducer: LogingReducer
+    AuthenticationReducer: AuthenticationReducer
 }); 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 

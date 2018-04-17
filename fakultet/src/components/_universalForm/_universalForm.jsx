@@ -22,7 +22,8 @@ class UniversalForm extends Component {
     }
     componentDidUpdate(prevProps){
         if(prevProps.registerResult !== this.props.registerResult ||
-            prevProps.loginResult !== this.props.loginResult){
+            prevProps.loginResult !== this.props.loginResult ||
+            prevProps.registerResult !== this.props.registerResult){
             this.setState({loginSpinner: false, registerSpinner: false});
         }
     }
@@ -117,7 +118,7 @@ class UniversalForm extends Component {
         this.setState({showBackdrop: false});
     }
     render() {
-        
+        console.log(this.props.registerResult);
         return (  
             <div style={{padding: this.props.formHeader === "Rejestracja" ? 
             '0 30px' : '30px'}} className="universal-form-container">
@@ -173,9 +174,16 @@ class UniversalForm extends Component {
                     color="white" fontSize="32px" /> : this.props.loginResult[0] ? 
                     <ErrorPrompt message={this.props.loginResult[0]}/> : null }
                     
-                    {this.state.registerSpinner ? 
-                    <Spinner color="white" fontSize="32px" spinnerContent="trwa rejestracja..." /> : this.props.registerResult[0] ? 
-                    <ErrorPrompt message={this.props.registerResult[0]}/> : null }
+
+                    
+                    {this.props.formHeader === "Rejestracja" ? this.state.registerSpinner ? 
+                    <Spinner color="white" fontSize="32px" spinnerContent="trwa rejestracja..." /> 
+                    : this.props.registerStatus ? 
+                    <ErrorPrompt regStat={this.props.registerStatus}
+                    message={"Pomyślnie zarejestrowano"} /> : 
+                    <ErrorPrompt regStat={this.props.registerStatus}
+                    message={this.props.registerResult} /> : null }
+
                 </Backdrop>
             </div>
         );
@@ -184,8 +192,9 @@ class UniversalForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        registerResult: state.LogingReducer.registerResult,
-        loginResult: state.LogingReducer.loginResult
+        registerResult: state.AuthenticationReducer.registerResult,
+        loginResult: state.AuthenticationReducer.loginResult,
+        registerStatus: state.AuthenticationReducer.registerStatus
     };
 }
 const mapDispatchToProps = dispatch => {

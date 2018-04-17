@@ -3,7 +3,8 @@ import { updateObject } from '../../services/reduxHelper';
 
 export const initialState = {
     loginResult: [],
-    registerResult: []
+    registerResult: [],
+    registerStatus: undefined
 }
 
 const reducer = (state = initialState, action) => {
@@ -11,7 +12,9 @@ const reducer = (state = initialState, action) => {
         case actionsTypes.LOGING_IN:
             return updateObject(state, {loginResult: action.loginResult})
         case actionsTypes.REGISTER:
-            return updateObject(state, {registerResult: action.registerResult})
+            return updateObject(state, {registerResult: action.registerResult, registerStatus: undefined})
+        case actionsTypes.CHANGE_REGISTER_STATUS:
+            return updateObject(state, {registerStatus: action.registerStatus})
 
         default:
             break;

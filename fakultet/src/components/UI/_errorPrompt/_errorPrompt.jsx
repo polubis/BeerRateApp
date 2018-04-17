@@ -2,8 +2,10 @@ import React from 'react';
 import './_errorPrompt.css';
 
 const errorPrompt = props => (
-    <p className="error-prompt-container">
-        <i class="fa fa-times"></i> {props.message}
+    <p className={props.regStat ? "confirmed-prompt-message" : 
+    "error-prompt-container"}>
+        <i className={!props.regStat ? "fa fa-times" : 
+        "fa fa-check"}></i> {props.message}
     </p>
 );
 

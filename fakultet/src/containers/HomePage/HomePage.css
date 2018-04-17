@@ -25,7 +25,37 @@
     font-size: 115px;
     color: #16a085;
     width: 55%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
+.page-desc-second-container p i{
+    margin-top: 40px;
+    animation: animateIcon 2s linear infinite;
+}
+@keyframes animateIcon {
+    0%{
+        transform: translateY(0);
+        color: #16a085;
+    }
+    25%{
+        transform: translateY(25px);
+        color: #20b193;
+    }
+    50%{
+        transform: translateY(0);
+        color: #43c172;
+    }
+    75%{
+        transform: translateY(-25px);
+        color: #64d283;
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+
 .home-page-container main footer{
     width: 100%;
     position: absolute;

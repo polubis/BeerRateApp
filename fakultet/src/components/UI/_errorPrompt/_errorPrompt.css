@@ -1,8 +1,14 @@
-.error-prompt-container{
+.error-prompt-container,
+.confirmed-prompt-message{
     color: white;
-    background-color: rgb(189, 46, 46);
     padding: 30px;
     font-size: 28px;
     margin: 0;
     opacity: 0.9;
+}
+.error-prompt-container{
+    background-color: rgb(189, 46, 46);
+}
+.confirmed-prompt-message{
+    background-color: rgba(29, 209, 29, 0.5);
 }

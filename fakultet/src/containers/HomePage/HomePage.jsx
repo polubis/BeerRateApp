@@ -82,7 +82,8 @@ class HomePage extends Component {
                     backgroundAttachment: this.state.showSideBar ? 'fixed' : 'unset'}}
                     className="block-container">
                         <div className="page-desc-second-container">
-                            <p>Łączy nas pasja do piwa...</p>
+                            <p>Łączy nas pasja do piwa... <i className="fa fa-arrow-down"></i></p>
+                            
                         </div>
                          
                     </div>
