@@ -20,19 +20,17 @@ class MainPage extends Component {
         
     }
     
-    onClick = () => {
+
+    logout = () => {
         localStorage.clear();
-        this.props.history.push('/');
-    }
-    redirectToHomePage = () => {
         this.props.history.push('/');
     }
     render() { 
         return ( 
             <div style={{backgroundImage: `url(${Image})`}} className="main-page-container" >
                 <div className="place-holder-block"></div>
-                <Sidebar />
-                <Navbar clicked={this.redirectToHomePage} />
+                <Sidebar logout={this.logout}/>
+                <Navbar />
                 <MainPageContent />
             </div>
          )

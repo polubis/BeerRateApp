@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './_curiosity.css';
 import { curiosities } from '../../consts/CuriosityArray';
-import ReactTimeout from 'react-timeout'
 
 class Curiosities extends Component {
     state = { 

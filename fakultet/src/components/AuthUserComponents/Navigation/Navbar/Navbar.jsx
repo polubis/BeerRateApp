@@ -5,7 +5,7 @@ import Logo from '../../../UI/_logo/_logo';
 const navbar = props => (
     <div className="main-page-navbar">
         
-        <Logo scrollUp={props.clicked} />
+        <Logo  />
     </div>
 );
 

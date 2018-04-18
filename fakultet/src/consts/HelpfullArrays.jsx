@@ -25,3 +25,7 @@ export const registerFormValidationItems = [
     {id: 4, value: false, error: undefined, type: "checkbox"}
 ];
 
+
+
+
+

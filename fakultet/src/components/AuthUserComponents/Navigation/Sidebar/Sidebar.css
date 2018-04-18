@@ -43,6 +43,10 @@
     content: 'Marki piwa';
     right: -100px;
 }
+#cup::after{
+    content: "Rankingi";
+    right: -80px;
+}
 #loup::after{
     content: "Wyszukaj";
     right: -80px;
