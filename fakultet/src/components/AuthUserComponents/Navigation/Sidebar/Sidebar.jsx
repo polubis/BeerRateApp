@@ -6,6 +6,8 @@ import BreweryGroupIcon from '../../../../assets/icons/brewery-group.png';
 import Loup from '../../../../assets/icons/loup.png';
 import Logout from '../../../../assets/icons/logout.png';
 import Cup from '../../../../assets/icons/cup.png';
+import MainPageLogo from '../../../../assets/icons/main-page.png';
+
 const sideBar = props => {
     return(
         <nav className="side-page-nav">
@@ -14,6 +16,11 @@ const sideBar = props => {
                 <i className="fa fa-facebook-f"></i>
                 <i className="fa fa-twitter"></i>
             </div>
+
+            <div id="home-page-icon" className="side-page-nav-png-icon">
+                <img src={MainPageLogo} alt="Strona główna" />
+            </div>
+            
             <div id="brewery-group" className="side-page-nav-png-icon" >
                 <img src={BreweryGroupIcon} alt="Grupy piwowarskie"/> 
             </div>

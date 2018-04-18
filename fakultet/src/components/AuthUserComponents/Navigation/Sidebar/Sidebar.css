@@ -31,6 +31,15 @@
     transform: translateX(0);
     transition: 1s all ease-in-out;
 }
+#home-page-icon{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+#home-page-icon::after{
+    content: 'Strona główna';
+    right: -120px;
+}
 #brewery-group::after{
     content: 'Grupy piwowarskie';
     right: -160px;
