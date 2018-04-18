@@ -1,42 +1,36 @@
 import React from 'react';
 import './Sidebar.css';
-
-
-const sideBarNavigationItems = [
-    {id: 0, name: "Grupy piwowarskie"},
-    {id: 1, name: "Browary"},
-    {id: 2, name: "Piwa"}
-]
+import BeerIcon from '../../../../assets/icons/beer-icon.png';
+import BreweriesIcon from '../../../../assets/icons/beer-factory.png';
+import BreweryGroupIcon from '../../../../assets/icons/brewery-group.png';
+import Loup from '../../../../assets/icons/loup.png';
+import Logout from '../../../../assets/icons/logout.png';
 const sideBar = props => {
     return(
         <nav className="side-page-nav">
+
             <div className="socials-container">
                 <i className="fa fa-facebook-f"></i>
                 <i className="fa fa-twitter"></i>
             </div>
-            <div className="first-div-container">
-                {sideBarNavigationItems.map(i => {
-                    return (
-                    <button key={i.id}>
-                        {i.name}
-                    </button>);
-                })}
+            <div id="brewery-group" className="side-page-nav-png-icon" >
+                <img src={BreweryGroupIcon} alt="Grupy piwowarskie"/> 
             </div>
             
-            <div className="search-bar-container">
-                <input type="text" placeholder="znajdź..." />
-                {sideBarNavigationItems.map(i => {
-                    return (
-                        <div key={i.id}>
-                            <input type="checkbox" />
-                            <label>{i.name}</label>
-                        </div>
-                    );
-                })}
-                
-                
+            <div id="breweries" className="side-page-nav-png-icon">
+                <img className="background-img" src={BreweriesIcon} alt="Browary"/>
             </div>
-            
+            <div id="beers" className="side-page-nav-png-icon" >
+                <img src={BeerIcon} alt="Marki piw"/> 
+            </div>
+            <div id="loup" className="side-page-nav-png-icon" >
+                <img src={Loup} alt="Wyszukaj"/> 
+            </div>
+            <div id="logout" className="side-page-nav-png-icon" >
+                <img src={Logout} alt="Wyloguj"/> 
+            </div>
+
+           
         </nav>
     );
 }

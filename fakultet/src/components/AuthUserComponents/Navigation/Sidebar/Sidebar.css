@@ -1,116 +1,91 @@
 .side-page-nav{
-    color: white;
-    width: 18%;
+    width: 100px;
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    box-shadow: 0 2px 3px black;
-    font-family: 'Alegreya', serif;
+    transition: 1s width ease-in-out;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 20;
+    
 }
 .socials-container{
-    display: flex;
-    justify-content: space-between;
-    
-    width: 80px;
-    margin: 20px auto 0 auto;
-}
-.socials-container i{
-    font-size: 32px;
-}
-
-.first-div-container{
-    display: flex;
-    height: 220px;
-    justify-content: space-around;
-    flex-flow: column;
-    animation: animatebuttons 2s linear forwards;
-    margin-top: 40px;
-}
-
-.side-page-nav button{
-    position: relative;
-    font-family: 'Alegreya', serif;
-    border: none;
-    font-size: 25px;
-    background: transparent;
+    font-size: 22px;
     color: white;
-    letter-spacing: 1px;
-    
- }
-
-.side-page-nav button::after{
-    content: '';
-    width: 99.5%;
-    display: block;
-    margin-top: 10px;
-    position: absolute;
-    left: 0;
-  }
-
-.side-page-nav button:hover::after{
-    animation: sheen 0.5s linear forwards;
-    border: 1px solid white;
-}
-
-
-
-
- .search-bar-container{
     display: flex;
-    flex-flow: column;
-    margin-top: 50px;
-    height: 250px;
     justify-content: space-around;
-    box-sizing: border-box;
-    animation: animatebuttons 2s linear forwards;
+    margin: 10px 0 40px 0;
+    position: relative;
 }
-
-.search-bar-container div{
-    padding: 10px;
-    width: 80%;
-    margin: 0 auto;
-    
-}
-.search-bar-container div label{
-    
-    margin-left: 10px;
-    font-size: 24px;
-    
-}
-
-.search-bar-container input[type="checkbox"]{
-    transform: scale(1.7);
+.socials-container i {
     cursor: pointer;
 }
-
-.search-bar-container input[type="text"]{
-    border: none;
-    border-radius: 5px;
-    width: 80%;
-    margin: 0 auto;
-    font-style: inherit;
-    letter-spacing: 1px;
-    font-weight: bold;
+.side-page-nav-png-icon{
+    width: 75px;
+    height: 75px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 20px 0;
+    transform: translateX(0);
+    transition: 1s all ease-in-out;
+}
+#brewery-group::after{
+    content: 'Grupy piwowarskie';
+    right: -160px;
+}
+#breweries::after{
+    content: 'Browary';
+    right: -80px;
+}
+#beers::after{
+    content: 'Marki piwa';
+    right: -100px;
+}
+#loup::after{
+    content: "Wyszukaj";
+    right: -80px;
+}
+#loup{
+    margin-top: 100px;
+}
+#logout{
+    margin-top: 100px;
+}
+#logout::after{
+    content: "Wyloguj";
+    right: -70px;
+   
+}
+.side-page-nav-png-icon::after{
+    width: auto;
+    height: 65px;
+    position: absolute;
+    display: block;
+    opacity: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    transition: 1s all ease-in-out;
+}
+.side-page-nav-png-icon:hover::after{
+    opacity: 1;
 }
 
 
-
-
-
-
-@keyframes animatebuttons {
-    0%{
-        opacity: 0;
-    }
-    25%{
-        opacity: 0.25;
-    }
-    50%{
-        opacity: 0.5;
-    }
-    100%{
-        opacity: 1;
-    }
+.background-img{
+    background-color: rgba(133,152,312,0.3);
 }
+.side-page-nav-png-icon img{
+    cursor: pointer;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.side-page-nav-png-icon:hover{
+    transform: translateX(20px);
+}
+

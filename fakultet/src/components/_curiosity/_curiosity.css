@@ -1,0 +1,40 @@
+
+.curosities-container h1{
+    font-size: 42px;
+}
+.curiositiy-content{
+    background-color: rgba(0,0,0,0.5);
+    width: 83%;
+    border-radius: 5px;
+    font-size: 30px;
+    transition: 1s all ease-in-out;
+    padding: 40px;
+    height: 300px;
+    box-sizing: border-box;
+    text-align: justify;
+}
+.hidden-block{
+    left: -100%;
+    opacity: 0;
+}
+.visible-block{
+    left: 0;
+    opacity: 1;
+}
+
+
+.curosities-container nav{
+    display: flex;
+    width: 250px;
+    position: absolute;
+    right: 16%;
+    justify-content: space-around;
+    padding: 15px;
+}
+.curosities-container nav i{
+    cursor: pointer;
+    font-size: 18px;
+}
+.curosities-container nav i:hover{
+    color: orange !important;
+}
