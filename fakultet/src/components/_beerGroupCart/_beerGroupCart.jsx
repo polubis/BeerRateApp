@@ -6,10 +6,8 @@ import FirstPlace from '../../assets/beer-rewards/first-place.png';
 import ManGift from '../../assets/beer-rewards/prezent.png';
 import WomanFav from '../../assets/beer-rewards/woman-fav.png';
 import BeerFactoryBackground from '../../assets/beer-rewards/beer-factory-back.jpg';
-import Owner from '../../assets/beer-group-details/owner-png.png';
-import BirthDate from '../../assets/beer-group-details/birth-date.png';
-import Compas from '../../assets/beer-group-details/map.png';
 
+import BeerGroupFormInfo from '../_beerGroupCart/_beerGroupFormInfo/_beerGroupFormInfo';
 
 
 
@@ -27,29 +25,8 @@ const beerGroupCart = props => (
         <div className="rank-steirways">
             <h1>Grupa piwowarskia - bracia </h1>
 
+            <BeerGroupFormInfo />
             
-            <div className="beer-group-details">
-                
-                    <div className="info-block">
-                        <p>Założciel</p>
-                        <img src={Owner} alt="Właściciel" />
-                        <p>Tom Cruse</p>
-                    </div>
-                    <div className="info-block">
-                    <p>Rok założenia</p>
-                        <img src={BirthDate} alt="Właściciel" />
-                        <p>2017</p>
-                    </div>
-                    <div className="info-block">
-                        <p>Lokalizacja</p>
-                        <img src={Compas} alt="Właściciel" />
-                        <p>USA Massetusets</p>
-                    </div>
-                   
-
-              
-                
-            </div>
             <div className="first-bar-container">
                 <article>
                     <h2>O flagowym produkcie, czas na 

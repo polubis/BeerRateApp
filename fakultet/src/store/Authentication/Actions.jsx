@@ -25,7 +25,9 @@ export const logingInActionCreator = (logingObject, historyObject) => {
             dispatch(logingIn(zeroError));
             historyObject.push(afterLogingInPage);
         }).catch(error => {
-            dispatch(logingIn(error.response.data.errors));
+            const array = [];
+            array.push(error.response.data.errors[0].value);
+            dispatch(logingIn(array));
             
         });
     }

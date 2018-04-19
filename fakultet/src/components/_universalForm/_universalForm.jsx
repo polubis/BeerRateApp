@@ -118,6 +118,7 @@ class UniversalForm extends Component {
         this.setState({showBackdrop: false});
     }
     render() {
+        console.log(this.props.loginResult);
         return (  
             <div style={{padding: this.props.formHeader === "Rejestracja" ? 
             '0 30px' : '30px'}} className="universal-form-container">
