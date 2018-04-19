@@ -21,7 +21,6 @@ const sideBar = props => {
         {id: 5, name: "loup", img:Loup, alt:"Wyszukaj", adress: "znajdz"},
         {id: 6, name: "logout", img:Logout, alt:"Wyloguj", adress: "wyloguj"}
     ];
-    console.log(window.location.href.search("glowna"));
     return(
         <nav className="side-page-nav">
             <div className="socials-container">
