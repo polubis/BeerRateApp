@@ -7,14 +7,16 @@ import {
     Switch
   } from 'react-router-dom';
 import Aux from '../../hoc/auxilary';
-
+import MainPageContent from '../MainPage/MainPageContent/MainPageContent';
+import BeerGroups from '../BeerGroups/BeerGroups';
 
 class RootContainer extends Component {
     render() { 
         const responseObject = JSON.parse(localStorage.getItem('loggedUserData'));
         const afterLogingInRoutes = (
             <Aux>
-                <Route path="/glowna" exact component={MainPage} />
+                <Route path="/glowna" exact component={MainPageContent} />
+                <Route path="/grupy" exact component={BeerGroups} />
             </Aux>
         );
         return ( 
@@ -22,7 +24,10 @@ class RootContainer extends Component {
                 <Router>
                     <Switch>
                         <Route path="/" exact component={HomePage} />
-                        {responseObject ? afterLogingInRoutes : null}
+                        {responseObject ? <MainPage>
+                            {afterLogingInRoutes}
+                        </MainPage> : null}
+                        
                     </Switch>
                 </Router>
             </div>

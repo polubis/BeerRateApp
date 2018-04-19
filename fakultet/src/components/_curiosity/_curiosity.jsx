@@ -31,6 +31,14 @@ class Curiosities extends Component {
         this.setState({timer: this.state.timer+1000});
         setTimeout(this.changeTimer, 1000);
     }
+
+    componentWillUnmount(){
+        let id = window.setTimeout(null,0);
+        while (id--) 
+        {
+            window.clearTimeout(id);
+        }
+    }
     render() { 
         return (
             <div className="curosities-container">

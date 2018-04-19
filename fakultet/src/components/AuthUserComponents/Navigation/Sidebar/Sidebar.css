@@ -46,7 +46,7 @@
 }
 #breweries::after{
     content: 'Browary';
-    right: -80px;
+    right: -60px;
 }
 #beers::after{
     content: 'Marki piwa';
@@ -102,3 +102,8 @@
     transform: translateX(20px);
 }
 
+
+
+.active-side-bar-item{
+    transform: translateX(20px) !important;
+}

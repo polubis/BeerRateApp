@@ -5,11 +5,7 @@ import BeerGroupCart from '../../../components/_beerGroupCart/_beerGroupCart';
 import LeftRank from '../../../components/_leftRank/_leftRank';
 
 class MainPageContent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
-    
+   
     render() {  
         return ( 
             <div className="beers-block-container">

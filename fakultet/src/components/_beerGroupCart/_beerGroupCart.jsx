@@ -12,13 +12,7 @@ import Compas from '../../assets/beer-group-details/map.png';
 
 
 
-const helpArray = [
-    {id:1, itemName: "Tyskie", content: "Grupa piwowarska Tyskie", rate: 4.43},
-    {id:2, itemName: "Specjal", rate: 5.00},
-    {id:3, itemName: "Specjal", rate: 5.00},
-    {id:4, itemName: "Specjal", rate: 5.00},
-    {id:5, itemName: "Specjal", rate: 5.00}
-]
+
 
 const rewards = [
     {id: 0, desc: "Ulubieniec kobiet", img: WomanFav},
@@ -73,7 +67,7 @@ const beerGroupCart = props => (
             </h2>
             <div className="other-beers-container">
                {rewards.map(r => {
-                   return (<div style={{backgroundImage: `url(${r.img})`}}>
+                   return (<div key={r.id} style={{backgroundImage: `url(${r.img})`}}>
                         <span>{r.desc}</span>
                     </div>);
                })}

@@ -12,26 +12,34 @@ import MainPageContent from './MainPageContent/MainPageContent';
                     <Spinner spinnerContent="trwa ładowanie..." color="white" fontSize="32px"/>
                 </Backdrop>
 */
-
-
-
 class MainPage extends Component {
-    state = {
-        
-    }
     
 
     logout = () => {
         localStorage.clear();
         this.props.history.push('/');
     }
+
+
+
+    redirectToAnotherBlock = event => {
+        this.props.history.push("/" + event.target.title);
+    }
+
     render() { 
         return ( 
             <div style={{backgroundImage: `url(${Image})`}} className="main-page-container" >
                 <div className="place-holder-block"></div>
-                <Sidebar logout={this.logout}/>
+               
                 <Navbar />
-                <MainPageContent />
+                <Sidebar 
+                redirect={e => this.redirectToAnotherBlock(e)}
+                logout={this.logout}
+                />
+                
+                {this.props.children}
+                
+            
             </div>
          )
     }

@@ -8,39 +8,38 @@ import Logout from '../../../../assets/icons/logout.png';
 import Cup from '../../../../assets/icons/cup.png';
 import MainPageLogo from '../../../../assets/icons/main-page.png';
 
+
+
+
 const sideBar = props => {
+    const sideBarItem = [
+        {id: 0, name: "home-page-icon", img:MainPageLogo, alt:"Strona główna", adress: "glowna"},
+        {id: 1, name: "brewery-group", img:BreweryGroupIcon, alt:"Grupy piwowarskie", adress: "grupy"},
+        {id: 2, name: "breweries", img:BreweriesIcon, alt:"Browary", adress: "browary"},
+        {id: 3, name: "beers", img:BeerIcon, alt:"Marki piw", adress: "piwa"},
+        {id: 4, name: "cup", img:Cup, alt:"Rankingi", adress: "rankingi"},
+        {id: 5, name: "loup", img:Loup, alt:"Wyszukaj", adress: "znajdz"},
+        {id: 6, name: "logout", img:Logout, alt:"Wyloguj", adress: "wyloguj"}
+    ];
+    console.log(window.location.href.search("glowna"));
     return(
         <nav className="side-page-nav">
-
             <div className="socials-container">
                 <i className="fa fa-facebook-f"></i>
                 <i className="fa fa-twitter"></i>
             </div>
-
-            <div id="home-page-icon" className="side-page-nav-png-icon">
-                <img src={MainPageLogo} alt="Strona główna" />
-            </div>
+            {sideBarItem.map(i => {
+                
+                return (
+                    <div onClick={i.id === 6 ? props.logout : props.redirect}
+                    key={i.id} id={i.name} className={window.location.href.search(i.adress) !== -1 ? 
+                    "side-page-nav-png-icon active-side-bar-item" : "side-page-nav-png-icon"}>
+                        <img id={i.id} src={i.img} alt={i.alt} title={i.adress} />
+                    </div>
+                );
+            })}
             
-            <div id="brewery-group" className="side-page-nav-png-icon" >
-                <img src={BreweryGroupIcon} alt="Grupy piwowarskie"/> 
-            </div>
-            <div id="breweries" className="side-page-nav-png-icon">
-                <img className="background-img" src={BreweriesIcon} alt="Browary"/>
-            </div>
-            <div id="beers" className="side-page-nav-png-icon" >
-                <img src={BeerIcon} alt="Marki piw"/> 
-            </div>
-            <div id="cup" className="side-page-nav-png-icon" >
-                <img src={Cup} alt="Ranking"/> 
-            </div>
-            <div id="loup" className="side-page-nav-png-icon" >
-                <img src={Loup} alt="Wyszukaj"/> 
-            </div>
 
-
-            <div onClick={props.logout} id="logout" className="side-page-nav-png-icon" >
-                <img src={Logout} alt="Wyloguj"/> 
-            </div>
             
        
            
