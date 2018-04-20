@@ -1,23 +1,13 @@
 import React from 'react';
 import './_beerGroupCart.css';
 import Image from '../../assets/beers.jpg';
-import Cup from '../../assets/beer-rewards/cup.png';
-import FirstPlace from '../../assets/beer-rewards/first-place.png';
-import ManGift from '../../assets/beer-rewards/prezent.png';
-import WomanFav from '../../assets/beer-rewards/woman-fav.png';
+
 import BeerFactoryBackground from '../../assets/beer-rewards/beer-factory-back.jpg';
 
 import BeerGroupFormInfo from '../_beerGroupCart/_beerGroupFormInfo/_beerGroupFormInfo';
+import Awards from '../_awards/_awards';
 
 
-
-
-const rewards = [
-    {id: 0, desc: "Ulubieniec kobiet", img: WomanFav},
-    {id: 1, desc: "Idealny dla mężczyzn", img: ManGift},
-    {id: 2, desc: "Pierwsze miejsce w rankingu!", img: FirstPlace},
-    {id: 3, desc: "Złota trójka", img: Cup}
-]
 
 const beerGroupCart = props => (
     
@@ -33,23 +23,14 @@ const beerGroupCart = props => (
                         <b className="orange-link"> Tyskie!</b></h2>
                     <p>Bracia słynną z produkcji piw z gaturnku Lager. Wyjątkowo dobrym produktem jest 
                         piwo Tyskie. W jego smaku da się wyczuć wyrazistą nutkę słodu jęczmiennego z bogatym
-                        dodatkiem chmielu. <span className="orange-link">Czytaj więcej</span>
+                        dodatkiem chmielu. 
                     </p>
+                    <span className="orange-link">Czytaj więcej</span>
                 </article>
                 <img src={Image} alt="Zdjęcie" />
             </div>
             <button className="oth-beers-button">Inne piwo</button>
-            <h2 className="award-header">Nagrody użytkowników
-                <i className="fa fa-info"></i>
-            </h2>
-            <div className="other-beers-container">
-               {rewards.map(r => {
-                   return (<div key={r.id} style={{backgroundImage: `url(${r.img})`}}>
-                        <span>{r.desc}</span>
-                    </div>);
-               })}
-
-            </div>
+            <Awards />
             <h1 className="company-story-header">Historia firmy</h1>
             <div style={{backgroundImage: `url(${BeerFactoryBackground})`}} className="company-story-container">
 

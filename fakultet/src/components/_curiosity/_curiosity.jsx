@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './_curiosity.css';
-import { curiosities } from '../../consts/CuriosityArray';
 
 class Curiosities extends Component {
     state = { 
@@ -14,7 +13,7 @@ class Curiosities extends Component {
         setTimeout(this.changeTimer, 1000);
     }
     changeAfterTime = () => {
-        this.setState({isAnimating: false, helpBlock: this.state.helpBlock === curiosities.length-1 ? 
+        this.setState({isAnimating: false, helpBlock: this.state.helpBlock === this.props.curiosities.length-1 ? 
         0 : this.state.helpBlock+1});
         setTimeout(this.changeActualBlock, 1000); 
         setTimeout(this.changeAfterTime, 12000);
@@ -45,10 +44,10 @@ class Curiosities extends Component {
                 <h1>Czy wiesz, że...</h1>
                 <div id={this.state.actualBlock} className={!this.state.isAnimating ? 
                 "curiositiy-content hidden-block" : "curiositiy-content visible-block"}>
-                    {curiosities[this.state.actualBlock].content}
+                    {this.props.curiosities[this.state.actualBlock].content}
                 </div>
                 <nav>
-                    {curiosities.map(c => {
+                    {this.props.curiosities.map(c => {
                         return <i style={{color: this.state.actualBlock === c.id ? "orange" : "white"}}
                         onClick={() => this.handleClick(c.id)} key={c.id} className="fa fa-circle"></i>;
                     })}

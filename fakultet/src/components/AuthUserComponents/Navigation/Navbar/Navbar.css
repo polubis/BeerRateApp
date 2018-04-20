@@ -6,3 +6,29 @@
     box-sizing: border-box;
     justify-content: flex-end;
 }
+.navbar-nav{
+    position: fixed;
+    top: 100px;
+    color: white;
+    padding: 10px;
+    left: 13%;
+    text-align: center;
+    font-size: 42px;
+    z-index: 30;
+    display: flex;
+    flex-flow: column;
+}
+.navbar-nav i{
+    position: relative;
+    cursor: pointer;
+}
+.navbar-nav i b{
+    position: absolute;
+    font-size: 18px;
+    z-index: 2;
+    top: 10px;
+    color: black;
+}
+.actualBeer{
+    transform: translateX(-20px);
+}

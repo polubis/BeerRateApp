@@ -22,8 +22,8 @@
     cursor: pointer;
 }
 .side-page-nav-png-icon{
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,40 +31,35 @@
     transform: translateX(0);
     transition: 1s all ease-in-out;
 }
-#home-page-icon{
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-}
 #home-page-icon::after{
     content: 'Strona główna';
-    right: -120px;
+    right: -110px;
 }
 #brewery-group::after{
     content: 'Grupy piwowarskie';
-    right: -160px;
+    right: -140px;
 }
 #breweries::after{
     content: 'Browary';
-    right: -60px;
+    right: -50px;
 }
 #beers::after{
     content: 'Marki piwa';
-    right: -100px;
+    right: -85px;
 }
 #cup::after{
     content: "Rankingi";
-    right: -80px;
+    right: -70px;
 }
 #loup::after{
     content: "Wyszukaj";
     right: -80px;
 }
 #loup{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 #logout{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 #logout::after{
     content: "Wyloguj";
@@ -73,11 +68,11 @@
 }
 .side-page-nav-png-icon::after{
     width: auto;
-    height: 65px;
     position: absolute;
     display: block;
     opacity: 0;
-    top: 0;
+    top: 17.5px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     color: white;
@@ -94,8 +89,8 @@
 }
 .side-page-nav-png-icon img{
     cursor: pointer;
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 .side-page-nav-png-icon:hover{

@@ -1,7 +1,6 @@
 import React from 'react';
 import './_leftRank.css';
-import Image from '../../assets/beers.jpg';
-
+import BeerCart from '../_beerCart/_beerCart';
 
 const leftRank = props => {
     const leftRank = [
@@ -17,26 +16,7 @@ const leftRank = props => {
         <div className="left-block-container">
         <h2>Polecane na dziś</h2>
         {leftRank.map(i => {
-            return (
-                <div key={i.id} className="carousel-bar-block">
-                    <img src={Image} alt="Piwo" />
-                    <div>
-                        <h2>{i.title} 
-                            <span>
-                                <b>{i.rate}</b>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                                <i className="fa fa-star"></i>
-                            </span>
-                        </h2>
-                        <p>{i.content} <b className="orange-link">Szczegóły</b>
-
-                        </p>
-                    </div>
-                </div> 
-            );
+            return <BeerCart key={i.id} title={i.title} rate={i.rate} content={i.content}/>;
         })}
             
         </div>

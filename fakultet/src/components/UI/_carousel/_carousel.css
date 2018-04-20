@@ -1,0 +1,61 @@
+.carousel-container{
+    width: 100%;
+    display: flex;
+    transition: 1s all ease-in-out;
+    flex-flow: column;
+}
+.carousel-container nav{
+    text-align: right;
+    margin-right: 20px;
+}
+.carousel-container nav i {
+    margin: 0 10px;
+    cursor: pointer;
+}
+.carousel-container nav i:hover{
+    color: orange !important;
+}
+
+.carousel-hidden-block{
+    animation: animate-out-carousel 1s linear forwards;
+}
+.carousel-visible-block{
+    animation: animate-in-carousel 1s linear forwards;
+}
+@keyframes animate-in-carousel{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.25;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    75%{
+        opacity: 0.75;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes animate-out-carousel{
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0.75;
+    }
+    50%{
+        opacity: 0.50;
+    }
+    75%{
+        opacity: 0.25
+    }
+    100%{
+        opacity: 0;
+    }
+}

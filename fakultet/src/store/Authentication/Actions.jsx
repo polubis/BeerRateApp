@@ -53,7 +53,9 @@ export const registerActionCreator = (registerObject, historyObject) => {
             dispatch(register(zeroError));
             dispatch(changeRegisterStatus(true));
         }).catch(error => {
-            dispatch(register(error.response.data.errors));
+            const array = [];
+            array.push(error.response.data.errors[0].value);
+            dispatch(register(array));
             dispatch(changeRegisterStatus(false));
         })
     }

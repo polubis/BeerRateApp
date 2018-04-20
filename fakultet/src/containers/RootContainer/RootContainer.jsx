@@ -9,6 +9,7 @@ import {
 import Aux from '../../hoc/auxilary';
 import MainPageContent from '../MainPage/MainPageContent/MainPageContent';
 import BeerGroups from '../BeerGroups/BeerGroups';
+import BeerGroupsList from '../BeerGroupsList/BeerGroupsList';
 
 class RootContainer extends Component {
     render() { 
@@ -16,7 +17,9 @@ class RootContainer extends Component {
         const afterLogingInRoutes = (
             <Aux>
                 <Route path="/glowna" exact component={MainPageContent} />
-                <Route path="/grupy" exact component={BeerGroups} />
+                <Route path="/grupy" exact component={BeerGroupsList} />
+                <Route path="/grupy/:id" exact component={BeerGroups} />
+                
             </Aux>
         );
         return ( 
@@ -24,6 +27,7 @@ class RootContainer extends Component {
                 <Router>
                     <Switch>
                         <Route path="/" exact component={HomePage} />
+                        
                         {responseObject ? <MainPage>
                             {afterLogingInRoutes}
                         </MainPage> : null}
