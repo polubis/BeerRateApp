@@ -74,7 +74,9 @@ class BeerGroupList extends Component{
                         <div className="beer-group-awards-container">
                             {this.state.showAwardDesc ? 
                             <div className="award-description-container">
-                                Siema
+                                <h3>{this.state.awardDescContent.name}</h3>
+                                <img src={this.state.awardDescContent.img} alt={this.state.awardDescContent.name} />
+                                <article>{this.state.awardDescContent.desc}</article>
                             </div> : null}
                             <img src={BeerIcon} className="capsel-type" alt="Marki piw" />
                             <MinAwards out={this.closeAwardOnMouseOutHandler} clicked={e => this.showAwardDescClickHandler(e)} items={awardArray}/>

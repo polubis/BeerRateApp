@@ -102,9 +102,18 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     top: 0;
-    background-color: red;
+    background-color: orangered;
     left: 0;
+    padding: 10px;
+    text-align: center;
+}
+.award-description-container img{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    border-radius: 50%;
 }
 
 .beer-group-awards-container h2{
