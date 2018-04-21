@@ -1,0 +1,21 @@
+.min-awards-container{
+    width: 30px;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 100px;
+    right: -40px;
+    flex-flow: column;
+}
+.min-awards-container div{
+    width: 30px;
+    height: 30px;
+}
+.min-awards-container div img:first-of-type{
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 100%;
+}
+

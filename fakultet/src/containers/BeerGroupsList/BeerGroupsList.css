@@ -4,8 +4,10 @@
     color: white;
     padding-top: 80px;
     display: flex;
+    margin-bottom: 60px;
     flex-flow: wrap;
 }
+
 .beer-group-block{
     background-position: center;
     background-repeat: no-repeat;
@@ -89,4 +91,49 @@
 
 .beer-group-awards-container{
     padding: 10px 20px;
+    background-color: rgba(0,0,0,0.6);
+    margin-left: 25px;
+    width: 290px;
+    height: 400px;
+    position: relative;
+    box-sizing: border-box;
 }
+.award-description-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: red;
+    left: 0;
+}
+
+.beer-group-awards-container h2{
+    padding-top: 30px;
+    margin: 0;
+}
+.beer-group-awards-container p:first-of-type{
+    font-size: 18px;
+    margin: 0;
+    line-height: 35px;
+}
+.beer-group-awards-container article{
+    font-size: 14px;
+    height: 38%;
+    overflow-y: auto;
+}
+.beer-group-awards-container article img{
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 10px;
+}
+.show-more-button{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 16px;
+    text-decoration: none;
+    color: greenyellow;
+}
+
+

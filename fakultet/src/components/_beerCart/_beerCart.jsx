@@ -32,6 +32,7 @@ const beerCart = props => {
     const flipBack = (
         <div className="cart-back-container">
             <Awards noHeader={true}/>
+            <p className="orange-link">Zobacz wiecej</p>
         </div>
     );
     return(
