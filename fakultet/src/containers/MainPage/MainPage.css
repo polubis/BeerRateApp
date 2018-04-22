@@ -1,7 +1,7 @@
 .main-page-container{
     height: 100%;
     width: 100%;
-    display: flex;
+    display: flex !important;
     position: relative;
     background-attachment: fixed;
     background-repeat: no-repeat;

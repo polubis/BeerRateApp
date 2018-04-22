@@ -1,0 +1,36 @@
+.ranks-container{
+    height: 100%;
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    position: relative;
+    flex-flow: column;
+}
+#rank-icon{
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: -50px;
+    left: 0;
+}
+.ranks-container table{
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    width: 95%;
+    margin: 0 auto 50px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    display: block;
+}
+.ranks-container table th,
+.ranks-container table td{
+    border-bottom: 1px solid white;
+}
+.ranks-container table th,
+.ranks-container table td{
+    padding: 15px;
+}
+.ranks-container table tr td:nth-child(3){
+    width: 25%;
+    vertical-align: top;
+}

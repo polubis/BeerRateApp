@@ -1,0 +1,33 @@
+.rank-stats-container{
+    width: 50%;
+    vertical-align: top;
+    position: relative;
+}
+.rank-stats-container h1{
+    font-size: 62px;
+    position: absolute;
+    top: 40%;
+    margin: 0;
+    left: -50px;
+    color: rgba(132, 134, 19, 0.9);
+}
+.rank-stats-container h3{
+    margin-top: 70px;
+    
+}
+.table-headers{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+.table-headers span{
+    width: 100%;
+    text-align: center;
+}
+.table-values span{
+    color: olive;
+    font-weight: bold;
+    font-size: 19px;
+}

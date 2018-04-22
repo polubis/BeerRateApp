@@ -10,7 +10,7 @@ class MainPageContent extends Component {
         return ( 
             <div className="beers-block-container">
                 <Curiosities curiosities={curiosities} />
-                <div className="ranks-container">
+                <div className="main-page-content-container">
                     <LeftRank />
                     <BeerGroupCart />
                 </div>

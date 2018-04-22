@@ -10,7 +10,9 @@ import Aux from '../../hoc/auxilary';
 import MainPageContent from '../MainPage/MainPageContent/MainPageContent';
 import BeerGroups from '../BeerGroups/BeerGroups';
 import BeerGroupsList from '../BeerGroupsList/BeerGroupsList';
+import Ranks from '../Ranks/Ranks';
 
+      
 class RootContainer extends Component {
     render() { 
         const responseObject = JSON.parse(localStorage.getItem('loggedUserData'));
@@ -19,7 +21,7 @@ class RootContainer extends Component {
                 <Route path="/glowna" exact component={MainPageContent} />
                 <Route path="/grupy" exact component={BeerGroupsList} />
                 <Route path="/grupy/:id" exact component={BeerGroups} />
-                
+                <Route path="/rankingi" exact component={Ranks} />
             </Aux>
         );
         return ( 
@@ -31,7 +33,6 @@ class RootContainer extends Component {
                         {responseObject ? <MainPage>
                             {afterLogingInRoutes}
                         </MainPage> : null}
-                        
                     </Switch>
                 </Router>
             </div>
