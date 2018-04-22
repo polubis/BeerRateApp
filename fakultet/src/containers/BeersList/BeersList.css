@@ -37,10 +37,11 @@
     
 }
 .beer-block-image-holder{
+    
     width: 250px;
+    box-shadow: 0 0 20px rgba(0,0,0,1);
     height: 250px;
-    -webkit-clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
-    clip-path: polygon(50% 0%, 75%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+ 
     
 }
 .rate-block-container{
