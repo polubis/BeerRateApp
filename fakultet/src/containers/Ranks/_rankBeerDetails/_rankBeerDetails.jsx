@@ -1,17 +1,13 @@
 import React from 'react';
 import './_rankBeerDetails.css';
-
+import Stars from '../../../components/_stars/_stars';
 const rankBeerDetails = props => (
     <td>
             <div className="rank-beer-details-container">
         <h3 className="orange-link">{props.name}</h3>
         <div className="image-content-holder">
             <span className="rate-stars">
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>                
+                <Stars rate={props.rate}/>          
             </span>
             <span className="rate-value">
                 {props.rate}

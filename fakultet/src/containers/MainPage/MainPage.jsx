@@ -6,17 +6,14 @@ import Sidebar from '../../components/AuthUserComponents/Navigation/Sidebar/Side
 import Navbar from '../../components/AuthUserComponents/Navigation/Navbar/Navbar';
 
 class MainPage extends Component {
-    
-
     logout = () => {
         localStorage.clear();
         this.props.history.push('/');
     }
-
-
-
     redirectToAnotherBlock = event => {
-        this.props.history.push("/" + event.target.title);
+        if(event.target.title !== ""){
+            this.props.history.push("/" + event.target.title);
+        }   
     }
 
     render() { 

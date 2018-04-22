@@ -1,0 +1,23 @@
+.stars-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+}
+.beers-list-number{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    text-align: center;
+    width: 80px;
+    font-size: 28px;
+    height: 80px;
+    background-color: rgba(72, 175, 25, 0.5);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.stars-container i{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

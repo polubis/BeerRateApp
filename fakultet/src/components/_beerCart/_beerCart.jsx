@@ -4,7 +4,7 @@ import './_beerCart.css';
 import FlipCart from '../UI/_flipCart/_flipCart';
 import Aux from '../../hoc/auxilary';
 import Awards from '../_awards/_awards';
-
+import Stars from '../_stars/_stars';
 
 
 const beerCart = props => {
@@ -15,11 +15,7 @@ const beerCart = props => {
             <h2>{props.title} 
                 <span>
                 <b>{props.rate}</b>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
+                <Stars rate={props.rate}/>
                 </span>
             </h2>
             <p>{props.content} <b className="orange-link">Lagger</b>

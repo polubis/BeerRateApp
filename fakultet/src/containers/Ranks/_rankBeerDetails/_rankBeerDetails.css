@@ -1,6 +1,7 @@
 .rank-beer-details-container{
     text-align: center;
     width: 250px;
+    margin: auto;
 }
 .rank-beer-details-container h3{
     letter-spacing: 2px;

@@ -11,6 +11,7 @@ import MainPageContent from '../MainPage/MainPageContent/MainPageContent';
 import BeerGroups from '../BeerGroups/BeerGroups';
 import BeerGroupsList from '../BeerGroupsList/BeerGroupsList';
 import Ranks from '../Ranks/Ranks';
+import BeersList from '../BeersList/BeersList';
 
       
 class RootContainer extends Component {
@@ -22,6 +23,8 @@ class RootContainer extends Component {
                 <Route path="/grupy" exact component={BeerGroupsList} />
                 <Route path="/grupy/:id" exact component={BeerGroups} />
                 <Route path="/rankingi" exact component={Ranks} />
+                <Route path="/piwa" exact component={BeersList} />
+                
             </Aux>
         );
         return ( 
