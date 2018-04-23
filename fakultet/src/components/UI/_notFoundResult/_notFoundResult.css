@@ -1,11 +1,35 @@
 .not-found-result-container{
     width: 75%;
     border-radius: 10px;
-    margin: 100px auto 0 auto;
+    margin: 200px auto 0 auto;
     height: 20%;
     display: flex;
+    flex-flow: column;
     justify-content: center;
-    color: white;
+    position: fixed;
+    color: red;
     align-items: center;
-    background-color: rgba(0,0,0,0.6);
+}
+.not-found-result-container i{
+    font-size: 52px;
+}
+.not-found-result-container p{
+    letter-spacing: 1px;
+}
+.redirect-page-link{
+    color: lightgreen;
+    cursor: pointer;
+    animation: 1s animateRedirect ease-in-out infinite;
+}
+
+@keyframes animateRedirect{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
 }

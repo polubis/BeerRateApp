@@ -11,6 +11,10 @@ const searcher = props => {
         value={props.value}
         maxLength={props.max}
         />
+        {props.searchedCount > 0 ? 
+        <p>Liczba znalezionych wyników: <b>{props.searchedCount}</b></p> : null}
+
+        {(props.value !== "" && props.searchedCount === 0) ? <p className="not-found-prompt">Brak znalezionych wyników</p> : null}
     </div>
         
     );

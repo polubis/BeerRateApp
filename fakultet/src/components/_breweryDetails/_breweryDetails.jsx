@@ -7,7 +7,7 @@ import Breweries from '../../assets/beers.jpg';
 
 const breweryDetails = props => (
     <Aux>
-    <div className="breweries-container">
+    <div className="breweries-details-container">
         <div className="brew-img-holder">
             <img src={Breweries} alt="Browar" />
         </div>

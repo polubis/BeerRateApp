@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import './MainPage.css';
 import { withRouter } from 'react-router-dom';
-import Image from '../../assets/BeerBackground.jpg';
+import Image from '../../assets/background.jpg';
 import Sidebar from '../../components/AuthUserComponents/Navigation/Sidebar/Sidebar';
 import Navbar from '../../components/AuthUserComponents/Navigation/Navbar/Navbar';
 

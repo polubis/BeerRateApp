@@ -12,7 +12,7 @@ import BeerGroups from '../BeerGroups/BeerGroups';
 import BeerGroupsList from '../BeerGroupsList/BeerGroupsList';
 import Ranks from '../Ranks/Ranks';
 import BeersList from '../BeersList/BeersList';
-
+import BreweriesList from '../BreweriesList/BreweriesList';
       
 class RootContainer extends Component {
     render() { 
@@ -24,7 +24,7 @@ class RootContainer extends Component {
                 <Route path="/grupy/:id" exact component={BeerGroups} />
                 <Route path="/rankingi" exact component={Ranks} />
                 <Route path="/piwa" exact component={BeersList} />
-                
+                <Route path="/browary" exact component={BreweriesList} />
             </Aux>
         );
         return ( 

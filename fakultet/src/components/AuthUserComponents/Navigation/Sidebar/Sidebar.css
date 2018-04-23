@@ -33,10 +33,10 @@
 }
 #home-page-icon::after{
     content: 'Strona główna';
-    right: -110px;
+    right: -113px;
 }
 #breweries{
-    background-color: rgb(158, 71, 71);
+    background-color: white;
     border-radius: 50%;
 }
 #brewery-group::after{
@@ -49,7 +49,7 @@
 }
 #beers::after{
     content: 'Marki piwa';
-    right: -85px;
+    right: -87px;
 }
 #cup::after{
     content: "Rankingi";

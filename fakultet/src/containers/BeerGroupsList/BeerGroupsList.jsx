@@ -21,35 +21,26 @@ import Searcher from '../../components/UI/_searcher/_searcher';
 import { connect } from 'react-redux';
 import { fetchAllGroupsActionCreator } from '../../store/BeerGroups/Actions';
 
-
-const helperArray = [
-    {id: 1, compName: "Bracia", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
-    {id: 2, compName: "Pajace", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
-    {id: 3, compName: "Pawełki", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
-    {id: 4, compName: "Tyskie", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
-    {id: 5, compName: "Siemanerko", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
-    {id: 6, compName: "Jam karaczan", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
-    {id: 7, compName: "Tysdkie jeziorne", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory}
-]
-const pngArray = [
-    {id: 0, title: "Założyciel", img: Owner, content: "Jarek Smorwaa"},
-    {id: 1, title: "Lokalizacja", img: GMap, content: "sachusets"},
-    {id: 2, title: "Data powstania", img: BirthDate, content: "19-12-1994"}
-]
-
+import Spinner from '../../components/UI/_spinner/_spinner';
 class BeerGroupList extends Component{
     state = {
         showAwardDesc: false,
         awardDescContent: null,
         searchValue: "",
-        items: helperArray,
-        searchedItems: helperArray
+        items: [],
+        searchedItems: [],
+
+        loadingSpinner: true
+    }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.loadedGroups !== undefined){
+            this.setState({items: nextProps.loadedGroups,
+                searchedItems: nextProps.loadedGroups, loadingSpinner: false});
+        }
     }
     componentDidMount(){
         this.props.fetchingGroups();
     }
-
-
     showAwardDescClickHandler = event => {
         this.setState({showAwardDesc: true, awardDescContent: awardArray[event.target.id]});
     }
@@ -59,7 +50,7 @@ class BeerGroupList extends Component{
     searchOnChangeHandler = event => {
         let resultArray = [];
         for(let key in this.state.items){
-            if(this.state.items[key].compName.toUpperCase().search(event.target.value.toUpperCase()) !== -1){
+            if(this.state.items[key].name.toUpperCase().search(event.target.value.toUpperCase()) !== -1){
                 resultArray.push(this.state.items[key]);
             }
         }
@@ -67,7 +58,6 @@ class BeerGroupList extends Component{
     }
 
     render(){
-        
         return(
             <div className="beer-group-list-container">
                 <Searcher
@@ -75,30 +65,45 @@ class BeerGroupList extends Component{
                     this.state.searchValue.length : undefined}
                 placeholder="znajdź grupe..."
                 changeHandler={e => this.searchOnChangeHandler(e)}
-                value={this.state.searchValue} />
+                value={this.state.searchValue}
+                searchedCount={this.state.searchValue !== "" ? this.state.searchedItems.length : null} />
                 
-                {this.state.searchedItems.length > 0 ? this.state.searchedItems.map(i => {
+               
+
+                {this.state.loadingSpinner ? <Spinner spinnerContent="trwa ładowanie..."/> : null}
+
+                
+                    
+                {this.props.loadingAllGroupsErrors.length === 0 ? this.state.searchedItems.map(i => {
                     return <FlipCart key={i.id} margin="20px 20px 20px 20px" height="400px" width="290px" front={
-                    <div style={{backgroundImage: `url(${i.img})`}} className="beer-group-block">
+                    <div style={{backgroundImage: `url(${BeerFactory})`}} className="beer-group-block">
                         <img src={BreweryGroup} className="capsel-type" alt="Grupa piwowarska" />                    
                         <div className="main-content-container">
-                            <h2 className="orange-link">{i.compName}</h2>
+                            <h3 className="orange-link">{i.name}</h3>
                             <article>
-                                {i.desc}  
+                                {i.description ? i.description : "Brak opisu"}  
                             </article>
-                            <p><b className="orange-link">Liczba browarów:</b> <i>3</i> <img className="small-icon" src={Brewery} alt="Browar"/></p>
+                            <p><b className="orange-link">Liczba browarów:</b> <i>{i.breweries.length}</i> <img className="small-icon" src={Brewery} alt="Browar"/></p>
                             <p><b className="orange-link">Liczba produktów: </b><i>3</i><img className="small-icon" src={BeerIcon} alt="Piwo" /></p>
-                            <div className="group-details-png-container">
-                            {pngArray.map(i => {
-                                return (
-                                    <div key={i.id}>
-                                        <p style={{top: i.id === 2? '-60px' : '-40px'}}>{i.title}</p>
-                                        <img src={i.img} alt={i.content} />
-                                        <p style={{bottom: i.id === 1 ? '-30px' : '-50px'}}>{i.content}</p>
-                                    </div>
-                                );
-                            })}
+                            
+                            <div className="flip-cart-icons-container">
+                                <div id="owner-image-holder" style={{backgroundImage: `url(${Owner})`}}>
+                                    <p>Właściciel</p>
+                                    <p>{i.director}</p>
+                                    
+                                </div>
+                                <div id="map-image-holder" style={{backgroundImage: `url(${GMap})`}}>
+                                    <p>Lokalizacja</p>
+                                    <p>{i.address}</p>
+                                    
+                                </div>
+                                <div id="date-image-holder" style={{backgroundImage: `url(${BirthDate})`}}>
+                                    <p>Data powstania</p>
+                                    <p>{i.createDate.slice(0,10)}</p>
+                                    
+                                </div>
                             </div>
+                            
                         </div>
                      
                         
@@ -127,7 +132,7 @@ class BeerGroupList extends Component{
                         </div>
                     }/> 
                     
-                }) : <NotFoundResult message={`Nie znaleziono grup posiadających w nazwie ${this.state.searchValue}`} />}
+                }) : <NotFoundResult message={this.props.loadingAllGroupsErrors[0]}/>}
                 
             </div>
         );
@@ -136,7 +141,8 @@ class BeerGroupList extends Component{
 
 const mapStateToProps = state => {
     return {
-        loadedGroups: state.BeerGroupsReducer.loadedGroups
+        loadedGroups: state.BeerGroupsReducer.loadedGroups,
+        loadingAllGroupsErrors: state.BeerGroupsReducer.loadingAllGroupsErrors
     };
 }
 

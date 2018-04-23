@@ -7,7 +7,6 @@
     margin-bottom: 60px;
     flex-flow: wrap;
 }
-
 .beer-group-block{
     background-position: center;
     background-repeat: no-repeat;
@@ -26,12 +25,14 @@
     height: 100%;
     padding: 10px;
 }
-.main-content-container h2{
+
+.main-content-container h3{
     margin: 0;
 }
 .beer-group-block .main-content-container article{
    margin-top: 10px;
    text-align: justify;
+   font-size: 14px;
 }
 .capsel-type{
     width: 45px;
@@ -40,19 +41,72 @@
     right: -15px;
     position: absolute;
 }
-.beer-group-block p{
+.main-content-container p{
     position: relative;
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 60%;
 }
-.beer-group-block p b{
-    font-size: 18px;
+.main-content-container p b{
+    font-size: 14px;
 }
-.beer-group-block p i{
-    font-size: 17px;
+.main-content-container p i{
+    font-size: 15px;
+}
+.flip-cart-icons-container{
+    display: flex;
+    justify-content: space-around;
 }
 
+.flip-cart-icons-container div{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-top: 30px;
+    position: relative;
+    font-size: 12px;
+    
+}
+.flip-cart-icons-container div p{
+    position: absolute;
+    margin: 0;
+    word-wrap: break-word;
+    width: 100%;
+    text-align: center;
+}
+#owner-image-holder p:first-child{
+    top: -25px;
+}
+#owner-image-holder p:last-child{
+    bottom: -40px;
+}
+#map-image-holder{
+    top: 40px;
+}
+#map-image-holder p:first-child{
+    top: -25px;
+    left: -4px;
+}
+#map-image-holder p:last-child{
+    bottom: -30px;
+    width: 150px;
+    left: -40px;
+   
+}
+
+#date-image-holder p:first-child{
+    top: -40px;
+    left: -3px;
+}
+#date-image-holder p:last-child{
+    bottom: -30px;
+    left: -7px;
+    width: 100px;
+}
+/*
 .group-details-png-container{
     display: flex;
     justify-content: space-around;
@@ -80,6 +134,7 @@
     height: 75px;
     border-radius: 50%;
 }
+*/
 .small-icon{
     width: 25px;
     height: 25px;
@@ -88,7 +143,6 @@
     border-radius: 50%;
     position: absolute;
 }
-
 .beer-group-awards-container{
     padding: 10px 20px;
     background-color: rgba(0,0,0,0.6);

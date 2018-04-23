@@ -19,9 +19,11 @@ export const fetchAllGroupsActionCreator = () => {
     return dispatch => {
        
         axios.get('/api/brewinggroup').then(response => {
-            console.log(response.data);
+            dispatch(fetchAllGroups(response.data));
         }).catch(error => {
-            console.log(error.response);            
+            const array = [];
+            array.push("Wkradł się jakiś karaczan");
+            dispatch(loadingGroupError(array));
         });
     }
 }
