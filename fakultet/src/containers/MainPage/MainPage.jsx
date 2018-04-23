@@ -15,7 +15,7 @@ class MainPage extends Component {
             this.props.history.push("/" + event.target.title);
         }   
     }
-
+  
     
     render() { 
         return ( 

@@ -4,7 +4,6 @@ import BeerFormGroupInfo from '../../components/_beerGroupCart/_beerGroupFormInf
 import Awards from '../../components/_awards/_awards';
 import Carousel from '../../components/UI/_carousel/_carousel';
 import BeerCart from '../../components/_beerCart/_beerCart';
-
 const leftRank = [
     {id:1, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
     {id:2, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
@@ -16,11 +15,9 @@ const leftRank = [
 ]
 
 class BeerGroups extends Component {
-    
     render() { 
         return ( 
             <div className="beer-groups-container">
-               
                 <div className="left-content-beer-groups">
                     <h1 className="beer-group-main-header">Grupa piwowarska - bracia  </h1>
                     <p className="beer-group-story-paragraph"><b className="orange-link">Historia</b></p>

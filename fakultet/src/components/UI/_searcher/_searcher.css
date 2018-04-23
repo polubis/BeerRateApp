@@ -1,11 +1,13 @@
 .search-container{
     width: 450px;
-    position: relative;
-    
+    position: absolute;
+    top: 15px;
+    right: 50%;
 }
 .search-container input{
     width: 300px;
     padding-left: 55px;
+    box-shadow: 0 1px 10px black;
 }
 .search-container::before{
     content: 'O';

@@ -9,20 +9,51 @@ import Breweries from '../../assets/beer-rewards/Browary.jpg';
 import BreweryIcon from '../../assets/icons/beer-factory.png';
 import Stars from '../../components/_stars/_stars';
 
-class BeersList extends Component{
-    render(){
-        const helpArray = [
-            {id: 0, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-            {id: 1, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-            {id: 2, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-            {id: 3, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-            {id: 4, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"}
+import Searcher from '../../components/UI/_searcher/_searcher';
+import NotFoundResult from '../../components/UI/_notFoundResult/_notFoundResult';
 
-        ]
+const helpArray = [
+    {id: 0, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
+    {id: 1, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
+    {id: 2, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
+    {id: 3, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
+    {id: 4, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"}
+
+];
+
+class BeersList extends Component{
+    state = {
+        searchValue: "",
+        items: helpArray,
+        searchedItems: helpArray
+    }
+
+    searchOnChangeHandler = event => {
+        let resultArray = [];
+        for(let key in this.state.items){
+            if(this.state.items[key].name.toUpperCase().search(event.target.value.toUpperCase()) !== -1 || 
+                this.state.items[key].brewery.toUpperCase().search(event.target.value.toUpperCase()) !== -1 || 
+                this.state.items[key].group.toUpperCase().search(event.target.value.toUpperCase()) !== -1){
+                resultArray.push(this.state.items[key]);
+            }
+        }
+        this.setState({searchedItems: resultArray, searchValue: event.target.value});
+    }
+
+    render(){
+       
 
         return(
             <div className="beers-list-container">
-                {helpArray.map(i => {
+                <Searcher
+                max={this.state.searchedItems.length <= 0 ? 
+                    this.state.searchValue.length : undefined}
+                value={this.state.searchValue}
+                placeholder="wpisz nazwę piwa, browaru lub grupy..."
+                width="350px"
+                changeHandler={e => this.searchOnChangeHandler(e)}
+                value={this.state.searchValue} />
+                {this.state.searchedItems.length > 0 ? this.state.searchedItems.map(i => {
                     return (
                         <div className="beer-block-container">
                             <div className="beer-block-image-holder-background">
@@ -86,7 +117,7 @@ class BeersList extends Component{
 
                         </div>
                     );
-                })}
+                }) : <NotFoundResult message={`Nie znaleziono piwa o podanym atrybucie ${this.state.searchValue}`}/>}
             </div>
         );
     }

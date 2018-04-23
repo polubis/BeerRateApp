@@ -1,0 +1,11 @@
+.not-found-result-container{
+    width: 75%;
+    border-radius: 10px;
+    margin: 100px auto 0 auto;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    background-color: rgba(0,0,0,0.6);
+}

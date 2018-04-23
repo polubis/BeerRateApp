@@ -3,7 +3,6 @@ import './Sidebar.css';
 import BeerIcon from '../../../../assets/icons/beer-icon.png';
 import BreweriesIcon from '../../../../assets/icons/beer-factory.png';
 import BreweryGroupIcon from '../../../../assets/icons/brewery-group.png';
-import Loup from '../../../../assets/icons/loup.png';
 import Logout from '../../../../assets/icons/logout.png';
 import Cup from '../../../../assets/icons/cup.png';
 import MainPageLogo from '../../../../assets/icons/main-page.png';
