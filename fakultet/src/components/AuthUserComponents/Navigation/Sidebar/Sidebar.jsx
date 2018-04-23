@@ -18,8 +18,7 @@ const sideBar = props => {
         {id: 2, name: "breweries", img:BreweriesIcon, alt:"Browary", adress: "browary"},
         {id: 3, name: "beers", img:BeerIcon, alt:"Marki piw", adress: "piwa"},
         {id: 4, name: "cup", img:Cup, alt:"Rankingi", adress: "rankingi"},
-        {id: 5, name: "loup", img:Loup, alt:"Wyszukaj", adress: "znajdz"},
-        {id: 6, name: "logout", img:Logout, alt:"Wyloguj", adress: "wyloguj"}
+        {id: 5, name: "logout", img:Logout, alt:"Wyloguj", adress: "wyloguj"}
     ];
     return(
         <nav className="side-page-nav">
@@ -30,7 +29,7 @@ const sideBar = props => {
             {sideBarItem.map(i => {
                 
                 return (
-                    <div onClick={i.id === 6 ? props.logout : props.redirect}
+                    <div onClick={i.id === 5 ? props.logout : props.redirect}
                     key={i.id} id={i.name} className={window.location.href.search(i.adress) !== -1 ? 
                     "side-page-nav-png-icon active-side-bar-item" : "side-page-nav-png-icon"}>
                         <img id={i.id} src={i.img} alt={i.alt} title={i.adress} />

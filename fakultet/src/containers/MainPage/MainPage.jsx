@@ -16,6 +16,7 @@ class MainPage extends Component {
         }   
     }
 
+    
     render() { 
         return ( 
             <div style={{backgroundImage: `url(${Image})`}} className="main-page-container" >

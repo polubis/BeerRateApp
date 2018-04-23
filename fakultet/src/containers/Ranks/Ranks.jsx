@@ -5,6 +5,8 @@ import RankBeerDetails from './_rankBeerDetails/_rankBeerDetails';
 import RankDescription from './_rankDescription/_rankDescription';
 import RankStats from './_rankStats/_rankStats';
 import Cup from '../../assets/icons/cup.png';
+import Searcher from '../../components/UI/_searcher/_searcher';
+
 
 const helpArray = [
     {place: 1, name: "Tyskie", img: Beers, desc: "Piwo szlachetnie tworzone przez przoadkow o wyrazistym glebokim smaku i wysokim poziomie goryczy. Pozwala odpoczac w gorace dni i tak dalej", type: "Przeniczne", material: "Przeniczne", dystrybution: "Regionalne", alkPercent: "4,5%", group: "Bracia", brewery: "Podhalanski browar", rate: 4.56},

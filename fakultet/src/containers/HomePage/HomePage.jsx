@@ -48,7 +48,7 @@ class HomePage extends Component {
             whichScrollBlock: whichBlockScrollBlock, 
             showFooter: window.scrollY === 3*h ? true : false});
     }
-    ControlViewPortHandler = (e) => {
+    ControlViewPortHandler = e => {
         window.scroll({
             top: 0, 
             left: 0, 
