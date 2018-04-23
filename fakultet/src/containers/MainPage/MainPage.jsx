@@ -15,14 +15,21 @@ class MainPage extends Component {
             this.props.history.push("/" + event.target.title);
         }   
     }
-  
+    
+    redirectToForms = event => {
+        if(event.target.title !== ""){
+            this.props.history.push("/" + event.target.title);
+        }
+    }
     
     render() { 
         return ( 
             <div style={{backgroundImage: `url(${Image})`}} className="main-page-container" >
                 <div className="place-holder-block"></div>
                
-                <Navbar />
+                <Navbar 
+                redirect={e => this.redirectToForms(e)} />
+                
                 <Sidebar 
                 redirect={e => this.redirectToAnotherBlock(e)}
                 logout={this.logout}

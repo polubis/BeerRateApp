@@ -5,6 +5,7 @@
     display: flex;
     box-sizing: border-box;
     justify-content: flex-end;
+    align-items: center;
 }
 .navbar-nav{
     position: fixed;
@@ -29,6 +30,79 @@
     top: 10px;
     color: black;
 }
-.actualBeer{
-    transform: translateX(-20px);
+.add-forms-container{
+    width: 230px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.add-forms-container div{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    transition: 0.6s all ease-in-out;
+}
+.add-forms-container div:hover{
+    transform: translateY(15px);
+}
+
+#add-brewery{
+    background-color: rgb(158, 71, 71);
+    border-radius: 50%;
+}
+.add-forms-container img{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.add-forms-container div::before{
+    content: '+';
+    font-size: 34px;
+    color: lightgreen;
+    font-weight: bolder;
+    cursor: pointer;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+}
+#add-beer::after{
+    content: "Dodaj piwo";
+}
+#add-brewery::after{
+    content: "Dodaj browar";
+}
+#add-group::after{
+    content: "Dodaj grupę";
+}
+.add-forms-container div::after{
+    transition: 1s all ease-in-out;
+    position: absolute;
+    color: white;
+    width: 150px;
+    display: block;
+    opacity: 0;
+}
+
+
+.add-forms-container div:hover::after{
+    animation: 0.5s changeLeftIn ease-in-out forwards;
+}
+
+.active-navbar-item{
+    transform: translateY(15px);    
+}
+.active-navbar-item::after{
+    left: -18px !important;
+    opacity: 1 !important;
+}
+@keyframes changeLeftIn{
+    0%{
+        left: 0vh;
+        opacity: 0;
+    }
+    100%{
+        left: -18px;
+        opacity: 1;
+    }
 }

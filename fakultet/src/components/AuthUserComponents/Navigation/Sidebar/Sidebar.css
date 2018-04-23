@@ -35,13 +35,17 @@
     content: 'Strona główna';
     right: -110px;
 }
+#breweries{
+    background-color: rgb(158, 71, 71);
+    border-radius: 50%;
+}
 #brewery-group::after{
     content: 'Grupy piwowarskie';
-    right: -140px;
+    right: -145px;
 }
 #breweries::after{
     content: 'Browary';
-    right: -50px;
+    right: -70px;
 }
 #beers::after{
     content: 'Marki piwa';

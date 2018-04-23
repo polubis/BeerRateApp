@@ -18,6 +18,10 @@ import NotFoundResult from '../../components/UI/_notFoundResult/_notFoundResult'
 import { Link } from 'react-router-dom';
 import Searcher from '../../components/UI/_searcher/_searcher';
 
+import { connect } from 'react-redux';
+import { fetchAllGroupsActionCreator } from '../../store/BeerGroups/Actions';
+
+
 const helperArray = [
     {id: 1, compName: "Bracia", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
     {id: 2, compName: "Pajace", desc: "Bracia słyna ze swoich piw, ktore rozprowadzaja wszedzie gdzie sie tylko da", img: BeerFactory},
@@ -41,6 +45,11 @@ class BeerGroupList extends Component{
         items: helperArray,
         searchedItems: helperArray
     }
+    componentDidMount(){
+        this.props.fetchingGroups();
+    }
+
+
     showAwardDescClickHandler = event => {
         this.setState({showAwardDesc: true, awardDescContent: awardArray[event.target.id]});
     }
@@ -64,7 +73,6 @@ class BeerGroupList extends Component{
                 <Searcher
                 max={this.state.searchedItems.length <= 0 ? 
                     this.state.searchValue.length : undefined}
-                value={this.state.searchValue}
                 placeholder="znajdź grupe..."
                 changeHandler={e => this.searchOnChangeHandler(e)}
                 value={this.state.searchValue} />
@@ -126,4 +134,17 @@ class BeerGroupList extends Component{
     }
 }
 
-export default BeerGroupList;
+const mapStateToProps = state => {
+    return {
+        loadedGroups: state.BeerGroupsReducer.loadedGroups
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchingGroups: () => dispatch(fetchAllGroupsActionCreator())
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BeerGroupList);
+
+

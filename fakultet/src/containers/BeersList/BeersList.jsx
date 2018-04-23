@@ -48,7 +48,6 @@ class BeersList extends Component{
                 <Searcher
                 max={this.state.searchedItems.length <= 0 ? 
                     this.state.searchValue.length : undefined}
-                value={this.state.searchValue}
                 placeholder="wpisz nazwę piwa, browaru lub grupy..."
                 width="350px"
                 changeHandler={e => this.searchOnChangeHandler(e)}

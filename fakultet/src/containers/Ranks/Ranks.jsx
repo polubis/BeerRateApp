@@ -48,7 +48,6 @@ class Ranks extends Component{
                 <Searcher
                 max={this.state.searchedItems.length <= 0 ? 
                     this.state.searchValue.length : undefined}
-                value={this.state.searchValue}
                 top="-60px"
                 placeholder="wpisz nazwę piwa, ocene lub pozycję w rankingu"
                 width="450px"
