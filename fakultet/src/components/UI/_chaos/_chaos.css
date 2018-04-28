@@ -1,18 +1,17 @@
 .chaos{
-    background: #FFE0B2;
     position: absolute;
     transition: 0.3s all linear;
     width: 0;
     border-radius: 5px;
-    background: radial-gradient(rgb(248, 187, 95), rgb(248, 187, 95), rgb(248, 187, 95));
     left: 0;
-    z-index: 20;
     position: relative;
 }
 .chaos .fa-times{
     font-size: 32px;
+    z-index: 30;
     position: absolute;
     right: 0;
     padding: 5px;
+    color: white;
     cursor: pointer;
 }

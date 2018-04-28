@@ -29,3 +29,25 @@ export const registerFormValidationItems = [
 
 
 
+
+
+
+export const addGroupFormItems = [ 
+    {id: 0, name: "Nazwa grupy", type: "text", placeholder:"wpisz nazwę...", max: 35},
+    {id: 1, name: "Właściciel", type: "text", placeholder:"wpisz imię oraz nazwisko właściciela...", max: 20},
+    {id: 2, name: "Data założenia", type: "date", placeholder:"wybierz datę..."},
+    {id: 3, name: "Kraj pochodzenia", type: "text", placeholder:"wybierz kraj pochodzenia..."},
+    {id: 4, name: "Historia grupy", type: "", placeholder: "" }
+];
+ export const addGroupFormItemsValidationArray = [ 
+    {id: 0, value: "", error: undefined, min: 5},
+    {id: 1, value: "", error: undefined, min: 5},
+    {id: 2, value: "", error: undefined},
+    {id: 3, value: "", error: undefined, min: 5},
+    {id: 4, value: "", error: undefined, min: 5}
+];
+
+
+
+
+

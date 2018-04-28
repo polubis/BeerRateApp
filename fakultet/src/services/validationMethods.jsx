@@ -1,4 +1,5 @@
 import { emailPattern, onlyLettersAndNumbers } from '../consts/regexPaterns';
+import moment from 'moment';
 
 export const validateOneInput = (inputText, isNullable, inputName, min, inputType) => {
     
@@ -9,6 +10,7 @@ export const validateOneInput = (inputText, isNullable, inputName, min, inputTyp
     if(inputTextLength <= min){
         return "Pole " + inputName + " posiada za mało znaków";
     }
+   
 
     if(inputName === "Nazwa użytkownika"){
         return !onlyLettersAndNumbers.test(inputText) ?
@@ -18,6 +20,14 @@ export const validateOneInput = (inputText, isNullable, inputName, min, inputTyp
         case "email":
             return !emailPattern.test(inputText) ?
                 "Pole " + inputName + " posiada zły format" : "";
+        case "date":
+            const dateNow = moment().format();
+                    
+            if(moment(inputText).isAfter(dateNow)){
+                return "Pole " + inputName + " nie może odnosić się do przyszłości";
+            }
+        break;
+                
         default:
             break;
     }
@@ -35,3 +45,18 @@ export const validateTwoTheSameInputs = (firstInput, secondInput, firstInputName
     return "";
 }
 
+
+export const validatePictures = (fileType, maxSize, fileSize) => {
+    if(fileSize > maxSize){
+        return "Rozmiar zdjęcia nie może przekraczać " + maxSize + " bitów";
+    }
+    const correctFormats = ["image/jpg", "image/jpeg", "image/png"];
+    let result = "Zdjęcie powinno być formatu jpg, jpeg lub png";
+    for(let key in correctFormats){
+        if(correctFormats[key] === fileType){
+            result = "";
+        }
+    }    
+    return result;    
+    
+}

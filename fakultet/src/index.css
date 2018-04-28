@@ -17,7 +17,9 @@ button:focus{
 }
 input[type="text"],
 input[type="password"],
-input[type="email"]{
+input[type="email"],
+input[type="date"],
+textarea{
   padding: 10px;
   font-size: 18px;
   border: 2px solid #ccc;
@@ -83,4 +85,8 @@ label{
       opacity: 1;
       
   }
+}
+
+textarea{
+  resize: none;
 }

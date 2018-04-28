@@ -3,7 +3,9 @@ import { updateObject } from '../../services/reduxHelper';
 
 export const initialState = {
     loadingAllGroupsErrors: [],
-    loadedGroups: []
+    loadedGroups: [],
+
+    addGroupErrors: []
 }
 
 
@@ -15,6 +17,9 @@ const reducer = (state = initialState, action) => {
         case actionsTypes.LOADING_GROUPS_ERROR:
             return updateObject(state, {loadingAllGroupsErrors: action.loadingAllGroupsErrors})
         
+        case actionsTypes.ADD_GROUP:
+            return updateObject(state, { addGroupErrors: action.addGroupErrors})
+            
         default:
             break;
     }

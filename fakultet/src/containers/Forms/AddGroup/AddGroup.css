@@ -1,0 +1,151 @@
+.add-group-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    transition: 1s all ease-in-out;
+    animation: animateIn 1s ease-in-out forwards;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@keyframes animateIn{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.add-group-form-left{
+    width: 55%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.add-group-form-left h2{
+    padding-bottom: 7.5px;
+    position: absolute;
+    color: white;
+    top: -80px;
+}
+.form-left-content{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+}
+.form-left-content label{
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: orangered;
+}
+.form-left-content textarea{
+    margin-top: 30px;
+    height: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    overflow-y: auto;
+    outline: none;
+    background-color: rgba(0, 14, 19, 0.8);
+}
+.form-left-content textarea,
+.form-left-content textarea::-webkit-input-placeholder{
+    color: white;
+}
+.form-left-content p{
+    border: 1px solid red;
+    color: white;
+    background-color: rgba(241, 11, 11, 0.835);
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+    width: 95%;
+    margin: 10px auto 0 auto;
+    border-radius: 3px;
+}
+
+
+
+
+.add-group-form-right{
+    width: 45%;
+    background-color: rgba(0, 14, 19, 0.8);
+    display: flex;
+    flex-flow: column;
+    padding: 80px 20px 20px 20px;
+    box-sizing: border-box;
+    position: relative;
+    border-left: 1px solid black;
+    height: 100%;
+    justify-content: space-between;
+}
+.add-group-form-right section{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    padding: 0 30px;
+    box-sizing: border-box;
+    color: white;
+}
+.add-group-form-right-errors{
+    color: rgb(255, 0, 0);
+    letter-spacing: 1px;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 5px;
+    height: 40px;
+    
+    
+}
+.add-group-form-right section label{
+    font-weight: bolder;
+    letter-spacing: 1px;
+    padding: 7px 5px;
+}
+.add-group-form-right section input,
+.add-group-form-right section textarea{
+    background: transparent;
+    color: white
+}
+.add-group-form-right input::-webkit-input-placeholder,
+.add-group-form-right section textarea::-webkit-input-placeholder   
+{
+    color: white;
+}
+.add-group-form-right input[type="submit"]{
+    font-size: 24px;
+    color: white;
+    width: 66%;
+    padding: 15px;
+    margin: auto;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(120, 33, 31);
+    
+}
+.add-group-form-right input[type="submit"]:hover{
+    background-color: rgb(146, 36, 36);
+}
+
+
+
+.add-group-form-right-errors,
+.form-left-content p{
+    transition: 1s all ease-in-out;
+}
+

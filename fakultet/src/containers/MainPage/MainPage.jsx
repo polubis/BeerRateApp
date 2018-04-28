@@ -5,11 +5,14 @@ import Image from '../../assets/background.jpg';
 import Sidebar from '../../components/AuthUserComponents/Navigation/Sidebar/Sidebar';
 import Navbar from '../../components/AuthUserComponents/Navigation/Navbar/Navbar';
 import Chaos from '../../components/UI/_chaos/_chaos';
+import AddGroup from '../Forms/AddGroup/AddGroup';
+import { addGroupFormItems, addGroupFormItemsValidationArray} from '../../consts/HelpfullArrays';
+
+
 
 class MainPage extends Component {
     state = {
         addGroupModal: false,
-     
     }
     logout = () => {
         localStorage.clear();
@@ -27,9 +30,17 @@ class MainPage extends Component {
             this.props.history.push("/" + event.target.title);
         }
     }
-    
+
+    clearErrors = array => {
+        for(let key in array){
+            array[key].error = "";
+        }
+    }
+
     handleToggleAddGroupModal = () => {
         this.setState({addGroupModal: !this.state.addGroupModal});
+        this.clearErrors(addGroupFormItemsValidationArray);
+
     }
     render() { 
         return ( 
@@ -47,9 +58,15 @@ class MainPage extends Component {
                 
                 {this.props.children}
 
+
+
                 { this.state.addGroupModal ? 
-                <Chaos  handleToggleAddGroupModal={this.handleToggleAddGroupModal}
-                addGroupModal={this.state.addGroupModal}/> : null }   
+                <Chaos handleToggleAddGroupModal={this.handleToggleAddGroupModal}
+                addGroupModal={this.state.addGroupModal}>
+                    <AddGroup 
+                    addGroupFormItems={addGroupFormItems}
+                    addGroupFormItemsValidationArray={addGroupFormItemsValidationArray} />
+                </Chaos> : null }   
            
                 
                 

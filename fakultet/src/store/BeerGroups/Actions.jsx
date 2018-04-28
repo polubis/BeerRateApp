@@ -27,3 +27,16 @@ export const fetchAllGroupsActionCreator = () => {
         });
     }
 }
+
+export const addGroup = addGroupErrors => {
+    return {
+        type: actionsTypes.ADD_GROUP,
+        addGroupErrors: addGroupErrors
+    }
+}   
+
+export const addGroupActionCreator = (formObject, history) => {
+    return dispatch => {
+
+    }
+}
