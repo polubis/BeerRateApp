@@ -90,3 +90,14 @@ label{
 textarea{
   resize: none;
 }
+.serwer-error{
+  position: absolute;
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid red;
+  letter-spacing: 1px;
+  background-color: rgba(255, 0, 0, 0.6);
+  font-weight: bolder;
+}

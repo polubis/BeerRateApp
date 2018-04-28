@@ -25,7 +25,6 @@
 
 .add-group-form-left{
     width: 55%;
-    padding: 20px;
     box-sizing: border-box;
     position: relative;
 }
@@ -48,6 +47,7 @@
     font-size: 20px;
     letter-spacing: 1px;
     font-weight: bold;
+    margin-top: 20px;
     color: orangered;
 }
 .form-left-content textarea{
@@ -90,6 +90,36 @@
     border-left: 1px solid black;
     height: 100%;
     justify-content: space-between;
+}
+.add-group-spinner-container{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    transition: 1s all ease-in-out;
+    margin: 0 auto;
+    color: white;
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: 0.3s animateInSpinner linear forwards;
+}
+
+@keyframes animateInSpinner{
+    0%{
+        height: 0%;
+        opacity: 0;
+    }
+    50%{
+        height: 50%;
+        opacity: 1;
+    }
+    100%{
+        height: 100%;
+        opacity: 1;
+        
+    }
 }
 .add-group-form-right section{
     width: 100%;

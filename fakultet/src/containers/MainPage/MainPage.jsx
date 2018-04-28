@@ -34,6 +34,7 @@ class MainPage extends Component {
     clearErrors = array => {
         for(let key in array){
             array[key].error = "";
+            array[key].value = "";
         }
     }
 

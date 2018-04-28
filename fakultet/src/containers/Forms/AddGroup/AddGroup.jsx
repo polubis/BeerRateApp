@@ -7,18 +7,23 @@ import Spinner from '../../../components/UI/_spinner/_spinner';
 import DragAndDrop from '../../../components/UI/_dragAndDrop/_dragAndDrop';
 import Image from '../../../assets/modal/modal-group.jpg';
 import { withRouter } from 'react-router-dom';
-import { addGroupActionCreator } from '../../../store/BeerGroups/Actions';
+import { addGroupActionCreator, addGroup } from '../../../store/BeerGroups/Actions';
 
 class AddGroup extends Component {
     state = {
         currentValidation: [...this.props.addGroupFormItemsValidationArray],
         addGroupFormItems: [...this.props.addGroupFormItems],
-        focusedInput: null,
-
         droppedFile: [],
-        incorrectPictureError: ""
+        incorrectPictureError: "",
+        showAddSpinner: false
     }
   
+    componentDidUpdate(prevProps){
+        if(prevProps.addGroupErrors !== this.props.addGroupErrors){
+            this.setState({showAddSpinner: false});
+        }
+    }
+
     onDropHandler = droppedFile => {
         const validationResult = validatePictures(droppedFile[0].type, 300000, droppedFile[0].size);
         if(!validationResult){
@@ -62,6 +67,7 @@ class AddGroup extends Component {
             this.setState({currentValidation: newValidation});
         }
         else{
+            this.setState({showAddSpinner: true});
             const formObject = {
                 Name: this.state.currentValidation[0].value,
                 Adress: this.state.currentValidation[3].value,
@@ -73,14 +79,20 @@ class AddGroup extends Component {
             this.props.addGroup(formObject, this.props.history);
         }
     }
+    componentWillUnmount(){
+        this.props.clearGroupErrors([]);
+    }
+
     render() { 
         return ( 
             <form style={{backgroundImage: `url(${this.state.droppedFile.length > 0 ?
             this.state.droppedFile[0].preview : Image})`}} onSubmit={e => this.onSubmitHandler(e)} className="add-group-container">
-               
+            
             
                 <div className="add-group-form-left">
-                    <h2>Formularz dodawania grup</h2>
+                    {this.props.addGroupErrors.length > 0 ? 
+                    <p className="serwer-error">{this.props.addGroupErrors[0]}</p> : null}
+                    <h2>Formularz dodawania grupy</h2>
                     
                     <div className="form-left-content">
                         <label>Historia grupy *</label>
@@ -104,6 +116,12 @@ class AddGroup extends Component {
                 </div>
 
                  <div className="add-group-form-right">
+                    {this.state.showAddSpinner ? 
+                    <div className="add-group-spinner-container">
+                        <Spinner position="relative" spinnerContent="trwa dodawanie..."/>
+                    </div>
+                    : null}
+
                     {this.state.addGroupFormItems.map( i => {
                         return (
                             <Aux key={i.id}>
@@ -147,7 +165,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addGroup: (formObject, history) => dispatch(addGroupActionCreator(formObject, history))
+        addGroup: (formObject, history) => dispatch(addGroupActionCreator(formObject, history)),
+        clearGroupErrors: (errors) => dispatch(addGroup(errors))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddGroup));

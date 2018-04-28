@@ -37,6 +37,15 @@ export const addGroup = addGroupErrors => {
 
 export const addGroupActionCreator = (formObject, history) => {
     return dispatch => {
-
+        axios.post('/api/brewinggroup/add', formObject).then(response => {
+            dispatch(addGroup([]));
+        }).catch(error => {
+            const array = [];
+            array.push("Błąd serwera");
+            console.log(error.response.status);
+            
+            dispatch(addGroup(error.response.status === 404 ? 
+            array : error.response.data.errors));
+        })
     }
 }
