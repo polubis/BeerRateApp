@@ -1,6 +1,5 @@
 import React from 'react';
 import './_notFoundResult.css';
-import { Link } from 'react-router-dom';
 
 const notFoundResult = props => (
     <div className="not-found-result-container">

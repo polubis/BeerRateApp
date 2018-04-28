@@ -8,7 +8,7 @@ import Brewery from '../../../../assets/icons/beer-factory.png';
 const navbar = props => (
      <div className="main-page-navbar">
         <div className="add-forms-container">
-            <div className={window.location.href.search("nowagrupa") !== -1 ? 
+            <div onClick={props.handleToggleAddGroupModal} className={window.location.href.search("nowagrupa") !== -1 ? 
             "active-navbar-item" : null} id="add-group">
                 <img src={BreweryGroup} alt="Dodaj grupe" />
             </div>
