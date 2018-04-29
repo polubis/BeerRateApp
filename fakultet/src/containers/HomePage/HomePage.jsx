@@ -96,16 +96,44 @@ class HomePage extends Component {
                         <div className="page-desc-container">
                         </div>
                     </div>
-                    <div style={{backgroundImage: `url(${LastHomePageBeer})`}} 
+                    <div
+                    style={{backgroundImage: `url(${LastHomePageBeer})`}} 
                     className="block-container">
-                        <div className="page-desc-second-container">
+
+                        <div className="third-cart-container">
+                            <h1>
+                                <b>Szukaj wśród 3210 piw!</b>
+                            </h1> 
+                            <div className="searcher-container-main-page">
+                                <input type="text" placeholder="wpisz nazwe piwa..."/>      
+                                <button>
+                                    <i className="fa fa-search">
+                                    </i>
+                                </button>
+                            </div>       
+                            <p className="search-informations">Czy wiesz, że na 
+                                naszym portalu 
+                                oprócz opiniowania
+                                piwa, możesz dowiedziec
+                                sie równiesz o jego historii?
+                            </p>
+                            <div className="btns-holder">
+                                <button className="beer-articles-btn">
+                                    Piwne arytkuły
+                                </button>
+                                <button className="beer-articles-btn">
+                                    Chmielne ciekawostki
+                                </button>
+                                <button className="beer-articles-btn">
+                                    Historia browarnictwa
+                                </button>
+                            </div>
+                            
+                                       
                             
                         </div>
                     </div>
 
-                    <footer>
-                        Stopka
-                    </footer>
                 </main>
                 
                 
