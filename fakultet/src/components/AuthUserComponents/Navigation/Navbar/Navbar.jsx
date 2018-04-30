@@ -12,11 +12,11 @@ const navbar = props => (
             "active-navbar-item" : null} id="add-group">
                 <img src={BreweryGroup} alt="Dodaj grupe" />
             </div>
-            <div className={window.location.href.search("nowybrowar") !== -1 ? 
+            <div onClick={props.handleToggleAddBreweryModal} className={window.location.href.search("nowybrowar") !== -1 ? 
             "active-navbar-item" : null} id="add-brewery">
                 <img src={Brewery} alt="Dodaj browar" />
             </div>
-            <div className={window.location.href.search("nowepiwo") !== -1 ? 
+            <div onClick={props.handleToggleAddBeerModal} className={window.location.href.search("nowepiwo") !== -1 ? 
             "active-navbar-item" : null} id="add-beer">
                 <img src={Beer} alt="Dodaj piwo" />
             </div>

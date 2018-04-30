@@ -26,9 +26,9 @@ class Chaos extends Component {
     render() { 
         return ( 
                 
-            <Backdrop showBackdrop={this.props.addGroupModal} >
+            <Backdrop showBackdrop={this.props.show} >
                 <div style={this.state.inlineStyles} className="chaos">
-                    <i onClick={this.props.handleToggleAddGroupModal} className="fa fa-times"></i>
+                    <i onClick={this.props.toggle} className="fa fa-times"></i>
                     {this.props.children}
                 </div>    
             </Backdrop>

@@ -22,7 +22,7 @@ export const fetchAllGroupsActionCreator = () => {
             dispatch(fetchAllGroups(response.data));
         }).catch(error => {
             const array = [];
-            array.push("Wkradł się jakiś karaczan");
+            array.push("Błąd serwera");
             dispatch(loadingGroupError(array));
         });
     }

@@ -101,3 +101,26 @@ textarea{
   background-color: rgba(255, 0, 0, 0.6);
   font-weight: bolder;
 }
+
+
+.form-validation-error{
+  color: rgb(255, 0, 0);
+  letter-spacing: 1px;
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px 5px;
+  height: 40px;
+}
+
+.submit-form-button{
+    font-size: 24px;
+    color: white;
+    width: 66%;
+    padding: 15px;
+    margin: auto;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}

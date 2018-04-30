@@ -1,0 +1,242 @@
+.add-brewery-container{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    transition: 1s all ease-in-out;
+}
+.add-brewery-container h1{
+    position: absolute;
+    top: -85px;
+    color: white;
+    padding: 0 10px;
+}
+.brewery-left-form-sections{
+    width: 40%;
+    height: 100%;
+    padding-top: 30px;
+    box-sizing: border-box;
+    background-color: rgba(10, 31, 39, 0.8);
+    position: relative;
+}
+.brewery-left-form-sections section{
+    display: flex;
+    flex-flow: column;
+    width: 90%;
+    margin: auto;
+}
+.brewery-left-form-sections section label{
+    color: white;
+    padding: 5px;    
+}
+.submit-brewery-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: rgb(120, 33, 31);
+}
+.submit-brewery-button:hover{
+    background-color: rgb(146, 36, 36);
+}
+.form-info-prompt{
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 90%;
+    margin: 20px auto;
+    text-align: justify;
+    font-size: 17px;
+}
+.form-info-prompt b{
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.brewery-left-form-sections .fa-hand-o-right{
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+    animation: 1s animateHand ease-in-out infinite;
+}
+@keyframes animateHand{
+    0%{
+        right: 50px;
+    }
+    50%{
+        right: 40px;
+    }
+    100%{
+        right: 50px;
+    }
+}
+.brewery-right-form-sections{
+    width: 60%;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-flow: column;
+    align-items: center;
+}
+.drag-drop-form-handler{
+    width: 90%;
+    height: 250px;
+    position: relative;
+}
+
+.form-list-holder{
+    width: 96%;
+    height: 75%;
+    margin-top: 20px;
+    overflow-y: auto;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.list-header {
+    height: 75px;
+    width: 75%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto 10px auto;
+}
+.list-header > h2{
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
+.absolute-sp-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+}
+.loaded-groups-list{
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.loaded-groups-list li{
+    height: 100px;
+    margin: 15px auto;
+    padding: 10px;
+    width: 60%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(94, 153, 177);
+    border-radius: 2px;
+
+}
+.beer-group-avatar{
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    background-size: cover;
+}
+.list-item-content{
+    width: 80%;
+    height: 100%;
+}
+.list-item-content p{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 3px;
+    margin: 0;
+    border-bottom: 1px solid white;
+}
+.list-item-content p i{
+    font-size: 24px;
+    cursor: pointer;
+}
+.list-item-content span{
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    color: rgb(90, 26, 2);
+    font-weight: bold;
+}
+
+.added-group-block{
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    background-color: rgba(10, 31, 39, 0.8);
+    border-bottom-right-radius: 55%;
+    border-bottom-left-radius: 55%;
+    flex-flow: column;
+    position: relative;
+}
+.added-group-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.added-group-det-container{
+    width: 75%;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+.added-group-header h2{
+    margin: 0;
+    padding: 10px;
+    color: white;
+    font-family: 'Lobster';
+    letter-spacing: 3px;
+    height: 35px;
+    border-bottom: 1px solid white;
+}
+.added-group-picture{
+    width: 125px;
+    height: 125px;
+    margin-top: 15px;
+    border-radius: 50%;
+    background-size: cover;
+}
+.added-group-det-container article{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.added-group-det-container article div{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 150px;
+    color: white;
+}
+.added-group-det-container article div p{
+    text-align: center;
+}
+.added-group-det-container article div img{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+}
+
+.delete-group-button{
+    border: none;
+    outline: none;
+    background-color: rgb(120, 33, 31);
+    padding: 20px;
+    width: 25%;
+    margin: auto;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    color: white;
+    font-family: inherit;
+    font-size: 18px;
+
+}

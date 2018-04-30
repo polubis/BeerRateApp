@@ -137,7 +137,7 @@ class AddGroup extends Component {
                                     maxLength={i.max} 
                                     type={i.type} 
                                     placeholder={i.placeholder} /> 
-                                    <p className="add-group-form-right-errors">
+                                    <p className="form-validation-error">
                                         {this.state.currentValidation[i.id].error}
                                     </p>
                                     
@@ -147,7 +147,7 @@ class AddGroup extends Component {
                         );
                     })}
 
-                    <input className="add-group-submit" type="submit" value="Dodaj grupę"/>
+                    <input className="add-group-submit submit-form-button" type="submit" value="Dodaj grupę"/>
                 </div>
 
             </form>
