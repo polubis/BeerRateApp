@@ -7,9 +7,9 @@ export const fetchAllBreweries = loadedBreweries => {
         loadedBreweries: loadedBreweries
     };
 }
-export const loadingBreweriesError = loadingAllBreweriesErrors => {
+export const loadingBreweriesErrors = loadingAllBreweriesErrors => {
     return {
-        type: actionsTypes.LOADING_BREWERIES_ERROR,
+        type: actionsTypes.LOADING_BREWERIES_ERRORS,
         loadingAllBreweriesErrors: loadingAllBreweriesErrors
     };
 }
@@ -18,10 +18,15 @@ export const loadingBreweriesError = loadingAllBreweriesErrors => {
 export const fetchAllBreweriesActionCreator = () => {
     return dispatch => {
        
-        axios.get('/api/brewinggroup').then(response => {
-            console.log(response.data);
+        axios.get('/api/brewery').then(response => {
+            dispatch(fetchAllBreweries(response.data));
+
         }).catch(error => {
-            console.log(error.response);            
+            const array = [];
+            array.push("Błąd serwera");
+            
+            dispatch(loadingBreweriesErrors(error.response.status === 404 ? 
+            array : error.response.data.errors));
         });
     }
 }

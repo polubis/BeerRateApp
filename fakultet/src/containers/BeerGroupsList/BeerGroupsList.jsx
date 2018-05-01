@@ -66,7 +66,7 @@ class BeerGroupList extends Component{
                 placeholder="znajdź grupe..."
                 changeHandler={e => this.searchOnChangeHandler(e)}
                 value={this.state.searchValue}
-                searchedCount={this.state.searchValue !== "" ? this.state.searchedItems.length : null} />
+                searchedCount={this.state.searchedItems.length} />
                 
                
 

@@ -12,7 +12,7 @@ const reducer = (state = initialState, action) => {
         case actionsTypes.FETCH_ALL_BREWERIES:
             return updateObject(state, {loadedBreweries: action.loadedBreweries, loadingAllBreweriesErrors: []})
 
-        case actionsTypes.LOADING_BREWERIES_ERROR:
+        case actionsTypes.LOADING_BREWERIES_ERRORS:
             return updateObject(state, {loadingAllBreweriesErrors: action.loadingAllBreweriesErrors})
         
         default:

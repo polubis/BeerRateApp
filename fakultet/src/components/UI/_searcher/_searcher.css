@@ -3,6 +3,7 @@
     position: absolute;
     top: 15px;
     right: 50%;
+    color: white;
 }
 .search-container input{
     width: 300px;
@@ -46,10 +47,4 @@
     width: 8px;
     transform: rotate(-53deg);
     bottom: 11px;
-
-
-
-
-
-
 }
