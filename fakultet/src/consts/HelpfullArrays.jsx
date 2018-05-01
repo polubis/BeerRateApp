@@ -51,14 +51,13 @@ export const addBreweryItems = [
     {id: 0, name: "Nazwa browaru", type: "text", placeholder:"wpisz nazwę browaru...", max: 35},
     {id: 1, name: "Adres browaru", type: "text", placeholder:"wpisz adres browaru...", max: 20},
     {id: 2, name: "Data założenia", type: "date", placeholder:"wybierz datę założenia..."},
-    {id: 3, name: "Historia browaru", type: "", placeholder: ""}
+    {id: 3, name: "Historia browaru", type: "", placeholder: "opisz historie browaru..."}
 ];
 export const addBreweryValidationArray = [ 
     {id: 0, value: "", error: undefined, min: 5},
     {id: 1, value: "", error: undefined, min: 5},
     {id: 2, value: "", error: undefined},
-    {id: 3, value: "", error: undefined, min: 15}
-    
+    {id: 3, value: "", error: undefined, min: 10}
 ];
 
 

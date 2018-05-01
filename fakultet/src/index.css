@@ -101,7 +101,9 @@ textarea{
   background-color: rgba(255, 0, 0, 0.6);
   font-weight: bolder;
 }
-
+.input-border-errors{
+  border: 2px solid red !important;
+}
 
 .form-validation-error{
   color: rgb(255, 0, 0);

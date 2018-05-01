@@ -132,6 +132,8 @@ class AddGroup extends Component {
                                         {i.name} * 
                                     </label>
                                     <input 
+                                    className={this.state.currentValidation[i.id].error ?
+                                        "input-border-errors" : null}
                                     onChange={e => this.onChangeHandler(e, i.id)} 
                                     value={this.state.currentValidation[i.id].value}
                                     maxLength={i.max} 
