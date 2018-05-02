@@ -11,9 +11,10 @@
 .brewery-single-item-main-container{
     display: flex;
     flex-flow: column;
+    position: relative;
     width: 600px;
     height: 620px;
-    margin-bottom: 100px;
+    margin-bottom: 140px;
 }
 .brewery-single-item-long{
     width: 100%;
@@ -89,13 +90,15 @@
     color: white;
 }
 .go-to-details-button{
-    width: 50%;
-    margin: 15px auto 0 auto;
     padding: 15px;
     font-size: 22px;
     color: firebrick;
     border: none;
     text-decoration: none;
+    position: absolute;
+    bottom: -90px;
+    left: 200px;
+    
     font-weight: bolder;
     letter-spacing: 3px;
     font-family: 'Lobster';

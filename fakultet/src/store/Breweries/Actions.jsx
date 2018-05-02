@@ -30,3 +30,34 @@ export const fetchAllBreweriesActionCreator = () => {
         });
     }
 }
+
+
+export const loadBrewery = loadedBrewery => {
+    return {
+        type: actionsTypes.LOAD_BREWERY,
+        loadedBrewery: loadedBrewery
+    };
+
+}
+
+
+export const loadingBreweryErrors = loadedBreweryErrors => {
+    return {
+        type: actionsTypes.LOADING_BREWERY_ERRORS,
+        loadedBreweryErrors: loadedBreweryErrors
+    };
+}
+
+export const loadBreweryActionCreator = id => {
+    return dispatch => {
+        axios.get("/api/brewery/" + id).then( response => {
+            dispatch(loadBrewery(response.data));
+        }).catch( error => {
+            const array = [];
+            array.push("Błąd serwera");
+            dispatch(loadingBreweryErrors(error.response.status === 404 ? 
+            array : error.response.data.errors));
+        })
+        
+    }
+}

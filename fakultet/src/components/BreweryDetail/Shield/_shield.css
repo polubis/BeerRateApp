@@ -1,0 +1,40 @@
+
+.brewery-details-roq{
+    width: 100%;
+    border: 1px solid burlywood;
+    height: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+.brewery-details-roq h2{
+    padding: 5px 0;
+    color: rgb(214, 207, 207);
+    margin: 0;
+    letter-spacing: 2px;
+    border-bottom: 1px solid burlywood;
+}
+.shields-container{
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+.shield{
+    width: 33%;
+    height: 120px;
+    padding: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.shield p{
+    padding: 5px 0;
+}
+.shield img{
+    width: 90px;
+    height: 90px;
+}

@@ -104,7 +104,7 @@ class BreweriesList extends Component {
                                </div>
                            </Slicker>
    
-                           <Link to={`/browary/${i.id}`} className="go-to-details-button">
+                           <Link params={{id: i.id}} to={`/browary/${i.id}`} className="go-to-details-button">
                                Zobacz szczegóły
                            </Link>     
                        </div>

@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    color: white;
 }
 .other-beers-container div{
     width: 75px;

@@ -1,0 +1,118 @@
+
+.brewery-details-bottom{
+    width: 90%;
+    margin: 60px auto 100px auto;
+    position: relative;
+    height: 600px;
+}
+.brewery-slicker{
+    width: 90%;
+    border-radius: 5px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    outline: none;
+    margin: auto;
+    border: none;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.slicker-content{
+    width: 60%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #CC3300;
+    display: flex;
+    flex-flow: column;
+}
+.slicker-content p:first-of-type{
+    font-size: 22px;
+    color: rgb(241, 95, 11);
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.slicker-content h2{
+    padding: 10px 0;
+    font-size: 46px;
+    color: #CC3300;
+    letter-spacing: 1px;
+    margin: 0;
+}
+.slicker-content article{
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    letter-spacing: 1px;
+}
+.single-slicker{
+    display: flex !important;
+    position: relative;
+}
+.slicker-photo{
+    height: 600px;
+    width: 33%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.brew-stars-container{
+    position: absolute;
+    width: 150px;
+    padding: 10px;
+    left: 0;
+    color: white;
+    height: 100px;
+}
+.brew-stars-container > p{
+    font-size: 18px;
+    margin-top: 30px;
+}
+.brew-stars-container > p b{
+    color: #CC3300;
+}
+.slicker-content p:last-of-type{
+    color: rgb(241, 95, 11);
+    font-size: 24px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Berkshire Swash', cursive;
+}
+.show-more-beer-button{
+    font-size: 20px;
+    padding: 15px;
+    width: 40%;
+    margin: 100px auto 0 auto;
+    border: 0;
+    background-color: seagreen;
+    color: white;
+}
+.single-slicker > i{
+    color: white;
+    font-size: 48px;
+    position: absolute;
+    bottom: 5%;
+    left: 10px;
+    cursor: pointer;
+    z-index: 30;
+}
+.beer-details-hover{
+    position: absolute;
+    height: 100%;
+    width: 33%;
+    animation: 0.5s animate-in-hover ease-in-out forwards;
+}
+@keyframes animate-in-hover{
+    0%{
+        left: -100vh;
+    }
+    100%{
+        left: 0;
+    }
+}

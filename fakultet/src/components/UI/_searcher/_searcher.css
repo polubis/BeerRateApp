@@ -3,6 +3,7 @@
     position: absolute;
     top: 15px;
     right: 50%;
+    z-index: 120;
     color: white;
 }
 .search-container input{

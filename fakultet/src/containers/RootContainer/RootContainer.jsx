@@ -13,7 +13,8 @@ import BeerGroupsList from '../BeerGroupsList/BeerGroupsList';
 import Ranks from '../Ranks/Ranks';
 import BeersList from '../BeersList/BeersList';
 import BreweriesList from '../BreweriesList/BreweriesList';
-      
+import BreweryDetails from '../BreweryDetails/BreweryDetails';      
+
 class RootContainer extends Component {
     render() { 
         const responseObject = JSON.parse(localStorage.getItem('loggedUserData'));
@@ -25,6 +26,7 @@ class RootContainer extends Component {
                 <Route path="/rankingi" exact component={Ranks} />
                 <Route path="/piwa" exact component={BeersList} />
                 <Route path="/browary" exact component={BreweriesList} />
+                <Route path="/browary/:id" exact component={BreweryDetails} />
             </Aux>
         );
         return ( 

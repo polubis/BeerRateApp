@@ -1,0 +1,33 @@
+.details-left {
+    width: 45%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.details-left p:first-of-type{
+    color: rgb(214, 207, 207);
+    margin: 0;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-family: 'Berkshire Swash', cursive;
+}
+.details-left p span{
+    color: #CC3300;
+}
+.details-left h1{
+    color: #CC3300;
+    letter-spacing: 1px;
+}
+.details-left article{
+    color: white;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+.details-right-picture{
+    width: 55%;
+    height: 100%;
+}

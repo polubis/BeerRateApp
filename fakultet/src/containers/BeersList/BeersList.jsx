@@ -11,6 +11,8 @@ import Stars from '../../components/_stars/_stars';
 
 import Searcher from '../../components/UI/_searcher/_searcher';
 import SearcherNotFound from '../../components/UI/_searcherNotFound/_searcherNotFound';
+import BeerDetailCart from '../../components/Beers/_beerDetailCart/_beerDetailCart';
+
 
 const helpArray = [
     {id: 0, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
@@ -52,6 +54,8 @@ class BeersList extends Component{
                 width="350px"
                 changeHandler={e => this.searchOnChangeHandler(e)}
                 value={this.state.searchValue} />
+
+                
                 {this.state.searchedItems.length > 0 ? this.state.searchedItems.map(i => {
                     return (
                         <div className="beer-block-container">
@@ -83,21 +87,7 @@ class BeersList extends Component{
                                         <p>Oddano <b className="orange-link">135</b> głosów</p>
                                     </div>
                                 </div>
-                                <div className="midle-details-container">
-                                    <p>Szczegóły</p>
-                                    <ul>
-                                        <li>Kraj <b className="orange-link">Polska</b></li>
-                                        <li>Dystrybucja <b className="orange-link">Regionalna</b></li>
-                                        <li>Typ <b className="orange-link">Pszeniczne</b></li>
-                                        <li>Kolor <b className="orange-link">Bursztynowy</b></li>
-                                        <li>Rodzaj <b className="orange-link">Lagger</b></li>
-                                        <li>Typ <b className="orange-link">Przeniczne</b></li>
-                                        <li>IBU <b className="orange-link">4.5%</b></li>
-                                        <li>BLG <b className="orange-link">4.5%</b></li>
-                                        <li>Cena <b className="orange-link">16,7 zł</b></li>
-                                        <li>Zawartość alkoholu <b className="orange-link">4.5%</b></li>                                        
-                                    </ul>
-                                </div>
+                                <BeerDetailCart />
                                 <div className="right-breweries-container">
                                     <article className="breweries-top-block">
                                         <p>Czas na <b className="orange-link">Tyskie</b></p>
