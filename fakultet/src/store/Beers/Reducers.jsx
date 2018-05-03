@@ -3,7 +3,11 @@ import { updateObject } from '../../services/reduxHelper';
 
 export const initialState = {
     loadingAllBeersErrors: [],
-    loadedBeers: []
+    loadedBeers: [],
+
+
+    loadedBeer: null,
+    loadedBeerErrors: []
 }
 
 
@@ -15,6 +19,11 @@ const reducer = (state = initialState, action) => {
         case actionsTypes.LOADING_BEERS_ERROR:
             return updateObject(state, {loadingAllBeersErrors: action.loadedBeers})
         
+        case actionsTypes.LOAD_BEER:
+            return updateObject(state, { loadedBeer: action.loadedBeer, loadedBeerErrors: []})
+
+        case actionsTypes.LOAD_BEER_ERRORS:
+            return updateObject(state, { loadedBeerErrors: action.loadedBeerErrors })
         default:
             break;
     }

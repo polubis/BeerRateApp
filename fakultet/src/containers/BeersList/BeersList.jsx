@@ -12,7 +12,7 @@ import Stars from '../../components/_stars/_stars';
 import Searcher from '../../components/UI/_searcher/_searcher';
 import SearcherNotFound from '../../components/UI/_searcherNotFound/_searcherNotFound';
 import BeerDetailCart from '../../components/Beers/_beerDetailCart/_beerDetailCart';
-
+import { Link } from 'react-router-dom';
 
 const helpArray = [
     {id: 0, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
@@ -72,7 +72,7 @@ class BeersList extends Component{
                                     items={awardArray}/>
 
                                 </div>
-
+                                <Link to={`/piwa/${i.id}`} className="show-more-beer">Zobacz wiecej</Link>
 
                             </div>
                             <div className="right-beer-block-container">

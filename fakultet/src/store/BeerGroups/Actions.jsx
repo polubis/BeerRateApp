@@ -42,7 +42,7 @@ export const addGroupActionCreator = (formObject, history) => {
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
-            console.log(error.response.status);
+        
             
             dispatch(addGroup(error.response.status === 404 ? 
             array : error.response.data.errors));

@@ -1,0 +1,96 @@
+.comment-section{
+    padding: 20px;
+    box-sizing: border-box;
+    width: 96%;
+    height: 1000px;
+    margin: 20px auto;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    position: relative;
+
+}
+.comments{
+    overflow-y: auto;
+    height: 100%;
+    margin-top: 30px;
+}
+.comment{
+    margin: 50px 0;
+}
+.comment-section h2{
+    margin: 0;
+    position: absolute;
+    top: 0px;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing: 2px;
+}
+.comment:first-of-type{
+    margin-top: 30px;
+}
+.comment p:first-of-type{
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.comment p:first-of-type b{
+    font-size: 18px;
+    color: tomato;
+    text-transform: uppercase;
+}
+.comment p:first-of-type span{
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+}
+.comment-content{
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.comment-content div{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
+.comment-content article{
+    padding-top: 10px;
+    letter-spacing: 1px;
+    width: 80%;
+    line-height: 25px;
+}
+.comments-stars{
+    width: 50%;
+    margin: 10px auto;
+}
+
+.comments-stars > p > b{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: teal;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: white !important;
+}
+
+@media(min-width: 1024px){
+    .comment-section{
+        margin: 0 20px;
+        border-left: 1px solid tomato;
+        width: 40%;
+    }
+   
+    
+}
+

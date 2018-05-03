@@ -14,7 +14,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 40px 0;
+    margin: 60px 0;
 }
 .beer-block-image-holder-background{
     width: 25%;
@@ -25,6 +25,25 @@
     position: relative;
     background: transparent;
 }
+.beer-block-image-holder-background .show-more-beer{
+    padding: 15px;
+    font-size: 18px;
+    width: 180px;
+    background-color: brown;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    border: none;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.beer-block-image-holder-background button:hover{
+    background-color: rgb(175, 35, 35)
+}
+
 .beer-block-image-holder-background p{
     position: absolute;
     top: 5px;

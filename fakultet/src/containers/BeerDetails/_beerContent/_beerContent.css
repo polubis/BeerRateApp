@@ -1,0 +1,22 @@
+.beer-details-left{
+    padding: 20px;
+    box-sizing: border-box;
+    width: 96%;
+    height: 100%;
+    margin: 20px auto;
+    color: white;
+}
+.beer-details-left h1{
+    letter-spacing: 2px;
+    font-family: 'Berkshire Swash', cursive;
+}
+
+.beer-details-left h1 b{
+    color: tomato;
+}
+@media(min-width: 1024px){
+    .beer-details-left{
+        width: 60%;
+        margin: 0 20px;
+    }    
+}
