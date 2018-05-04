@@ -1,15 +1,14 @@
 .comment-section{
-    padding: 20px;
     box-sizing: border-box;
-    width: 96%;
     height: 1000px;
-    margin: 20px auto;
+    margin: 20px 0;
     color: white;
     display: flex;
+    padding: 20px;
+    width: 100%;
+    position: relative;
     flex-flow: column;
     justify-content: space-around;
-    position: relative;
-
 }
 .comments{
     overflow-y: auto;
@@ -19,7 +18,8 @@
 .comment{
     margin: 50px 0;
 }
-.comment-section h2{
+.comment-section h2,
+.comment-section-fixed h2{
     margin: 0;
     position: absolute;
     top: 0px;

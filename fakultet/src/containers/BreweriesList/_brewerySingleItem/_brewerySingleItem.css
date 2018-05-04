@@ -1,0 +1,108 @@
+.brewery-single-item-main-container{
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    width: 600px;
+    margin: 0 auto 140px auto;
+    height: 620px;
+}
+.brewery-single-item-long{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    box-sizing: border-box;
+    color: rgb(236, 230, 230);
+}
+.brewery-single-item-long div{
+    position: relative;
+}
+.brewery-name{
+    position: absolute;
+    top: 190px;
+    width: 100%;
+    text-align: center;
+}
+
+
+.brewery-single-item-long > div:nth-child(1) div{
+    width: 250px;
+    height: 250x;
+}
+.brewery-single-item-long > div:nth-child(1) > img{
+    width: 100%;
+    height: 100%;
+}
+.brewery-single-item-long  p{
+    font-family: 'Lobster';
+    letter-spacing: 3px;
+}
+.brewery-title{
+    font-size: 20px;
+    color: #CC3300;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.brewery-single-item-long article{
+    font-size: 16px;
+    text-align: justify;
+    height: 400px;
+    overflow-y: auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.breweries-container h3{
+    color: #CC3300;
+    font-family: 'Lobster';
+    letter-spacing: 2px;
+    position: relative;
+}
+.breweries-container h3 b{
+    position: absolute;
+    top: -15px;
+    left: 100px;
+    color: #CC3300;
+    font-size: 15px;
+}
+
+.brewery-group-stats{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.brewery-group-stats img{
+    width: 50px;
+    height: 50px;
+}
+.link-to-group-details {
+    text-decoration: none;
+    padding-left: 15px;
+    font-family: 'Lobster';
+    letter-spacing: 3px;
+    color: white;
+}
+.go-to-details-button{
+    padding: 15px;
+    font-size: 22px;
+    color: firebrick;
+    width: 200px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    position: absolute;
+    bottom: -90px;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    font-family: 'Lobster';
+    border-radius: 3px;
+    outline: none;
+    background-color: transparent;
+}
+.go-to-details-button:hover{
+    color: rgb(172, 28, 28);
+}

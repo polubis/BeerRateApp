@@ -26,7 +26,6 @@ class HomePage extends Component {
         }
     }
     onClickHandler = (event) => {
-
         this.setState({actualBlock: event.target.id ? event.target.id : "Rejestracja"});
     }
     componentDidMount(){
