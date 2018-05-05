@@ -7,6 +7,7 @@
     height: 45px;
     transition: 1s all ease-in-out;
     position: relative;
+    letter-spacing: 1px;
 }
 .error-in{
     animation: animate-in 1s ease-in-out forwards;

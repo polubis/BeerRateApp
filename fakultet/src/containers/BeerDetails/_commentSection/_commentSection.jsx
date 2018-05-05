@@ -3,6 +3,10 @@ import './_commentSection.css';
 import Img from '../../../assets/background.jpg';
 import Stars from '../../../components/_stars/_stars';
 import Aux from '../../../hoc/auxilary';
+import Button from '../../../components/UI/_button/_button';
+import AddCommentSection from '../../../components/Comments/_addComment/_addComment';
+import Transition from 'react-transition-group/Transition';
+import { validateOneInput, validateRate } from '../../../services/validationMethods';
 
 const comments = [
     {id: 0, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35},
@@ -14,42 +18,69 @@ const comments = [
     
 ]
 
+const voteStars = [
+    {id: "1", isVotted: false},
+    {id: "2", isVotted: false},
+    {id: "3", isVotted: false},
+    {id: "4", isVotted: false},
+    {id: "5", isVotted: false}
+];
+
 class CommentSection extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            isFixed: false
+    state = {
+        commentValue: "",
+        validationError: "",
+        showAddComments: false,
+        rateValue: null,
+        voteStars: voteStars
+    }
+
+    showAddComments = () => {
+        this.setState({showAddComments: true});
+    }
+    hideAddComments = () => {
+        this.setState({showAddComments: false, validationError: "", commentValue: ""});
+    }
+    onChangeHandler = e => {
+        const result = validateOneInput(e.target.value, false, "treśc komentarza", 5);
+        if(result){
+            this.setState({commentValue: e.target.value, validationError: result});
         }
-        this.windowScrollHandler = this.windowScrollHandler.bind(this);
-    }
-    componentDidMount(){
-        window.addEventListener('scroll', this.windowScrollHandler);
-        window.addEventListener('resize', this.handleWindowResize = this.handleWindowResize.bind(this));
-        this.handleWindowResize();
-        
-    }
-    componentWillUnmount(){
-        window.removeEventListener('scroll', this.windowScrollHandler);
-        window.removeEventListener('resize', this.handleWindowResize = this.handleWindowResize.bind(this));
-        
-    }
-    handleWindowResize = () => {
-        if(document.body.clientWidth <= 1600){
-            this.setState({isFixed: false});
-        }
-    }
-    windowScrollHandler = () => {
-        if(document.body.clientWidth > 1600){
-            if(window.scrollY > 800){
-                this.setState({isFixed: true});
-            }
-            else{
-                this.setState({isFixed: false});
-            }
+        else{
+            this.setState({commentValue: e.target.value, validationError: ""});
         }
 
     }
+
+    changeRateHandler = e => {
+        const newVotes = [...this.state.voteStars];
+        for(let key in voteStars){
+            if(voteStars[key].id === e.target.id){
+                voteStars[key].isVotted = true;
+            }
+            else{
+                voteStars[key].isVotted = false;
+            }
+        }
+        this.setState({rateValue: e.target.id, voteStars: newVotes, 
+            validationError: (this.state.validationError.search("Komenatrz") < 0 ? "" : this.state.validationError)});
+    }
+    publishHandler = () => {
+        const commentResult = validateOneInput(this.state.commentValue, false, "treśc komentarza", 5);
+        const rateResult = validateRate(this.state.rateValue);
+        if(commentResult !== ""){
+            this.setState({validationError: commentResult});
+        }
+        else if(rateResult !== ""){
+            this.setState({validationError: rateResult});
+        }
+        else{
+            this.setState({validationError: ""});
+        }
+    }
+
     render(){
+    
         return(
             <Aux>
             <div className="comment-section">
@@ -79,6 +110,39 @@ class CommentSection extends Component{
                 );
             })}
             </div>
+            
+
+            <Transition 
+                mountOnEnter 
+                unmountOnExit 
+                in={this.state.showAddComments}
+                timeout={1000}>
+                    {state => (
+                        <AddCommentSection 
+                        vote={e => this.changeRateHandler(e)}
+                        votes={this.state.voteStars}
+                        show={this.state.showAddComments}
+                        publish={this.publishHandler}
+                        value={this.state.commentValue}
+                        change={e => this.onChangeHandler(e)}
+                        showAddComments={this.showAddComments} 
+                        hideAddComments={this.hideAddComments}
+                        validationError={this.state.validationError}
+                        />
+                        )}
+            </Transition>
+
+            
+            <Button 
+            show={!this.state.showAddComments} 
+            click={this.showAddComments} 
+            title="Oceń piwo" 
+            btnClass="add-comment-btn"/>
+         
+            
+
+            
+
             
             </div>
             </Aux>

@@ -1,0 +1,13 @@
+.vote-stars-container{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px auto 0 auto;
+}
+.vote-stars-container i:hover{
+    color: green;
+}
+.voted{
+    color: yellow;
+}

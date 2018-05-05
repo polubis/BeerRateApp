@@ -26,8 +26,8 @@ export const validateOneInput = (inputText, isNullable, inputName, min, inputTyp
             if(moment(inputText).isAfter(dateNow)){
                 return "Pole " + inputName + " nie może odnosić się do przyszłości";
             }
-        break;
-                
+        
+       
         default:
             break;
     }
@@ -59,4 +59,12 @@ export const validatePictures = (fileType, maxSize, fileSize) => {
     }    
     return result;    
     
+}
+
+export const validateRate = value => {
+    if(value === undefined || value === null){
+        return "Komentarz musi posiadac ocene piwa"
+    }
+
+    return "";
 }

@@ -1,0 +1,21 @@
+.add-comment-btn{
+    position: absolute;
+    bottom: -95px;
+    width: 50%;
+    padding: 20px;
+    background-color: brown;
+    color: white;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    transition: 1s opacity ease-in-out;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 3px;
+}
+.add-comment-btn:hover{
+    background-color: rgb(160, 32, 32);
+    
+}
