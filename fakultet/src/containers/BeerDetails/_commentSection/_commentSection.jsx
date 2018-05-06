@@ -8,7 +8,7 @@ import AddCommentSection from '../../../components/Comments/_addComment/_addComm
 import Transition from 'react-transition-group/Transition';
 import { validateOneInput, validateRate } from '../../../services/validationMethods';
 import { connect } from 'react-redux';
-import { addCommentActionCreator } from '../../../store/Comments/Actions';
+import { addCommentActionCreator, fetchAddCommentErrors } from '../../../store/Comments/Actions';
 import { findIndexValue } from '../../../services/concatingUrlPath';
 
 const comments = [
@@ -50,7 +50,17 @@ class CommentSection extends Component{
         this.setState({showAddComments: true});
     }
     hideAddComments = () => {
+        this.clearStarArray();
         this.setState({showAddComments: false, validationError: "", commentValue: ""});
+    }
+
+    clearStarArray = () => {
+        const copiedArray = [...this.state.voteStars];
+        this.props.fetchAddCommentErrors([]);
+        for(let key in copiedArray){
+            copiedArray[key].isVotted = false;
+        }
+        this.setState({voteStars: copiedArray});
     }
     onChangeHandler = e => {
         const result = validateOneInput(e.target.value, false, "treśc komentarza", 5);
@@ -174,7 +184,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addComment: (authorId, content, beerId) => dispatch(addCommentActionCreator(authorId, content, beerId))
+        addComment: (authorId, content, beerId) => dispatch(addCommentActionCreator(authorId, content, beerId)),
+        fetchAddCommentErrors: (error) => dispatch(fetchAddCommentErrors(error))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CommentSection);

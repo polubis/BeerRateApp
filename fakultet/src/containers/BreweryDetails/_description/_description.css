@@ -1,6 +1,6 @@
 .brewery-details-middle{
     width: 100%;
-    margin-top: 180px;
+    margin-top: 250px;
     display: flex;
     flex-flow: column;
     border-top: 1px solid #CC3300;
@@ -23,8 +23,8 @@
 }
 
 .brewery-arrow-container img{
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     float: left;
 }
 .brewery-arrow-container > i{
@@ -35,8 +35,10 @@
     bottom: 100px;
 }
 .brewery-arrow-container article{
-    padding: 35px;
-    width: 40%;
+    padding: 20px;
+    width: 35%;
+    height: 350px;
+    overflow-y: auto;
     color: white;
 }
 .arrow-header {
@@ -47,6 +49,7 @@
 }
 .right-details{
     padding: 30px 10px 10px 10px;
+    margin-left: 10px;
     border-left: 1px solid #CC3300;
 }
 .right-details p{

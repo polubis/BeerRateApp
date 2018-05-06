@@ -19,7 +19,7 @@ const botomContent  = props => (
             
 
             <div className="brew-stars-container">
-                <Stars rate={4.35} fontSize="26px" width="100%"/>
+                <Stars rate={4.35} fontSize="22px" width="90%"/>
                 <p>Ocena: <b>4,35</b></p>
                 <p>Głosy: <b>133 razy</b></p>
             </div>
