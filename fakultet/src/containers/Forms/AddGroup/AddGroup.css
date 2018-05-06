@@ -129,7 +129,17 @@
     box-sizing: border-box;
     color: white;
 }
-
+.add-group-form-right-errors{
+    color: rgb(255, 0, 0);
+    letter-spacing: 1px;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 5px;
+    height: 40px;
+    
+    
+}
 .add-group-form-right section label{
     font-weight: bolder;
     letter-spacing: 1px;
@@ -146,7 +156,17 @@
     color: white;
 }
 .add-group-form-right input[type="submit"]{
+    font-size: 24px;
+    color: white;
+    width: 66%;
+    padding: 15px;
+    margin: auto;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    border: none;
     background-color: rgb(120, 33, 31);
+    
 }
 .add-group-form-right input[type="submit"]:hover{
     background-color: rgb(146, 36, 36);
