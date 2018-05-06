@@ -7,7 +7,6 @@ import Image from '../../../assets/piwo.png';
 import Stars from '../../../components/_stars/_stars';
 import Awards from '../../../components/_awards/_awards';
 import BeerDetailCart from '../../../components/Beers/_beerDetailCart/_beerDetailCart';
-import Spinner from '../../../components/UI/_spinner/_spinner';
 
 
 const botomContent  = props => (

@@ -1,7 +1,6 @@
 import React from 'react';
 import './_brewerySingleItem.css';
 import Slicker from '../../../components/UI/_slicker/_slicker';
-import Brewery from '../../../assets/beer-rewards/Browary.jpg';
 import BreweryIcon from '../../../assets/icons/beer-factory.png';
 import GroupIcon from '../../../assets/icons/brewery-group.png';
 import { Link } from 'react-router-dom';

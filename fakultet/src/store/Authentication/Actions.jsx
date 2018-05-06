@@ -10,7 +10,6 @@ export const logingIn = (loginResult) => {
 }
 
 
-
 export const logingInActionCreator = (logingObject, historyObject) => {
     return dispatch => {
         const newLogingObject = {
@@ -23,6 +22,7 @@ export const logingInActionCreator = (logingObject, historyObject) => {
                 localStorage.setItem('loggedUserData', JSON.stringify(response.data.successResult));
             }
             dispatch(logingIn(zeroError));
+
             historyObject.push(afterLogingInPage);
         }).catch(error => {
             const array = [];

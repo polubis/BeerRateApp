@@ -4,7 +4,7 @@
     right: 0;
     margin: 0 auto;
     position: absolute;
-    bottom: -440px;
+    bottom: -470px;
     display: flex;
     flex-flow: column;
     transition: 1s opacity ease-in-out;
@@ -19,6 +19,14 @@
 }
 .add-comment-section > div:last-of-type{
     height: 30px;
+    position: relative;
+}
+.add-comment-section .serwer-error {
+    top: -40px;
+    width: 100%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
 }
 @keyframes animate-comments-in{
     0%{
@@ -51,7 +59,8 @@
     letter-spacing: 1px;
     color: tomato;
 }
-.add-comment-section i{
+.add-comment-section .fa-star,
+.add-comment-section .fa-close{
     font-size: 32px;
     margin-bottom: 10px;
     text-align: right;

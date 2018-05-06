@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './AddBrewery.css';
 import BreweryBackground from '../../../assets/modal/brewery-form.jpg';
-import BreweryGroup from '../../../assets/icons/brewery-group.png';
 import DragAndDrop from '../../../components/UI/_dragAndDrop/_dragAndDrop';
 import { validateOneInput, validatePictures } from '../../../services/validationMethods';
 import Aux from '../../../hoc/auxilary';

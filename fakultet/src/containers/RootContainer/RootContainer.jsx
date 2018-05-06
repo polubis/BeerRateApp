@@ -16,8 +16,9 @@ import BreweriesList from '../BreweriesList/BreweriesList';
 import BreweryDetails from '../BreweryDetails/BreweryDetails';      
 import BeerDetails from '../BeerDetails/BeerDetails';
 
-
 class RootContainer extends Component {
+
+
     render() { 
         const responseObject = JSON.parse(localStorage.getItem('loggedUserData'));
         const afterLogingInRoutes = (
@@ -47,5 +48,7 @@ class RootContainer extends Component {
          )
     }
 }
- 
+
+
 export default RootContainer;
+

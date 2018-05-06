@@ -7,6 +7,9 @@ import Button from '../../../components/UI/_button/_button';
 import AddCommentSection from '../../../components/Comments/_addComment/_addComment';
 import Transition from 'react-transition-group/Transition';
 import { validateOneInput, validateRate } from '../../../services/validationMethods';
+import { connect } from 'react-redux';
+import { addCommentActionCreator } from '../../../store/Comments/Actions';
+import { findIndexValue } from '../../../services/concatingUrlPath';
 
 const comments = [
     {id: 0, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35},
@@ -32,7 +35,15 @@ class CommentSection extends Component{
         validationError: "",
         showAddComments: false,
         rateValue: null,
-        voteStars: voteStars
+        voteStars: voteStars,
+
+
+        addCommentSpinner: false
+    }
+    componentDidUpdate(prevProps){
+        if(prevProps.addCommentErrors !== this.props.addCommentErrors){
+            this.setState({addCommentSpinner: false});
+        }
     }
 
     showAddComments = () => {
@@ -75,12 +86,14 @@ class CommentSection extends Component{
             this.setState({validationError: rateResult});
         }
         else{
-            this.setState({validationError: ""});
+            this.setState({validationError: "", addCommentSpinner: true});
+            const author = JSON.parse(localStorage.getItem('loggedUserData'));
+
+            this.props.addComment(author.id, this.state.commentValue, findIndexValue(window.location.href));
         }
     }
 
     render(){
-    
         return(
             <Aux>
             <div className="comment-section">
@@ -111,24 +124,26 @@ class CommentSection extends Component{
             })}
             </div>
             
-
+            
             <Transition 
                 mountOnEnter 
                 unmountOnExit 
                 in={this.state.showAddComments}
                 timeout={1000}>
                     {state => (
-                        <AddCommentSection 
-                        vote={e => this.changeRateHandler(e)}
-                        votes={this.state.voteStars}
-                        show={this.state.showAddComments}
-                        publish={this.publishHandler}
-                        value={this.state.commentValue}
-                        change={e => this.onChangeHandler(e)}
-                        showAddComments={this.showAddComments} 
-                        hideAddComments={this.hideAddComments}
-                        validationError={this.state.validationError}
-                        />
+                            <AddCommentSection 
+                            addCommentErrors={this.props.addCommentErrors}
+                            addCommentSpinner={this.state.addCommentSpinner}
+                            vote={e => this.changeRateHandler(e)}
+                            votes={this.state.voteStars}
+                            show={this.state.showAddComments}
+                            publish={this.publishHandler}
+                            value={this.state.commentValue}
+                            change={e => this.onChangeHandler(e)}
+                            showAddComments={this.showAddComments} 
+                            hideAddComments={this.hideAddComments}
+                            validationError={this.state.validationError}
+                            />
                         )}
             </Transition>
 
@@ -151,4 +166,20 @@ class CommentSection extends Component{
     }
 }
 
-export default CommentSection;
+const mapStateToProps = state => {
+    return {
+        addCommentErrors: state.CommentsReducer.addCommentErrors
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addComment: (authorId, content, beerId) => dispatch(addCommentActionCreator(authorId, content, beerId))
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CommentSection);
+
+
+
+
+

@@ -26,7 +26,7 @@ export const validateOneInput = (inputText, isNullable, inputName, min, inputTyp
             if(moment(inputText).isAfter(dateNow)){
                 return "Pole " + inputName + " nie może odnosić się do przyszłości";
             }
-        
+        break;
        
         default:
             break;

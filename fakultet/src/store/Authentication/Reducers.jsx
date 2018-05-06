@@ -5,12 +5,14 @@ export const initialState = {
     loginResult: [],
     registerResult: [],
     registerStatus: undefined
+
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
         case actionsTypes.LOGING_IN:
             return updateObject(state, {loginResult: action.loginResult})
+
         case actionsTypes.REGISTER:
             return updateObject(state, {registerResult: action.registerResult, registerStatus: undefined})
         case actionsTypes.CHANGE_REGISTER_STATUS:
