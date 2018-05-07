@@ -32,7 +32,9 @@
 .beer-group-block .main-content-container article{
    margin-top: 10px;
    text-align: justify;
-   font-size: 14px;
+   font-size: 13px;
+   overflow-y: hidden;
+   height: 100px;
 }
 .capsel-type{
     width: 45px;
@@ -55,86 +57,39 @@
 }
 .flip-cart-icons-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.flip-cart-icons-container div{
+.flip-cart-icons-container .icons-det-holder > div{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 60px;
     height: 60px;
+    width: 60px;
     border-radius: 50%;
-    margin-top: 30px;
-    position: relative;
-    font-size: 12px;
-    
 }
-.flip-cart-icons-container div p{
-    position: absolute;
-    margin: 0;
-    word-wrap: break-word;
-    width: 100%;
-    text-align: center;
-}
-#owner-image-holder p:first-child{
-    top: -25px;
-}
-#owner-image-holder p:last-child{
-    bottom: -40px;
-}
-#map-image-holder{
-    top: 40px;
-}
-#map-image-holder p:first-child{
-    top: -25px;
-    left: -4px;
-}
-#map-image-holder p:last-child{
-    bottom: -30px;
-    width: 150px;
-    left: -40px;
-   
-}
-
-#date-image-holder p:first-child{
-    top: -40px;
-    left: -3px;
-}
-#date-image-holder p:last-child{
-    bottom: -30px;
-    left: -7px;
-    width: 100px;
-}
-/*
-.group-details-png-container{
+.icons-det-holder{
     display: flex;
+    width: 33%;
+    align-items: center;
     justify-content: space-around;
+    flex-flow: column;
+}
+.icons-det-holder > p{
+    font-size: 12px;
     width: 100%;
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.icons-det-absolute{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
-.group-details-png-container div{
-    display: flex;
-    flex-flow: column;
-    position: relative;
-}
-.group-details-png-container div p{
-    font-size: 13px;
-    position: absolute;
-    text-align: center;
-    width: 75px;
-    
-}
-.group-details-png-container div:nth-child(2){
-    transform: translateY(30px);
-}
-.group-details-png-container div img{
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-}
-*/
 .small-icon{
     width: 25px;
     height: 25px;

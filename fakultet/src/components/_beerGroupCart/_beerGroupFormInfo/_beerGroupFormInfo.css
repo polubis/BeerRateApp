@@ -5,9 +5,11 @@
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 .info-block{
     display: flex;
+    width: 33%;
     flex-flow: column;
     align-items: center;
     font-size: 22px;

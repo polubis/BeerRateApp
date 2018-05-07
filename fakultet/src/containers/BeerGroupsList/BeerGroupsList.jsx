@@ -87,21 +87,24 @@ class BeerGroupList extends Component{
                             <p><b className="orange-link">Liczba produktów: </b><i>3</i><img className="small-icon" src={BeerIcon} alt="Piwo" /></p>
                             
                             <div className="flip-cart-icons-container">
-                                <div id="owner-image-holder" style={{backgroundImage: `url(${Owner})`}}>
-                                    <p>Właściciel</p>
-                                    <p>{i.director}</p>
-                                    
-                                </div>
-                                <div id="map-image-holder" style={{backgroundImage: `url(${GMap})`}}>
-                                    <p>Lokalizacja</p>
+                                <div className="icons-det-holder">
+                                    <div style={{backgroundImage: `url(${GMap})`}}>
+                                    </div>
                                     <p>{i.address}</p>
-                                    
                                 </div>
-                                <div id="date-image-holder" style={{backgroundImage: `url(${BirthDate})`}}>
-                                    <p>Data powstania</p>
+                                <div className="icons-det-holder icons-det-absolute">
+                                    <div style={{backgroundImage: `url(${Owner})`}}>
+                                    </div>
+                                    <p>{i.director}</p>
+                                </div>
+                               
+                                <div className="icons-det-holder">
+                                    <div style={{backgroundImage: `url(${BirthDate})`}}>
+                                    </div>
                                     <p>{i.createDate.slice(0,10)}</p>
-                                    
                                 </div>
+                              
+                                
                             </div>
                             
                         </div>

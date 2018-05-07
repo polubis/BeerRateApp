@@ -4,6 +4,13 @@ import BeerFormGroupInfo from '../../components/_beerGroupCart/_beerGroupFormInf
 import Awards from '../../components/_awards/_awards';
 import Carousel from '../../components/UI/_carousel/_carousel';
 import BeerCart from '../../components/_beerCart/_beerCart';
+import { connect } from 'react-redux';
+import { loadGroupActionCreator } from '../../store/BeerGroups/Actions';
+import { findIndexValue } from '../../services/concatingUrlPath';
+import Spinner from '../../components/UI/_spinner/_spinner';
+import Aux from '../../hoc/auxilary';
+import NotFoundResult from '../../components/UI/_notFoundResult/_notFoundResult';
+
 const leftRank = [
     {id:1, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
     {id:2, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
@@ -15,33 +22,59 @@ const leftRank = [
 ]
 
 class BeerGroups extends Component {
+    state = {
+        spinner: true
+    }
+    componentWillReceiveProps(prevProps){
+        if(prevProps.loadedBeerGroup !== this.props.loadedBeerGroup || 
+            prevProps.loadedBeerGroupErrors !== this.props.loadedBeerGroupErrors){
+            this.setState({spinner: false});
+        }
+    }
+
+    componentDidMount(){
+        this.props.loadGroup(findIndexValue(window.location.href));
+    }
+
     render() { 
         return ( 
             <div className="beer-groups-container">
-                <div className="left-content-beer-groups">
-                    <h1 className="beer-group-main-header">Grupa piwowarska - bracia  </h1>
-                    <p className="beer-group-story-paragraph"><b className="orange-link">Historia</b></p>
-                    <div className="beer-group-story-block">
-                        <span>Lorem </span>Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker
-                        W przeciwieństwie do rozpowszechnionych opinii, Lorem Ipsum nie jest tylko przypadkowym tekstem. Ma ono korzenie w klasycznej łacińskiej literaturze z 45 roku przed Chrystusem, czyli ponad 2000 lat temu! Richard McClintock, wykładowca łaciny na uniwersytecie Hampden-Sydney w Virginii, przyjrzał się uważniej jednemu z najbardziej niejasnych słów w Lorem Ipsum – consectetur – i po wielu poszukiwaniach odnalazł niezaprzeczalne źródło: Lorem Ipsum pochodzi z fragmentów (1.10.32 i 1.10.33) „de Finibus Bonorum et Malorum”, czyli „O granicy dobra i zła”, napisanej właśnie w 45 p.n.e. przez Cycerona. Jest to bardzo popularna w czasach renesansu rozprawa na temat etyki. Pierwszy wiersz Lorem Ipsum, „Lorem ipsum dolor sit amet...” pochodzi właśnie z sekcji 1.10.32.
-                    </div>
-                    
-                    <BeerFormGroupInfo />
-                    <h2 className="beer-group-main-header">Browary</h2>
+                {this.state.spinner ? 
+                <Spinner 
+                spinnerContent="trwa wczytywanie..." fontSize="22px" color="white" /> :
 
-                    <Carousel />
-                    <div className="awards-holder">
-                        <Awards />
+                this.props.loadedBeerGroupErrors.length > 0 ? 
+                <NotFoundResult message={this.props.loadedBeerGroupErrors[0]} /> : 
+
+                <Aux>
+                    <div className="left-content-beer-groups">
+                        <h1 className="beer-group-main-header">Grupa piwowarska - {this.props.loadedBeerGroup.name}  </h1>
+                        <p className="beer-group-story-paragraph"><b className="orange-link">Historia</b></p>
+                        <div className="beer-group-story-block">
+                            {this.props.loadedBeerGroup.description}
+                        </div>
+                        
+                        <BeerFormGroupInfo 
+                        director={this.props.loadedBeerGroup.director} 
+                        address={this.props.loadedBeerGroup.address} 
+                        createDate={this.props.loadedBeerGroup.createDate.slice(0, 10)} />
+
+                        <h2 className="beer-group-main-header">Browary</h2>
+
+                        <Carousel items={this.props.loadedBeerGroup.breweries}/>
+                        <div className="awards-holder">
+                            <Awards />
+                        </div>
                     </div>
-                   
                 
-                </div>
+                    <div className="right-content-beer-groups">
+                        {leftRank.map(b => {
+                            return <BeerCart content={b.content} key={b.id} title={b.title} rate={b.rate}/>
+                        })}
+                    </div>
+                </Aux>}
+               
                 
-                <div className="right-content-beer-groups">
-                    {leftRank.map(b => {
-                        return <BeerCart content={b.content} key={b.id} title={b.title} rate={b.rate}/>
-                    })}
-                </div>
                 
                 
               
@@ -52,4 +85,20 @@ class BeerGroups extends Component {
     }
 }
  
-export default BeerGroups;
+
+const mapStateToProps = state => {
+    return {
+        loadedBeerGroup: state.BeerGroupsReducer.loadedBeerGroup,
+        loadedBeerGroupErrors: state.BeerGroupsReducer.loadedBeerGroupErrors
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadGroup: (id) => dispatch(loadGroupActionCreator(id))
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BeerGroups);
+
+
+

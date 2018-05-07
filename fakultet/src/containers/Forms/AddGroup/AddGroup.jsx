@@ -8,6 +8,7 @@ import DragAndDrop from '../../../components/UI/_dragAndDrop/_dragAndDrop';
 import Image from '../../../assets/modal/modal-group.jpg';
 import { withRouter } from 'react-router-dom';
 import { addGroupActionCreator, addGroup } from '../../../store/BeerGroups/Actions';
+import SuccResult from '../../../components/UI/_succResult/_succResult';
 
 class AddGroup extends Component {
     state = {
@@ -17,7 +18,6 @@ class AddGroup extends Component {
         incorrectPictureError: "",
         showAddSpinner: false
     }
-  
     componentDidUpdate(prevProps){
         if(prevProps.addGroupErrors !== this.props.addGroupErrors){
             this.setState({showAddSpinner: false});
@@ -70,13 +70,16 @@ class AddGroup extends Component {
             this.setState({showAddSpinner: true});
             const formObject = {
                 Name: this.state.currentValidation[0].value,
-                Adress: this.state.currentValidation[3].value,
+                Address: this.state.currentValidation[3].value,
                 Description: this.state.currentValidation[4].value,
                 Director: this.state.currentValidation[1].value,
                 CreateDate: this.state.currentValidation[2].value,
                 BreweriesIds: []
             };
             this.props.addGroup(formObject, this.props.history);
+            setTimeout( () => {
+                this.props.closeModal();
+            }, 1500);
         }
     }
     componentWillUnmount(){
@@ -88,6 +91,8 @@ class AddGroup extends Component {
             <form style={{backgroundImage: `url(${this.state.droppedFile.length > 0 ?
             this.state.droppedFile[0].preview : Image})`}} onSubmit={e => this.onSubmitHandler(e)} className="add-group-container">
             
+            {this.props.addGroupResult ? <SuccResult show={this.props.addGroupResult}
+            message="Pomyślnie dodano grupę, jesteś przekierowywany..."/> : null}
             
                 <div className="add-group-form-left">
                     {this.props.addGroupErrors.length > 0 ? 
@@ -161,7 +166,8 @@ class AddGroup extends Component {
 
 const mapStateToProps = state => {
     return {
-        addGroupErrors: state.BeerGroupsReducer.addGroupErrors
+        addGroupErrors: state.BeerGroupsReducer.addGroupErrors,
+        addGroupResult: state.BeerGroupsReducer.addGroupResult
     };
 }
 

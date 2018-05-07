@@ -9,17 +9,17 @@ const beerGroupFormInfo = props => (
         <div className="info-block">
             <p>Założciel</p>
             <img src={Owner} alt="Właściciel" />
-            <p>Tom Cruse</p>
+            <p>{props.director}</p>
         </div>
         <div className="info-block">
         <p>Rok założenia</p>
             <img src={BirthDate} alt="Właściciel" />
-            <p>2017</p>
+            <p>{props.createDate}</p>
         </div>
         <div className="info-block">
             <p>Lokalizacja</p>
             <img src={Compas} alt="Właściciel" />
-            <p>USA Massetusets</p>
+            <p>{props.address}</p>
         </div>
    </div>
 

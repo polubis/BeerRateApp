@@ -5,7 +5,11 @@ export const initialState = {
     loadingAllGroupsErrors: [],
     loadedGroups: [],
 
-    addGroupErrors: []
+    addGroupErrors: [],
+    addGroupResult: null,
+
+    loadedBeerGroup: null,
+    loadedBeerGroupErrors: []
 }
 
 
@@ -18,8 +22,13 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {loadingAllGroupsErrors: action.loadingAllGroupsErrors})
         
         case actionsTypes.ADD_GROUP:
-            return updateObject(state, { addGroupErrors: action.addGroupErrors})
-            
+            return updateObject(state, { addGroupErrors: action.addGroupErrors, addGroupResult: action.addGroupResult})
+        
+        case actionsTypes.LOAD_GROUP:
+            return updateObject(state, { loadedBeerGroup: action.loadedBeerGroup, loadedBeerGroupErrors: [] })
+
+        case actionsTypes.LOAD_GROUP_ERRORS:
+            return updateObject(state, { loadedBeerGroupErrors: action.loadedBeerGroupErrors })
         default:
             break;
     }

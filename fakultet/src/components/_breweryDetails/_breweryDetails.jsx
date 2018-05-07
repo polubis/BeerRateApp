@@ -13,11 +13,7 @@ const breweryDetails = props => (
         </div>
         <article>
             <p className="orange-link">{props.name} </p>
-            Date powstania browaru podchalanskiego datuje sie na okres
-            1920 - 1940. Grupa piwowarska Bracia wykupila go w 2001 roku 
-            za bardzo niska cene. Wszyscy pracownicy jednak w dniu zakupu
-            postnowili bronic interesow zakladu. Zaczal sie wielki strajk, ktory doprowadzil
-            do przerwania checi zakupu browaru. 
+            {props.description}
         </article>
         <div style={{clear: 'both'}}></div>
 
