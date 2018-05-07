@@ -5,18 +5,18 @@ import DragAndDrop from '../../../components/UI/_dragAndDrop/_dragAndDrop';
 import { validateOneInput, validatePictures } from '../../../services/validationMethods';
 import Aux from '../../../hoc/auxilary';
 import { connect } from 'react-redux';
-import { fetchAllGroupsActionCreator, loadingGroupError } from '../../../store/BeerGroups/Actions';
+import { fetchAllGroupsActionCreator, 
+    loadingGroupError } from '../../../store/BeerGroups/Actions';
+
+import { addBreweryActionCreator } from '../../../store/Breweries/Actions';    
 import Spinner from '../../../components/UI/_spinner/_spinner';
 import Director from '../../../assets/beer-group-details/owner-png.png';
 import MapPic from '../../../assets/beer-group-details/map.png';
 import BirthDate from '../../../assets/beer-group-details/birth-date.png';
+import { withRouter } from 'react-router-dom';
 
-/*
-<textarea
-                        value={this.state.currentValidation[3].value}
-                        onChange={e => this.onChangeHandler(e, 3)}
-                        placeholder="napisz historie browaru..."></textarea>
-                        <p className="form-validation-error">{this.state.currentValidation[3].error}</p>*/
+import SuccResult from '../../../components/UI/_succResult/_succResult';
+import ErrorResult from '../../../components/UI/_errorPrompt/_errorPrompt';
 
 class AddBrewery extends Component{
     state = { 
@@ -29,12 +29,27 @@ class AddBrewery extends Component{
         loadGroupsSpinner: true,
 
         addedGroupError: "",
-        redirectToDesc: false
+        redirectToDesc: false,
+
+        addBrewerySpinner: false
+
 
 
     }
     componentWillMount(){
         this.props.fetchAllGroups();
+    }
+    componentWillReceiveProps(prevProps){
+        if(prevProps.loadedGroups !== this.props.loadedGroups){
+            this.setState({loadedGroups: this.props.loadedGroups, loadGroupsSpinner: false});
+        }
+        if(prevProps.loadingAllGroupsErrors !== this.props.loadingAllGroupsErrors){
+            this.setState({loadGroupsSpinner: false});
+        }
+        if(prevProps.addBreweryErrors !== this.props.addBreweryErrors || 
+        prevProps.addBreweryResult !== this.props.addBreweryResult){
+            this.setState({addBrewerySpinner: false});   
+        }
     }
     componentDidUpdate(prevProps){
         if(prevProps.loadedGroups !== this.props.loadedGroups){
@@ -118,7 +133,16 @@ class AddBrewery extends Component{
             this.setState({currentValidation: newValidation});
         }
         else{
-                    // Tutaj dodawanie postów na serwer
+            this.setState({addBrewerySpinner: true});
+            this.props.addBrewery(this.state.currentValidation[0].value, 
+                this.state.currentValidation[3].value, this.state.currentValidation[1].value, 
+                this.state.currentValidation[2].value, this.state.addedGroup, 
+                this.props.history);
+
+            setTimeout( () => {
+                this.props.closeModal();
+            }, 1500)
+
         }
     }
 
@@ -129,14 +153,30 @@ class AddBrewery extends Component{
         return(
 
             <Aux>
+                
+
                 {this.state.redirectToDesc ? 
                 <form
                 style={{backgroundImage: `url(${this.state.droppedFile.length > 0 ?
                     this.state.droppedFile[0].preview : BreweryBackground})`}}
                 onSubmit={e => this.onSubmitSecondFormHandler(e)} className="on-submit-desc-container">
+                    
+                    {this.props.addBreweryResult ? 
+                        <SuccResult show={this.props.addBreweryResult}
+                        message="Pomyślnie dodano browar, trwa przekierowywanie..."/> : null}
+
+                    {this.props.addBreweryErrors.length > 0 ?
+                        <p className="serwer-error">{this.props.addBreweryErrors[0]}</p> : null}
+                    
                     <h1 className="form-title">Formularz dodawania browarów</h1>
                     
                     <h2>Historia browaru</h2>
+
+                    {this.state.addBrewerySpinner ? <div className="add-brewery-spinner-container">
+                        <Spinner color="black" fontSize="22px" 
+                        spinnerContent="trwa dodawanie browaru..." position="relative" />
+                    </div> : null}
+                   
                     <textarea
                     placeholder={this.state.addBreweryItems[3].placeholder} 
                     value={this.state.currentValidation[3].value}
@@ -149,6 +189,12 @@ class AddBrewery extends Component{
                         <input className="submit-form-button submit-brewery-button" type="submit" value="Dodaj browar" />
                         <button onClick={() => this.setState({redirectToDesc: false})} className="submit-form-button submit-brewery-button">Cofnij</button>
                     </div>
+                        
+                    
+                        
+                   
+
+                    
                  
                 </form> : 
                 
@@ -158,6 +204,9 @@ class AddBrewery extends Component{
                 style={{backgroundImage: `url(${this.state.droppedFile.length > 0 ?
                 this.state.droppedFile[0].preview : BreweryBackground})`}}
                 className="add-brewery-container">
+
+                    
+
                     <h1 className="form-title">Formularz dodawania browarów</h1>
                     <div className="brewery-left-form-sections">
                         {this.state.addBreweryItems.map(i => {
@@ -303,17 +352,23 @@ class AddBrewery extends Component{
 const mapStateToProps = state => {
     return {
         loadingAllGroupsErrors: state.BeerGroupsReducer.loadingAllGroupsErrors,
-        loadedGroups: state.BeerGroupsReducer.loadedGroups
+        loadedGroups: state.BeerGroupsReducer.loadedGroups,
+        
+        addBreweryErrors: state.BreweriesReducer.addBreweryErrors,
+        addBreweryResult: state.BreweriesReducer.addBreweryResult
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchAllGroups: () => dispatch(fetchAllGroupsActionCreator()),
-        loadingGroupError: (errors) => dispatch(loadingGroupError(errors))
+        loadingGroupError: (errors) => dispatch(loadingGroupError(errors)),
+
+        addBrewery: (name, desc, address, date, brewingGroup, history) => dispatch(addBreweryActionCreator(name, desc, address, date, brewingGroup, history))
+        
     };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AddBrewery);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddBrewery));
 
 
 

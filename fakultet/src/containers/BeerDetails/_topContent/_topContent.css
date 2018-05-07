@@ -74,7 +74,7 @@
     letter-spacing: 2px;
     margin: 0 0 20px 0;
 }
-.top-content-right > div:first-of-type{
+.top-content-right .top-right-inside-container{
     width: 50%;
     position: relative;
     margin: 30px auto;
@@ -100,7 +100,12 @@
     color: tomato;
     font-size: 24px;
 }
-
+.not-voted-yet{
+    color: red;
+    font-size: 18px;
+    letter-spacing: 2px;
+    padding: 50px 0;
+}
 
 
 @media(min-width: 1024px){

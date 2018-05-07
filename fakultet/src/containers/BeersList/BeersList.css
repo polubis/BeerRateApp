@@ -74,7 +74,7 @@
     margin: 0;
     padding: 10px 10px 20px 10px;
 }
-.rate-block-container p{
+.rate-block-container > p{
     text-align: right;
     font-size: 21px;
     margin-top: 50px;

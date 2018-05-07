@@ -61,3 +61,46 @@ export const loadBreweryActionCreator = id => {
         
     }
 }
+
+
+
+export const addBrewery = addBreweryResult => {
+    return {
+        type: actionsTypes.ADD_BREWERY,
+        addBreweryResult: addBreweryResult
+    }
+}
+
+export const fetchBreweryErrors = addBreweryErrors => {
+    return {
+        type: actionsTypes.FETCH_ADD_BREWERY_ERRORS,
+        addBreweryErrors: addBreweryErrors
+    }
+}
+
+export const addBreweryActionCreator = (name, desc, address, date, brewingGroup, history) => {
+    return dispatch => {
+        const objectToSend = {
+            Name: name, 
+            Description: desc,
+            Address: address,
+            CreateDate: date,
+            BrewingGroupId: brewingGroup.id
+        };
+
+        axios.post("/api/brewery/add", objectToSend).then(response => {
+            dispatch(addBrewery(true));
+
+            setTimeout( () => {
+                history.push("/browary");
+            }, 1500);
+            dispatch(fetchAllBreweriesActionCreator());
+        }).catch(error => {
+            const array = [];
+            array.push("Błąd serwera");
+
+            dispatch(fetchBreweryErrors(error.response.status === 404 ? 
+            array : error.response.data.errors));
+        })
+    }
+}

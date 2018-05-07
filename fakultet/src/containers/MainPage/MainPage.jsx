@@ -16,10 +16,6 @@ class MainPage extends Component {
         addBreweryModal: false,
         addBeerModal: false
     }
-    componentWillReceiveProps(prevProps){
-        console.log(this.props.history.location.pathname);
-        console.log(prevProps.history.location.pathname);
-    }
 
     logout = () => {
         localStorage.clear();
@@ -97,6 +93,7 @@ class MainPage extends Component {
                 <Chaos toggle={this.handleToggleAddBreweryModal}
                 show={this.state.addBreweryModal}>
                     <AddBrewery 
+                    closeModal={this.handleToggleAddBreweryModal}
                     redirectToGroupList={e => this.redirectToGroupList(e)}
                     addBreweryItems={addBreweryItems}
                     addBreweryValidationArray={addBreweryValidationArray}

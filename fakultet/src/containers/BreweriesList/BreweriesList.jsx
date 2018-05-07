@@ -56,14 +56,18 @@ class BreweriesList extends Component {
                 {this.state.loadingBreweriesSpinner ? <Spinner color="white" spinnerContent="trwa wczytywanie..."/> : null}
                     
                 {this.props.loadingAllBreweriesErrors.length > 0 ? <NotFoundResult message={this.props.loadingAllBreweriesErrors[0]}/> 
+                
                 : this.state.searchedItems.map(i => {
+                    
                     return (
+                        i.brewingGroup ? 
                         <BrewerySingleItem 
                         key={i.id} 
                         id={i.id}
                         brewingGroup={i.brewingGroup}
                         description={i.description}
                         beers={i.beers}/>
+                        : null
                     );
                 })}                
                 </div>

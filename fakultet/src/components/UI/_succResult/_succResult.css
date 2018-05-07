@@ -11,9 +11,6 @@
     transition: 1s all linear;
     text-align: center;
 }
-.succ-result-container p{
-    margin: 0;
-}
 @keyframes succresultIn{
     0%{ 
         height: 0;

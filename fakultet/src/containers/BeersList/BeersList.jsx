@@ -10,32 +10,40 @@ import BreweryIcon from '../../assets/icons/beer-factory.png';
 import Stars from '../../components/_stars/_stars';
 
 import Searcher from '../../components/UI/_searcher/_searcher';
-import SearcherNotFound from '../../components/UI/_searcherNotFound/_searcherNotFound';
 import BeerDetailCart from '../../components/Beers/_beerDetailCart/_beerDetailCart';
 import { Link } from 'react-router-dom';
+import { fetchAllBeersActionCreator } from '../../store/Beers/Actions';
+import { connect } from 'react-redux';
+import NotFound from '../../components/UI/_notFoundResult/_notFoundResult';
+import Spinner from '../../components/UI/_spinner/_spinner';
+import Aux from '../../hoc/auxilary';
 
-const helpArray = [
-    {id: 0, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-    {id: 1, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-    {id: 2, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-    {id: 3, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"},
-    {id: 4, name: "Tyskie", img: Beers, desc:"Piwo przeznaczone dla osób odpowiedzialnych i znających się na smakach. Należy pamiętać ze ako tylko od 18 lat. ", alc: 5.4, price: 7.50, ibu: 16.0, rate: 4.5, brewery: "Browar podhalanski", group: "Bracia"}
 
-];
+
 
 class BeersList extends Component{
     state = {
         searchValue: "",
-        items: helpArray,
-        searchedItems: helpArray
+        items: [],
+        searchedItems: [],
+        allBeersSpinner: true
+    }
+    componentDidMount(){
+        this.props.fetchAllBeers();
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.loadedBeers !== undefined){
+            this.setState({items: nextProps.loadedBeers,
+                searchedItems: nextProps.loadedBeers, allBeersSpinner: false});
+        }
+      
+    }
+    
     searchOnChangeHandler = event => {
         let resultArray = [];
         for(let key in this.state.items){
-            if(this.state.items[key].name.toUpperCase().search(event.target.value.toUpperCase()) !== -1 || 
-                this.state.items[key].brewery.toUpperCase().search(event.target.value.toUpperCase()) !== -1 || 
-                this.state.items[key].group.toUpperCase().search(event.target.value.toUpperCase()) !== -1){
+            if(this.state.items[key].name.toUpperCase().search(event.target.value.toUpperCase()) !== -1){
                 resultArray.push(this.state.items[key]);
             }
         }
@@ -43,25 +51,35 @@ class BeersList extends Component{
     }
 
     render(){
-       
-
         return(
+            
+
             <div className="beers-list-container">
+                {this.state.allBeersSpinner ? <Spinner 
+                    color="white" 
+                    fontSize="22px" 
+                    spinnerContent="trwa ładowanie..."/> : null}
+
                 <Searcher
                 max={this.state.searchedItems.length <= 0 ? 
                     this.state.searchValue.length : undefined}
-                placeholder="wpisz nazwę piwa, browaru lub grupy..."
+                placeholder="wpisz nazwę piwa..."
                 width="350px"
                 changeHandler={e => this.searchOnChangeHandler(e)}
-                value={this.state.searchValue} />
+                value={this.state.searchValue}
+                searchedCount={this.state.searchedItems.length} />
 
-                
-                {this.state.searchedItems.length > 0 ? this.state.searchedItems.map(i => {
+                {this.props.loadingAllBeersErrors.length > 0 ?
+                    <NotFound message={this.props.loadingAllBeersErrors[0]} /> : null}
+
+            {this.state.items ? 
+            <Aux>
+                {this.state.searchedItems.map(i => {
                     return (
                         <div className="beer-block-container">
                             <div className="beer-block-image-holder-background">
                                 
-                                <p>Tyskie</p>
+                                <p>{i.name}</p>
                                 <div style={{backgroundImage: `url(${Beers})`}} className="beer-block-image-holder">
                                 </div>
                                 <div className="beer-min-awards-container">
@@ -83,33 +101,61 @@ class BeersList extends Component{
                                     </div>
                                     <div className="rate-block-container">
                                         <h2>Ocena użytkowników</h2>
-                                        <Stars show={true} fontSize="26px" width="80%" rate={4.34}/>
-                                        <p>Oddano <b className="orange-link">135</b> głosów</p>
+                                        <Stars btnOn={true} show={true} fontSize="26px" 
+                                        width="80%" rate={i.averageOfRatings} beerId={i.id}/>
+                                        {i.averageOfRatings !== 0 ? 
+                                        <p>Oddano <b className="orange-link">135</b> głosów</p> : null}
                                     </div>
                                 </div>
-                                <BeerDetailCart />
+                                <BeerDetailCart 
+                                alcohol={i.alcohol}
+                                price={i.price}
+                                blg={i.blg}
+                                color={i.color}
+                                ibu={i.ibu}
+                                country={i.country}
+                                />
+
                                 <div className="right-breweries-container">
                                     <article className="breweries-top-block">
-                                        <p>Czas na <b className="orange-link">Tyskie</b></p>
-                                        Piwo <b className="orange-link">Tyskie</b> cechuje się wysokiej jakości smakiem oraz takie tam inne rzeczy
-                                        Piwo <b className="orange-link">Tyskie</b> cechuje się wysokiej jakości smakiem oraz takie tam inne rzeczy
-                                        Piwo <b className="orange-link">Tyskie</b> cechuje się wysokiej jakości smakiem oraz takie tam inne rzeczy
+                                        <p>Czas na <b className="orange-link">{i.name}</b></p>
+                                        {i.description}
                                     </article>
                                     <div style={{backgroundImage: `url(${Breweries})`}} className="breweries-bottom-block">
                                         <img className="front-desc-icon" src={BreweryIcon} alt="Ikona grup" />
-                                        <p className="front-description">Browar podhalański</p>
+                                        <p className="front-description">{i.brewery.name}</p>
                                     </div>
                                 </div>
                                 
-                               
+                                
                             </div>
 
                         </div>
                     );
-                }) : <SearcherNotFound message={`Nie znaleziono marki piwa o podanym atrybucie ${this.state.searchValue}`} />}
-            </div>
+                    })}
+                
+               
+            </Aux> : null}
+        </div>
+            
+           
         );
     }
 }
 
-export default BeersList;
+
+const mapStateToProps = state => {
+    return {
+        loadedBeers: state.BeersReducer.loadedBeers,
+        loadingAllBeersErrors: state.BeersReducer.loadingAllBeersErrors
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchAllBeers: () => dispatch(fetchAllBeersActionCreator())
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BeersList);
+
+

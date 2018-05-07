@@ -21,3 +21,28 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.zero-vote-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column;
+}
+.zero-vote-container p{
+    font-size: 16px !important;
+    color: orangered;
+    text-align: center;
+}
+.redirect-to-beer-btn{
+    width: 100%;
+    font-family: 'Lobster', cursive;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    color: lightgreen;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+.redirect-to-beer-btn:hover{
+    color: orangered;
+}

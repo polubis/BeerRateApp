@@ -7,9 +7,9 @@ export const fetchAllBeers = loadedBeers => {
         loadedBeers: loadedBeers
     };
 }
-export const loadingBeersError = loadingAllBeersErrors => {
+export const fetchAllBeersErrors = loadingAllBeersErrors => {
     return {
-        type: actionsTypes.LOADING_BEERS_ERROR,
+        type: actionsTypes.FETCH_ALL_BEERS_ERRORS,
         loadingAllBeersErrors: loadingAllBeersErrors
     };
 }
@@ -19,12 +19,25 @@ export const fetchAllBeersActionCreator = () => {
     return dispatch => {
        
         axios.get('/api/beer').then(response => {
+            dispatch(fetchAllBeers(response.data));
             console.log(response.data);
         }).catch(error => {
-            console.log(error.response);            
+            const array = [];
+            array.push("Błąd serwera");
+            dispatch(fetchAllBeersErrors(error.response.status === 404 ? 
+            array : error.response.data.errors));
         });
     }
 }
+
+
+
+
+
+
+
+
+
 
 export const loadBeer = loadedBeer => {
     return {

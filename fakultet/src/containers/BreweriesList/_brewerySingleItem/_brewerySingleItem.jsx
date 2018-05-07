@@ -17,6 +17,7 @@ const brewerySingleItem = props => (
                 </p>
                 <div className="brewery-group-stats">
                    <img src={GroupIcon} alt="Ikonka" />
+                   
                    <Link className="link-to-group-details" 
                        to={`/grupy/${props.brewingGroup.id}`}>{props.brewingGroup.name}</Link>
                 </div>     

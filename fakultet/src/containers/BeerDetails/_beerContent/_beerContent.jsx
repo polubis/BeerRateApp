@@ -2,7 +2,6 @@ import React from 'react';
 import './_beerContent.css';
 import Circle from '../../../components/UI/_circle/_circle';
 import BreweryIcon from '../../../assets/icons/beer-factory.png';
-import Awards from '../../../components/_awards/_awards';
 import BreweriesListSingleItem from '../../BreweriesList/_brewerySingleItem/_brewerySingleItem';
 import BeerGroup from '../../../components/BeerGroups/_beerGroup/_beerGroup';
 

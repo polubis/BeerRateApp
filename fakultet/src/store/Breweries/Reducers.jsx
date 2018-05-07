@@ -7,7 +7,11 @@ export const initialState = {
 
 
     loadedBrewery: null,
-    loadedBreweryErrors: []
+    loadedBreweryErrors: [],
+
+
+    addBreweryErrors: [],
+    addBreweryResult: null
 }
 
 
@@ -24,6 +28,19 @@ const reducer = (state = initialState, action) => {
 
         case actionsTypes.LOADING_BREWERY_ERRORS:
             return updateObject(state, {loadedBreweryErrors: action.loadedBreweryErrors})
+        
+
+
+        case actionsTypes.ADD_BREWERY:
+            return updateObject(state, { addBreweryErrors: [],
+                addBreweryResult: action.addBreweryResult })
+        
+        case actionsTypes.FETCH_ADD_BREWERY_ERRORS:
+            return updateObject(state, { addBreweryErrors: action.addBreweryErrors, 
+                addBreweryResult: false })
+            
+
+
         default:
             break;
     }

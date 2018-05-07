@@ -18,7 +18,7 @@ class BeerDetails extends Component{
         this.props.loadBeer(findIndexValue(window.location.href));
     }
 
-    componentDidUpdate(prevProps){
+    componentWillReceiveProps(prevProps){
         if(prevProps.loadedBeer !== this.props.loadedBeer || 
             prevProps.loadedBeerErrors !== this.props.loadedBeerErrors){
             this.setState({spinner: false});
@@ -31,7 +31,11 @@ class BeerDetails extends Component{
                 {this.state.spinner ? <Spinner color="white" spinnerContent="trwa ładowanie"/> : 
                 this.props.loadedBeerErrors.length > 0 ? <NotFoundResult message={this.props.loadedBeerErrors[0]}/> : 
                 <Aux>
-                    <TopContent />
+                    <TopContent 
+                    description={this.props.loadedBeer.description}
+                    name={this.props.loadedBeer.name}
+                    averageOfRatings={this.props.loadedBeer.averageOfRatings}
+                    />
                     
                     <div className="content-container">
                         <BeerContent />
