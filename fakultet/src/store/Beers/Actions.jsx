@@ -20,7 +20,6 @@ export const fetchAllBeersActionCreator = () => {
        
         axios.get('/api/beer').then(response => {
             dispatch(fetchAllBeers(response.data));
-            console.log(response.data);
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");

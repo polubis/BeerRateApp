@@ -3,7 +3,7 @@
     flex-flow: column;
     position: relative;
     width: 500px;
-    margin: 0 auto 140px auto;
+    margin: 0 auto 200px auto;
     height: 620px;
 }
 .brewery-single-item-long{
@@ -49,17 +49,18 @@
     text-align: justify;
     height: 400px;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 0 10px;
     box-sizing: border-box;
 }
 
-.breweries-container h3{
+.length-of-beers{
     color: #CC3300;
     font-family: 'Lobster';
     letter-spacing: 2px;
     position: relative;
 }
-.breweries-container h3 b{
+.length-of-beers b{
     position: absolute;
     top: -15px;
     left: 100px;
@@ -88,16 +89,16 @@
     font-size: 22px;
     color: firebrick;
     width: 200px;
+    border: 1px solid white;
     left: 0;
     right: 0;
     margin: 0 auto;
     text-align: center;
-    border: none;
     text-decoration: none;
     position: absolute;
     bottom: -90px;
     font-weight: bolder;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     font-family: 'Lobster';
     border-radius: 3px;
     outline: none;
@@ -105,4 +106,11 @@
 }
 .go-to-details-button:hover{
     color: rgb(172, 28, 28);
+    background-color: rgba(228, 228, 228, 0.01);
+}
+
+.zero-beers-in-brewery{
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: tomato;
 }

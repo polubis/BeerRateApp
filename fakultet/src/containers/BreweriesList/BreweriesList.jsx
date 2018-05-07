@@ -7,7 +7,7 @@ import { fetchAllBreweriesActionCreator } from '../../store/Breweries/Actions';
 import Spinner from '../../components/UI/_spinner/_spinner';
 import NotFoundResult from '../../components/UI/_notFoundResult/_notFoundResult';
 import BrewerySingleItem from './_brewerySingleItem/_brewerySingleItem';
-
+import { changingArray } from '../../services/changingArray';
 
 
 class BreweriesList extends Component {
@@ -17,7 +17,7 @@ class BreweriesList extends Component {
         searchedItems: [],
         loadingBreweriesSpinner: true
     }
-    componentWillMount(){
+    componentDidMount(){
         this.props.fetchAllBreweries();
     }
     componentDidUpdate(prevProps){
@@ -58,6 +58,7 @@ class BreweriesList extends Component {
                 {this.props.loadingAllBreweriesErrors.length > 0 ? <NotFoundResult message={this.props.loadingAllBreweriesErrors[0]}/> 
                 
                 : this.state.searchedItems.map(i => {
+                    console.log(i);
                     
                     return (
                         i.brewingGroup ? 

@@ -10,9 +10,12 @@ import Aux from '../../hoc/auxilary';
 import CommentSection from './_commentSection/_commentSection';
 import BeerContent from './_beerContent/_beerContent';
 import TopContent from './_topContent/_topContent';
+import { changingArray } from '../../services/changingArray';
+
 class BeerDetails extends Component{
     state = {
-        spinner: true
+        spinner: true, 
+        beers: []
     }
     componentDidMount(){
         this.props.loadBeer(findIndexValue(window.location.href));
@@ -23,7 +26,13 @@ class BeerDetails extends Component{
             prevProps.loadedBeerErrors !== this.props.loadedBeerErrors){
             this.setState({spinner: false});
         }
+        if(prevProps.loadedBeer !== undefined && this.state.beers.length === 0) {
+            const stop = 5;
+            this.setState({beers: changingArray(stop, prevProps.loadedBeer.brewery.beers)});
+        }
     }
+  
+   
     render(){
         return(
             <div className="beer-details-container">
@@ -38,7 +47,18 @@ class BeerDetails extends Component{
                     />
                     
                     <div className="content-container">
-                        <BeerContent />
+                        <BeerContent 
+                        name={this.props.loadedBeer.name}
+                        alcohol={this.props.loadedBeer.alcohol}
+                        blg={this.props.loadedBeer.blg}
+                        color={this.props.loadedBeer.color}
+                        country={this.props.loadedBeer.country}
+                        ibu={this.props.loadedBeer.ibu}
+                        price={this.props.loadedBeer.price}
+
+                        brewery={this.props.loadedBeer.brewery}
+                        beers={this.props.loadedBeer.brewery.beers}
+                        />
                         <CommentSection />
 
 
