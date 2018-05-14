@@ -1,5 +1,5 @@
 .universal-form-container{
-    padding: 30px;
+    padding: 0 30px;
 }
 .universal-form-container progress{
     width: 100%;
@@ -36,17 +36,31 @@
     height: 50px;
     justify-content: space-between;
 }
+.universal-form-container form .validation-error{
+    font-size: 14px;
+    height: 20px;
+}
 .universal-form-container form{
-    padding: 10px;
+    padding: 0 10px;
+    position: relative;
 }
 .universal-form-container form section{
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-flow: column;
-    justify-content: space-around;
 }
 .universal-form-container input[type="submit"]{
-    width: 70%;    
+    width: 60%;   
+    position: absolute;
+    bottom: -80px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+.universal-form-container .checkbox-container{
+    position: absolute;
+    left: 0;
+    bottom: -170px;
 }
 
 

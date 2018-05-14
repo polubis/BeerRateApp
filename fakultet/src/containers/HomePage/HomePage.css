@@ -23,11 +23,10 @@
 }
 .page-desc-second-container p{
     font-size: 115px;
-    color: #16a085;
-    width: 90%;
+    color: #fff;
     display: flex;
     flex-flow: column;
-    align-items: center;
+    text-align: center;
 }
 .page-desc-second-container p i{
     margin-top: 40px;
@@ -38,13 +37,13 @@
         transform: translateY(0);
     }
     25%{
-        transform: translateY(25px);
+        transform: translateY(15px);
     }
     50%{
         transform: translateY(0);
     }
     75%{
-        transform: translateY(-25px);
+        transform: translateY(-15px);
     }
     100%{
         transform: translateY(0);

@@ -58,7 +58,6 @@ class BreweriesList extends Component {
                 {this.props.loadingAllBreweriesErrors.length > 0 ? <NotFoundResult message={this.props.loadingAllBreweriesErrors[0]}/> 
                 
                 : this.state.searchedItems.map(i => {
-                    console.log(i);
                     
                     return (
                         i.brewingGroup ? 

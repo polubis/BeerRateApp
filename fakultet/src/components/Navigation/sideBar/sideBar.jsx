@@ -3,9 +3,6 @@ import './sideBar.css';
 import '../Navigation.css';
 import { navBarNavItemsBeforeLogingIn } from '../../../consts/HelpfullArrays';
 import UniversalForm from '../../_universalForm/_universalForm';
-import { 
-    logingFormItems, loginFormValidationArray,
-    registerFormItems, registerFormValidationItems } from '../../../consts/HelpfullArrays';
 import Transition from 'react-transition-group/Transition';
 
 const sidebar = props => {
@@ -24,19 +21,19 @@ const sidebar = props => {
 
     const loginForm = (
         <UniversalForm 
-        items={logingFormItems}
+        items={props.logingFormItems}
         submitName="Zaloguj"
         formHeader="Zaloguj się"
         formFooter={loginFormFooter} 
         formAdnotation={loginFormAdnotation}
-        validationArray={[...loginFormValidationArray]} />
+        validationArray={[...props.loginFormValidationArray]} />
     );
     const registerForm = (
         <UniversalForm 
-        items={registerFormItems}
+        items={props.registerFormItems}
         submitName="Dołącz do nas"
         formHeader="Rejestracja" 
-        validationArray={[...registerFormValidationItems]} />
+        validationArray={[...props.registerFormValidationItems]} />
     );
 
    

@@ -38,7 +38,6 @@ class RootContainer extends Component {
                 <Router>
                     <Switch>
                         <Route path="/" exact component={HomePage} />
-                        
                         {responseObject ? <MainPage>
                             {afterLogingInRoutes}
                         </MainPage> : null}

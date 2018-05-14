@@ -7,6 +7,10 @@ import LastHomePageBeer from '../../assets/HomePageBeer.jpg';
 import Transition from 'react-transition-group/Transition';
 import { connect } from 'react-redux';
 import { logingIn, register} from '../../store/Authentication/Actions';
+import { 
+    logingFormItems, loginFormValidationArray,
+    registerFormItems, registerFormValidationItems } from '../../consts/HelpfullArrays';
+
 
 import './HomePage.css';
 class HomePage extends Component {
@@ -25,7 +29,16 @@ class HomePage extends Component {
             this.props.Loging([]);
         }
     }
-    onClickHandler = (event) => {
+    onClickHandler = event => {
+        for(let key in loginFormValidationArray){
+            loginFormValidationArray[key].error = undefined;
+            loginFormValidationArray[key].value = "";
+        }
+        for(let i = 0; i < registerFormValidationItems.length-1; i++){
+            registerFormValidationItems[i].error = undefined;
+            registerFormValidationItems[i].value = "";
+        }
+        registerFormValidationItems[registerFormValidationItems.length-1].value = false;
         this.setState({actualBlock: event.target.id ? event.target.id : "Rejestracja"});
     }
     componentDidMount(){
@@ -69,7 +82,12 @@ class HomePage extends Component {
                     in={this.state.showSideBar}
                     timeout={400}>
                         {state => (
-                            <SideBar changeBlock={this.onClickHandler}
+                            <SideBar 
+                            logingFormItems={logingFormItems}
+                            loginFormValidationArray={loginFormValidationArray}
+                            registerFormItems={registerFormItems}
+                            registerFormValidationItems={registerFormValidationItems}
+                            changeBlock={this.onClickHandler}
                             show={this.state.showSideBar} 
                             actualBlock={this.state.actualBlock} />
                         )}

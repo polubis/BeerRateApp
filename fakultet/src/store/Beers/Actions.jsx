@@ -23,8 +23,9 @@ export const fetchAllBeersActionCreator = () => {
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
-            dispatch(fetchAllBeersErrors(error.response.status === 404 ? 
-            array : error.response.data.errors));
+
+            dispatch(fetchAllBeersErrors(error.hasOwnProperty('status') ? 
+            error.response.data.errors[0].value : array));
         });
     }
 }

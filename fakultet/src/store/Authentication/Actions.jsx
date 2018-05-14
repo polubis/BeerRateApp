@@ -26,8 +26,9 @@ export const logingInActionCreator = (logingObject, historyObject) => {
             historyObject.push(afterLogingInPage);
         }).catch(error => {
             const array = [];
-            array.push(error.response.data.errors[0].value);
-            dispatch(logingIn(array));
+            array.push("Błąd serwera");
+            dispatch(logingIn(!error.hasOwnProperty('status') ? array : 
+                error.response.data.errors[0].valuey));
             
         });
     }
@@ -54,8 +55,10 @@ export const registerActionCreator = (registerObject, historyObject) => {
             dispatch(changeRegisterStatus(true));
         }).catch(error => {
             const array = [];
-            array.push(error.response.data.errors[0].value);
-            dispatch(register(array));
+            array.push("Błąd serwera");
+            dispatch(register(!error.hasOwnProperty('status') ? array : 
+                error.response.data.errors[0].valuey));
+
             dispatch(changeRegisterStatus(false));
         })
     }
