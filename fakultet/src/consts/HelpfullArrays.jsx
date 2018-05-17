@@ -61,3 +61,22 @@ export const addBreweryValidationArray = [
 ];
 
 
+
+
+
+export const coreItems = [
+    {id: 0, label: "Nazwa piwa", holder: "wprowadź nazwę piwa...", min: 5, max: 25, req: true, type: ""},
+    {id: 1, label: "Opis piwa", holder: "wprowadź opis piwa...", min: 5, max: 255, req: true, type: ""},
+    {id: 2, label: "Procent alkoholu", holder: "wprowadź procent alkoholu (n,nn)", min: null, max: 5, req: true, type: "number"},
+    {id: 3, label: "Cena", holder: "wprowadź cene piwa (n,nn)", min: null, max: 12, req: true, type: "number"}
+]
+export const aditionalItems = [
+    {id: 4, label: "Kolor", holder: "określ kolor...", min: 3, max: 255, req: false, type: ""},
+    {id: 5, label: "Kraj pochodzenia", holder: "wprowadź kraj pochodzenia...", min: 2, max: 255, req: false, type: ""},
+    {id: 6, label: "Współczynnik Ibu", holder: "wprowadź współczynnik Ibu...", min: null, max: null, req: false, type: "number"},
+    {id: 7, label: "Współczynnik Blg", holder: "wprowadź współczynnik Blg...", min: null, max: null, req: false, type: "number"},
+    
+    {id: 8, label: "Typ", holder: "wprowadź typ piwa...", min: 3, max: 255, req: false, type: ""},
+    {id: 9, label: "Dystrybucja", holder: "wprowadź sposób dystrybucji...", min: 3, max: 255, req: false, type: ""},
+    {id: 10, label: "Rodzaj", holder: "wprowadź rodzaj piwa...", min: 3, max: 255, req: false, type: ""}
+]

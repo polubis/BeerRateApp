@@ -24,6 +24,8 @@
     padding: 10px 20px;
     letter-spacing: 1px;
     font-size: 18px;
+    overflow-y: auto;
+    height: 350px;
     margin-bottom: 20px;
     box-sizing: border-box;
 }

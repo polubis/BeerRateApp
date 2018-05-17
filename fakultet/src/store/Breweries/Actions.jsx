@@ -19,8 +19,9 @@ export const fetchAllBreweriesActionCreator = () => {
     return dispatch => {
        
         axios.get('/api/brewery').then(response => {
+            console.log(response.data);
             dispatch(fetchAllBreweries(response.data));
-
+            dispatch(loadingBreweriesErrors([]));
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
@@ -93,6 +94,7 @@ export const addBreweryActionCreator = (name, desc, address, date, brewingGroup,
 
             setTimeout( () => {
                 history.push("/browary");
+                dispatch(addBrewery(null));
             }, 1500);
             dispatch(fetchAllBreweriesActionCreator());
         }).catch(error => {

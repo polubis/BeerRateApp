@@ -5,9 +5,11 @@ import BreweryIcon from '../../../assets/icons/beer-factory.png';
 import GroupIcon from '../../../assets/icons/brewery-group.png';
 import { Link } from 'react-router-dom';
 import { changingArray } from '../../../services/changingArray';
-
+import Aux from '../../../hoc/auxilary';
 const brewerySingleItem = props => {
-    const twoDArray = changingArray(5, props.beers);
+    let twoDArray = null;
+    if(props.beers.length > 0)
+        twoDArray = changingArray(5, props.beers);
     
     return (
 
@@ -34,19 +36,25 @@ const brewerySingleItem = props => {
                   O {props.description}
             </article>   
         </div>
-        <h3 className="length-of-beers">Marki piw <b>{props.beers.length}</b></h3>
-        <Slicker classy="slider-container">
-            {twoDArray.length > 0 ? twoDArray.map( i => {
-                return (
-                    <div key={i.id}>
-                        {i.array.map(j => {
-                            return <img key={j.id} src={BreweryIcon} alt="Przykład" />;
-                        })}
-                    </div>
-                );
-            }) : <p className="zero-beers-in-brewery">Ten browar nie posiada piw</p>}
-           
-        </Slicker>
+        
+        {twoDArray !== null ? 
+            <Aux>
+                <h3 className="length-of-beers">Marki piw <b>{props.beers.length}</b></h3>
+                <Slicker classy="slider-container">
+                    {twoDArray.map( i => {
+                        return (
+                            <div key={i.id}>
+                                {i.array.map(j => {
+                                    return <img key={j.id} src={BreweryIcon} alt="Przykład" />;
+                                })}
+                            </div>
+                        );
+                    })}
+                
+                </Slicker>
+            </Aux> : <p className="zero-beers-in-brewery">Ten browar nie posiada piw</p>
+        }
+        
    
         <Link params={{id: props.id}} to={`/browary/${props.id}`} className="go-to-details-button">
             Zobacz szczegóły

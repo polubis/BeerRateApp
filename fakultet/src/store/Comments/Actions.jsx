@@ -1,33 +1,33 @@
 import * as actionsTypes from './ActionTypes';
 import axios from '../../axios-instances/AxiosInstance';
 
-export const fetchAddCommentErrors = addCommentErrors => {
+
+export const addComment = (addCommentResult, addCommentErrors) => {
     return {
-        type: actionsTypes.FETCH_ADD_COMMENT_ERRORS,
+        type: actionsTypes.ADD_COMMENT,
+        addCommentResult: addCommentResult,
         addCommentErrors: addCommentErrors
-    };
-}
-
-
-
-export const addCommentActionCreator = (authorId, content, beerId) => {
-    return dispatch => {
-        const objectToAdd = {
-            authorId: authorId,
-            content: content,
-            beerId: beerId
-        }
-
-        axios.post('/api/comments/add', objectToAdd).then(response => {
-            dispatch(fetchAddCommentErrors([]));
-
-        }).catch(error => {
-            const array = [];
-            array.push("Błąd serwera");
-            dispatch(fetchAddCommentErrors(error.response.status === 404 ? 
-            array : error.response.data.errors));
-        });
     }
 }
 
+export const addCommentActionCreator = (authorId, content, beerId, rate) => {
+    return dispatch => {
+        const objectToAdd = {
+            RatingValue: rate,
+            Content: content,
+            BeerId: beerId,            
+            UserId: authorId
+        }
+        console.log(objectToAdd);
 
+        axios.post('/api/rating/add', objectToAdd).then(response => {
+            console.log(response.data);
+            dispatch(addComment(true, []));
+
+        }).catch(error => {
+            const array = [];
+            array.push("Błąd podczas dodawania opini");
+            dispatch(addComment(false, array));
+        });
+    }
+}

@@ -7,3 +7,6 @@ export const FETCH_ALL_BEERS_ERRORS = 'FETCH_ALL_BEERS_ERRORS';
 
 export const LOAD_BEER = "LOAD_BEER";
 export const LOAD_BEER_ERRORS = "LOAD_BEER_ERRORS";
+
+
+export const ADD_BEER = "ADD_BEER";

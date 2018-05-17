@@ -15,7 +15,7 @@ import BeersList from '../BeersList/BeersList';
 import BreweriesList from '../BreweriesList/BreweriesList';
 import BreweryDetails from '../BreweryDetails/BreweryDetails';      
 import BeerDetails from '../BeerDetails/BeerDetails';
-
+import AddBeer from '../Forms/AddBeer/AddBeer';
 class RootContainer extends Component {
 
 
@@ -30,6 +30,7 @@ class RootContainer extends Component {
                 <Route path="/piwa" exact component={BeersList} />
                 <Route path="/browary" exact component={BreweriesList} />
                 <Route path="/browary/:id" exact component={BreweryDetails} />
+                <Route path="/nowepiwo" exact component={AddBeer} />
                 <Route path="/piwa/:id" exact component={BeerDetails} />
             </Aux>
         );

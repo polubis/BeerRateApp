@@ -1,0 +1,147 @@
+.add-beer-form-container{
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+    position: relative;
+    transition: 1s all ease-in-out;
+}
+.add-beer-form-container h1{
+    color: rgb(214, 207, 207);
+    letter-spacing: 1px;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing: 2px;
+}
+.form-pic-container{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    flex-flow: wrap;
+}
+
+.subm-butt{
+    width: 250px;
+    margin-left: 25px;
+    background-color: teal;
+    height: 100px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 2px 3px black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.subm-butt:hover{
+    background-color: rgb(24, 155, 155);
+}
+
+.change-brewery-container{
+    width: 100%;
+    height: 100%;
+    transition: 1s all ease-in-out;
+    background-position: center;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+    transition: 1s opacity ease-in-out;
+    animation: 1s change-brew-in ease-in-out forwards;
+}
+@keyframes change-brew-in{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.change-brewery-container h1{
+    padding: 15px;
+}
+.change-brewery-container h1 i{
+    font-size: 18px;
+    color: tomato;
+}
+.change-brewery-container h1 span{
+    color: lightblue;
+    cursor: pointer;
+}
+.change-brewery-container h1 span:hover{
+    color: tomato;
+}
+.change-brewery-container ul{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: wrap;
+    color: rgb(214, 207, 207);
+    height: 100%;
+    justify-content: center;
+    list-style: none;
+}
+.change-brewery-container ul > li{
+    margin: 0 25px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 250px;
+}
+.change-brewery-container ul > li p{
+    color: tomato;
+    letter-spacing: 2px;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+}
+.change-brewery-container ul > li > img{
+    min-width: 100%;
+    height: 150px;
+}
+.change-brewery-container ul > li div{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.change-brewery-container ul > li > div img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.change-brewery-container ul > li > div span{
+    font-size: 17px;
+    color: lightblue;
+}
+.change-brewery-container ul > li article{
+    height: 30%;
+    overflow-y: auto;
+}
+.change-brewery-container ul > li button{
+    margin-top: 40px;
+    width: 80%;
+    padding: 10px;
+    font-size: 17px;
+    color: white;
+    border: 1px solid rgb(214, 207, 207);
+    background-color: transparent;
+    outline: none;
+}
+.change-brewery-container ul > li button:hover{
+    background-color: rgb(214, 207, 207);
+    color: black;
+    transition: 0.3s all ease-in-out;
+}
+.empty-content-in-db{
+    position: absolute;
+    top: 45%;
+    margin: 0 auto;
+    color: tomato;
+    font-size: 20px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}

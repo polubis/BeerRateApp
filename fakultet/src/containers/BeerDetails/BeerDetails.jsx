@@ -28,11 +28,10 @@ class BeerDetails extends Component{
         }
         if(prevProps.loadedBeer !== undefined && this.state.beers.length === 0) {
             const stop = 5;
-            this.setState({beers: changingArray(stop, prevProps.loadedBeer.brewery.beers)});
+            this.setState({beers: prevProps.loadedBeer.brewery.beers ? 
+                changingArray(stop, prevProps.loadedBeer.brewery.beers) : []});
         }
     }
-  
-   
     render(){
         return(
             <div className="beer-details-container">
@@ -57,7 +56,7 @@ class BeerDetails extends Component{
                         price={this.props.loadedBeer.price}
 
                         brewery={this.props.loadedBeer.brewery}
-                        beers={this.props.loadedBeer.brewery.beers}
+                        beers={this.state.beers}
                         />
                         <CommentSection />
 

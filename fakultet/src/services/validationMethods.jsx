@@ -1,4 +1,4 @@
-import { emailPattern, onlyLettersAndNumbers } from '../consts/regexPaterns';
+import { emailPattern, onlyLettersAndNumbers, price } from '../consts/regexPaterns';
 import moment from 'moment';
 
 export const validateOneInput = (inputText, isNullable, inputName, min, inputType) => {
@@ -27,7 +27,11 @@ export const validateOneInput = (inputText, isNullable, inputName, min, inputTyp
                 return "Pole " + inputName + " nie może odnosić się do przyszłości";
             }
         break;
-       
+        
+        case "number":
+            return !price.test(inputText) ?
+                "Pole " + inputName + " posiada nie prawidłowe znaki" : "";
+
         default:
             break;
     }

@@ -3,14 +3,14 @@ import './_rankBeerDetails.css';
 import Stars from '../../../components/_stars/_stars';
 const rankBeerDetails = props => (
     <td>
-            <div className="rank-beer-details-container">
+        <div className="rank-beer-details-container">
         <h3 className="orange-link">{props.name}</h3>
         <div className="image-content-holder">
             <span className="rate-stars">
-                <Stars rate={props.rate}/>          
+                <Stars rate={props.rate ? props.rate : 0.1}/>          
             </span>
             <span className="rate-value">
-                {props.rate}
+                {props.rate ? props.rate : 0}
             </span>
             <div className="table-img-holder">
                 <img src={props.img} alt={props.name} />
@@ -42,9 +42,9 @@ const rankBeerDetails = props => (
             </p>
             <p>
                 <b>
-                    Rodzaj: 
+                    Alkohol: 
                 </b>
-                <i className="orange-link">{props.alkPercent}</i>
+                <i className="orange-link">{props.alkPercent}%</i>
             </p>
         </article>
 

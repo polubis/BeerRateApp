@@ -4,7 +4,7 @@
     right: 0;
     margin: 0 auto;
     position: absolute;
-    bottom: -470px;
+    bottom: -490px;
     display: flex;
     flex-flow: column;
     transition: 1s opacity ease-in-out;
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0;
+    padding: 15px 0;
 }
 .add-comment-header b{
     font-size: 22px;

@@ -1,0 +1,124 @@
+.pic-part-container{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    color: rgb(214, 207, 207);
+}
+.pic-part-container .drag-and-drop-container{
+    position: relative;
+    bottom: 0;
+}
+.pic-part-container .delete-pic-button{
+    position: relative;
+    margin: 0 auto;
+    display: block;
+}
+.pic-part-container h2:first-of-type{
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+}
+
+.pic-name-holder h2:last-of-type{
+    color: rgb(214, 207, 207);
+    letter-spacing: 2px;
+    font-family: 'Lobster', cursive;
+}
+.pic-name-holder h2 b{
+    color: tomato;
+}
+.pic-name-holder h3{
+    width: 100%;
+    letter-spacing: 2px;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    padding-top: 20px;
+}
+.pic-name-holder article{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    word-break: break-all;
+    color: tomato;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.botle-higher{
+    width: 300px;
+    height: 400px;
+    margin: 20px auto 30px auto;
+}
+.botle-container{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 1s all ease-in-out;
+    animation: 1s botle-in ease-in-out forwards;
+    background-position: center;
+}
+@keyframes botle-in{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.aditional-infos{
+    bottom: 95px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.aditional-infos li{
+    background-color: teal;
+    margin: 20px 0;
+    height: 100px;
+    width: 100px;
+    transition: 1s all ease-in-out;
+    animation: 1s botle-in ease-in-out forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 2px 3px black;
+    font-weight: bold;
+    position: relative;
+}
+.aditional-infos li span{
+    position: absolute;
+    transform: rotate(90deg);
+    right: -45px;
+    letter-spacing: 3px;
+    color: tomato;
+}
+
+.other-content-list{
+    margin: 0 auto;
+    width: 250px;
+    padding: 0;
+}
+.other-content-list li{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+    font-size: 18px;
+}
+.other-content-list li span{
+    color: rgb(214, 207, 207);
+    width: 60%;
+    word-wrap: break-word;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 2px;
+}
+.other-content-list li b{
+    color: tomato;
+}

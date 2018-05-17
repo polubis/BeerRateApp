@@ -31,7 +31,6 @@ class Carousel extends Component{
         }
     }
     render(){
-
         return(
             <div className="carousel-container">
                 {this.state.objectsToMap.length > 0 ? 

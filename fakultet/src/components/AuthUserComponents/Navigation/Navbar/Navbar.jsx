@@ -16,7 +16,7 @@ const navbar = props => (
             "active-navbar-item" : null} id="add-brewery">
                 <img src={Brewery} alt="Dodaj browar" />
             </div>
-            <div onClick={props.handleToggleAddBeerModal} className={window.location.href.search("nowepiwo") !== -1 ? 
+            <div onClick={props.redirectToAddBeer} className={window.location.href.search("nowepiwo") !== -1 ? 
             "active-navbar-item" : null} id="add-beer">
                 <img src={Beer} alt="Dodaj piwo" />
             </div>

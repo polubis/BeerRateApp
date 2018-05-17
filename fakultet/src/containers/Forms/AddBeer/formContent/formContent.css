@@ -1,0 +1,60 @@
+.forms-container{
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.first-part, 
+.second-part{
+    transition: 1s all ease-in-out;
+    display: flex;
+    flex-flow: column;
+}
+.part-in{
+    animation: 1s part-in ease-in-out forwards;
+}
+@keyframes part-in{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.first-part section,
+.second-part section{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    width: 100%;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgb(214, 207, 207);
+}
+.first-part section label,
+.second-part section label{
+    font-family: 'Lobster', cursive;
+    letter-spacing: 2px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: lightseagreen;
+}
+.first-part section textarea{
+    height: 150px;
+    resize: none;
+}
+
+.first-part section p,
+.second-part section p{
+    color: red;
+    font-size: 18px;
+    margin: 15px 0 5px 0;
+    padding-left: 10px;
+    height: 30px;
+  
+}
+.second-part{
+    height: 100%;
+}

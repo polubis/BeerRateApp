@@ -8,15 +8,15 @@ const shield = props => (
         <div className="shields-container">
             <div className="shield">
                 <img src={props.GroupIcon} alt="Logo grupy" />
-                    <p>Bracia</p>
+                    <p>{props.brewingGroup.name}</p>
             </div>
             <div className="shield">
                 <img src={props.BeerIcon} alt="Logo grupy" />
-                    <p>Posiada 32 piwa!</p>
+                    <p>Posiada {props.beersCount} piwa!</p>
             </div>
             <div className="shield">
                 <img src={props.MapIcon} alt="Logo grupy" />
-                    <p>Polska</p>
+                    <p>{props.brewingGroup.address}</p>
             </div>
         </div>                                                
     </div>

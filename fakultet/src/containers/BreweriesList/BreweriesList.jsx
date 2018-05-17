@@ -39,7 +39,6 @@ class BreweriesList extends Component {
         this.setState({searchedItems: resultArray, searchValue: event.target.value});
     }
     render() { 
-        
         return ( 
             <Aux>
                 <Searcher
@@ -64,6 +63,7 @@ class BreweriesList extends Component {
                         <BrewerySingleItem 
                         key={i.id} 
                         id={i.id}
+                        name={i.name}
                         brewingGroup={i.brewingGroup}
                         description={i.description}
                         beers={i.beers}/>

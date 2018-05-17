@@ -8,7 +8,10 @@ export const initialState = {
 
 
     loadedBeer: null,
-    loadedBeerErrors: []
+    loadedBeerErrors: [],
+
+    addBeerResult: null,
+    addBeerErrors: []
 }
 
 
@@ -26,6 +29,8 @@ const reducer = (state = initialState, action) => {
 
         case actionsTypes.LOAD_BEER_ERRORS:
             return updateObject(state, { loadedBeerErrors: action.loadedBeerErrors })
+        case actionsTypes.ADD_BEER:
+            return updateObject(state, {addBeerResult: action.addBeerResult, addBeerErrors: action.addBeerErrors})
         default:
             break;
     }

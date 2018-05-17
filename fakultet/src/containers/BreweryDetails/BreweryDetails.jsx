@@ -8,11 +8,13 @@ import { connect } from 'react-redux';
 import { loadBreweryActionCreator } from '../../store/Breweries/Actions';
 import Aux from '../../hoc/auxilary';
 import NotFoundResult from '../../components/UI/_notFoundResult/_notFoundResult';
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 class BreweryDetails extends Component{
     state = {
-        showBeerDetails: false,
-        spinner: true
+        spinner: true,
+        showDetailsArray: []
     }
     componentWillMount(){
         const indexOfId = window.location.href.lastIndexOf("/");
@@ -24,6 +26,25 @@ class BreweryDetails extends Component{
             prevProps.loadedBreweryErrors !== this.props.loadedBreweryErrors){
                 this.setState({spinner: false});
             }
+        if(prevProps.loadedBrewery !== this.props.loadedBrewery && 
+            prevProps.loadedBreweryErrors.length === 0)
+            this.setState({showDetailsArray: this.initialShowDetails(this.props.loadedBrewery.beers)});
+        
+    }
+    initialShowDetails = beers => {
+        const newArray = [];
+        for(let i = 0; i < beers.length; i++){
+            newArray.push({id: beers[i].id, val: false});
+        }
+        return newArray;
+    }
+    changeShowDetails = id => {
+        const newShowDetails = [...this.state.showDetailsArray];
+        const index = newShowDetails.findIndex(i => {
+            return i.id === id
+        });
+        newShowDetails[index].val = !newShowDetails[index].val;
+        this.setState({showDetailsArray: newShowDetails});        
     }
     render(){
         const settings = {
@@ -44,17 +65,32 @@ class BreweryDetails extends Component{
                     <Aux>
                         <BreweryDetail 
                         name={this.props.loadedBrewery.name} 
-                        desc={this.props.loadedBrewery.description} />
-
+                        desc={this.props.loadedBrewery.description}
+                        beersCount={this.props.loadedBrewery.beers !== null ? 
+                            this.props.loadedBrewery.beers.length : 0}
+                        brewingGroup={this.props.loadedBrewery.brewingGroup} />
+                        
                         <div className="brewery-details-middle">
                             <h1>Produkty</h1>
-                            <Description />
-                        </div>  
-
-                        <BottomContent
-                        toggle={() => this.setState({showBeerDetails: !this.state.showBeerDetails})}
-                        showDetails={this.state.showBeerDetails}
-                        settings={settings} />
+                            <Description description={this.props.loadedBrewery.description} />
+                        </div> 
+                        <div className="brewery-details-bottom"> 
+                        <Slider className="brewery-slicker" {...settings}>
+                            {this.props.loadedBrewery.beers.map((i,index) => {
+                                return (
+                                    <BottomContent
+                                    item={i}
+                                    key={i.id}
+                                    toggle={() => this.changeShowDetails(i.id)}
+                                    showDetails={this.state.showDetailsArray[index] ? 
+                                        this.state.showDetailsArray[index].val
+                                        : false}
+                                    setings={settings}
+                                    />
+                                );
+                            })}
+                        </Slider>
+                        </div>
                     </Aux>
 
                 }

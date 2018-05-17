@@ -52,7 +52,9 @@ class MainPage extends Component {
     handleToggleAddBeerModal = () => {
         this.setState({addBeerModal: !this.state.addBeerModal});
     }
-
+    redirectToAddBeer = () => {
+        this.props.history.push("/nowepiwo");
+    }
 
     redirectToGroupList = e => {
         this.setState({addBreweryModal: false});
@@ -65,6 +67,7 @@ class MainPage extends Component {
                 <div className="place-holder-block"></div>
                
                 <Navbar 
+                redirectToAddBeer={this.redirectToAddBeer}
                 redirect={e => this.redirectToForms(e)}
                 handleToggleAddGroupModal={this.handleToggleAddGroupModal}
                 handleToggleAddBreweryModal={this.handleToggleAddBreweryModal}

@@ -1,8 +1,5 @@
 import React from 'react';
 import './_botomContent.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import Image from '../../../assets/piwo.png';
 import Stars from '../../../components/_stars/_stars';
 import Awards from '../../../components/_awards/_awards';
@@ -10,9 +7,6 @@ import BeerDetailCart from '../../../components/Beers/_beerDetailCart/_beerDetai
 
 
 const botomContent  = props => (
-    <div className="brewery-details-bottom">
-    <Slider className="brewery-slicker" {...props.settings}>
-        
         <div className="single-slicker">
             
             <i onClick={props.toggle} className="fa fa-angle-double-right"></i>
@@ -37,31 +31,22 @@ const botomContent  = props => (
            
             <div className="slicker-content">
                 <p>Flagowy produkt</p>
-                <h2>Tyskie</h2>
+                <h2>{props.item.name}</h2>
                 <article>
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
-                    dasds adas as ad asa das as
+                    {props.item.description}
                 </article>
                 <p>Nagrody</p>
                 <Awards noHeader={true}/>
+              
                 <button className="show-more-beer-button">
                     Zobacz szczegóły
-                </button>
+                </button> 
+                
+                
             </div>
 
 
         </div>
-    </Slider> 
-    </div>
 );
 
 export default botomContent;

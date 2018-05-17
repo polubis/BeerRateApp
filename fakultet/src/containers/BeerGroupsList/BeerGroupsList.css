@@ -126,13 +126,13 @@
 }
 
 .beer-group-awards-container h2{
-    padding-top: 30px;
     margin: 0;
 }
 .beer-group-awards-container p:first-of-type{
     font-size: 18px;
     margin: 0;
     line-height: 35px;
+    padding: 5px 0;
 }
 .beer-group-awards-container article{
     font-size: 14px;
@@ -152,6 +152,17 @@
     font-size: 16px;
     text-decoration: none;
     color: greenyellow;
+}
+.empty-back-cart-data{
+    color: tomato;
+    font-size: 36px !important;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+
 }
 
 

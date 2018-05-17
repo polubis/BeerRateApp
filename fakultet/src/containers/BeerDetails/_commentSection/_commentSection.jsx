@@ -8,7 +8,7 @@ import AddCommentSection from '../../../components/Comments/_addComment/_addComm
 import Transition from 'react-transition-group/Transition';
 import { validateOneInput, validateRate } from '../../../services/validationMethods';
 import { connect } from 'react-redux';
-import { addCommentActionCreator, fetchAddCommentErrors } from '../../../store/Comments/Actions';
+import { addCommentActionCreator, addComment } from '../../../store/Comments/Actions';
 import { findIndexValue } from '../../../services/concatingUrlPath';
 
 const comments = [
@@ -56,7 +56,7 @@ class CommentSection extends Component{
 
     clearStarArray = () => {
         const copiedArray = [...this.state.voteStars];
-        this.props.fetchAddCommentErrors([]);
+        this.props.addCommentClear(null, []);
         for(let key in copiedArray){
             copiedArray[key].isVotted = false;
         }
@@ -98,8 +98,7 @@ class CommentSection extends Component{
         else{
             this.setState({validationError: "", addCommentSpinner: true});
             const author = JSON.parse(localStorage.getItem('loggedUserData'));
-
-            this.props.addComment(author.id, this.state.commentValue, findIndexValue(window.location.href));
+            this.props.addComment(author.id, this.state.commentValue, findIndexValue(window.location.href), this.state.rateValue);
         }
     }
 
@@ -178,14 +177,15 @@ class CommentSection extends Component{
 
 const mapStateToProps = state => {
     return {
-        addCommentErrors: state.CommentsReducer.addCommentErrors
+        addCommentErrors: state.CommentsReducer.addCommentErrors,
+        addCommentResult: state.CommentsReducer.addCommentResult
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addComment: (authorId, content, beerId) => dispatch(addCommentActionCreator(authorId, content, beerId)),
-        fetchAddCommentErrors: (error) => dispatch(fetchAddCommentErrors(error))
+        addComment: (authorId, content, beerId, rate) => dispatch(addCommentActionCreator(authorId, content, beerId, rate)),
+        addCommentClear: (result, errors) => dispatch(addComment(result, errors))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CommentSection);

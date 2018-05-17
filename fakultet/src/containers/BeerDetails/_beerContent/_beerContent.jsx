@@ -29,7 +29,7 @@ const beerContent = props => (
             <div className="brewery-group-line">
                 <div className="group-image-title">
                     <img className="image-line" src={BreweryIcon} alt="Grupa" />
-                    <h1>Browar {props.brewery.name}</h1>
+                    <h1>{props.brewery.name}</h1>
                 </div>
                 <h2>Informacje o <b>browarze</b></h2>
                 <BreweriesListSingleItem 

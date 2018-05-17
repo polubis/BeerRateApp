@@ -1,23 +1,4 @@
 
-.brewery-details-bottom{
-    width: 90%;
-    margin: 60px auto 100px auto;
-    position: relative;
-    height: 600px;
-}
-.brewery-slicker{
-    width: 90%;
-    border-radius: 5px;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    outline: none;
-    margin: auto;
-    border: none;
-    padding: 20px;
-    box-sizing: border-box;
-}
 
 .slicker-content{
     width: 60%;

@@ -1,0 +1,79 @@
+.add-beer-form-container nav{
+    margin-top: 100px;
+    width: 310px;
+}
+.add-beer-form-container nav button{
+    width: 50%;
+    border: none;
+    transition: 1s all ease-in-out;
+    padding: 15px;
+    position: relative;
+    color: black;
+    background-color: rgb(214, 207, 207);
+    font-size: 18px;
+}
+.add-beer-form-container nav button:hover{
+    background-color: rgb(235, 183, 183);
+}
+.active-form-button{
+    background-color: brown !important;
+    color: white !important;
+}
+.active-form-button::before{
+    content: '';
+    width: 36px;
+    height: 36px;
+    display: block;
+    background-color: brown;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 7px;
+    z-index: 10;
+    animation: 1s animate-arrow-in ease-in-out forwards;
+}
+@keyframes animate-arrow-in{
+    0%{
+        opacity: 0;
+        right: -100px;
+        transform: rotate(0);
+    }
+    100%{
+        opacity: 1;
+        right: -19px;
+        transform: rotate(45deg);
+    }
+}
+.btn-descs{
+    color: tomato;
+    letter-spacing: 3px;
+    font-family: 'Lobster', cursive;
+    animation: 1s animate-in-btn-descs ease-in-out forwards;
+    transition: 1s all ease-in-out;
+    margin: 25px auto;
+}
+.animate-in-par{
+    animation: 1s animate-in-btn-descs ease-in-out forwards;
+}
+.animate-out-par{
+    animation: 1s animate-out-btn-descs ease-in-out forwards;
+}
+@keyframes animate-in-btn-descs{
+    0%{
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes animate-out-btn-descs{
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    0%{
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+}

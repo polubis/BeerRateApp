@@ -20,7 +20,7 @@ import Searcher from '../../components/UI/_searcher/_searcher';
 
 import { connect } from 'react-redux';
 import { fetchAllGroupsActionCreator } from '../../store/BeerGroups/Actions';
-
+import Aux from '../../hoc/auxilary';
 import Spinner from '../../components/UI/_spinner/_spinner';
 class BeerGroupList extends Component{
     state = {
@@ -30,7 +30,8 @@ class BeerGroupList extends Component{
         items: [],
         searchedItems: [],
 
-        loadingSpinner: true
+        loadingSpinner: true,
+        numberOfBeers: 0
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.loadedGroups !== undefined){
@@ -57,6 +58,17 @@ class BeerGroupList extends Component{
         this.setState({searchedItems: resultArray, searchValue: event.target.value});
     }
 
+    countBeers = group => {
+        let counter = 0;
+        if(group.breweries !== null){
+            for(let key in group.breweries){
+                if(group.breweries[key].beers !== null){
+                    counter += group.breweries[key].beers.length;
+                }
+            }
+        }
+        return counter;
+    }
     render(){
         return(
             <div className="beer-group-list-container">
@@ -84,7 +96,7 @@ class BeerGroupList extends Component{
                                 {i.description ? i.description : "Brak opisu"}  
                             </article>
                             <p><b className="orange-link">Liczba browarów:</b> <i>{i.breweries.length}</i> <img className="small-icon" src={Brewery} alt="Browar"/></p>
-                            <p><b className="orange-link">Liczba produktów: </b><i>3</i><img className="small-icon" src={BeerIcon} alt="Piwo" /></p>
+                            <p><b className="orange-link">Liczba produktów: </b><i>{this.countBeers(i)}</i><img className="small-icon" src={BeerIcon} alt="Piwo" /></p>
                             
                             <div className="flip-cart-icons-container">
                                 <div className="icons-det-holder">
@@ -111,26 +123,36 @@ class BeerGroupList extends Component{
                      
                         
                     </div>}  back={
+                        
+
                         <div className="beer-group-awards-container">
-                            {this.state.showAwardDesc ? 
-                            <div className="award-description-container">
-                                <h3>{this.state.awardDescContent.name}</h3>
-                                <img src={this.state.awardDescContent.img} alt={this.state.awardDescContent.name} />
-                                <article>{this.state.awardDescContent.desc}</article>
-                            </div> : null}
-                            <img src={BeerIcon} className="capsel-type" alt="Marki piw" />
-                            <MinAwards out={this.closeAwardOnMouseOutHandler} clicked={e => this.showAwardDescClickHandler(e)} items={awardArray}/>
-                            <h2>Flagowy produkt</h2>
-                            <p>Czas na <b className="orange-link">Tyskie</b></p>
-                            <article>
-                            <img src={Beers} alt="Piwa" />
-                                Piwo tyskie od bardzo dlugiego czasu podbija serca uzytkownikow naszego portalu.
-                                Spelnia wszystkie wymagania odnosnie smaku oraz bla blasdasd adscos tam elo siemanero.
-                            </article>
-                            <p>Typ: <b className="orange-link">lagger</b></p>
-                            <p>Rodzaj: <b className="orange-link">przeniczne</b></p>
-                            <p>Dystrybucja: <b className="orange-link">regionalna</b></p>
-                            <Link to={"/grupy/" + i.id} className="orange-link show-more-button">Zobacz wiecej</Link>
+                            {(i.breweries.length > 0 && i.breweries[0].beers.length > 0 ) ? 
+                            <Aux>
+                                {this.state.showAwardDesc ? 
+                                    <div className="award-description-container">
+                                        <h3>{this.state.awardDescContent.name}</h3>
+                                        <img src={this.state.awardDescContent.img} alt={this.state.awardDescContent.name} />
+                                        <article>{this.state.awardDescContent.desc}</article>
+                                    </div> : null}
+                                    <img src={BeerIcon} className="capsel-type" alt="Marki piw" />
+                                    <MinAwards out={this.closeAwardOnMouseOutHandler} clicked={e => this.showAwardDescClickHandler(e)} items={awardArray}/>
+                                    <h2>Flagowy produkt</h2>
+                                    <p>Czas na <b className="orange-link">{i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
+                                    i.breweries[0].beers[0].name : null : null}</b></p>
+                                    <article>
+                                    <img src={Beers} alt="Piwa" />
+                                    {i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
+                                    i.breweries[0].beers[0].description : null : null}
+        
+                                    </article>
+                                    <p>Typ: <b className="orange-link">lagger</b></p>
+                                    <p>Rodzaj: <b className="orange-link">przeniczne</b></p>
+                                    <p>Dystrybucja: <b className="orange-link">regionalna</b></p>
+                                    <Link to={"/grupy/" + i.id} className="orange-link show-more-button">Zobacz wiecej</Link>
+                                </Aux>
+                            : <p className="empty-back-cart-data">Brak danych</p>}
+
+                            
                             
                         </div>
                     }/> 

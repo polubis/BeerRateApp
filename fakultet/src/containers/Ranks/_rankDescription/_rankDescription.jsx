@@ -3,7 +3,7 @@ import './_rankDescription.css';
 
 const rankDescription = props => (
     <td>
-        <p><b className="orange-link">Tyskie</b> to piwo</p>
+        <p><b className="orange-link">{props.name}</b></p>
         <article className="desc-article">
             {props.desc}
         </article>
