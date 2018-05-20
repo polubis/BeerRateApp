@@ -75,6 +75,9 @@
     justify-content: space-around;
     flex-flow: column;
 }
+.icons-det-holder:first-of-type > p{
+    word-break: break-all;
+}
 .icons-det-holder > p{
     font-size: 15px;
     width: 100%;

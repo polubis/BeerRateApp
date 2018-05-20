@@ -11,15 +11,6 @@ import { connect } from 'react-redux';
 import { addCommentActionCreator, addComment } from '../../../store/Comments/Actions';
 import { findIndexValue } from '../../../services/concatingUrlPath';
 
-const comments = [
-    {id: 0, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35},
-    {id: 1, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35},
-    {id: 2, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35},
-    {id: 3, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35},
-    {id: 4, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35},
-    {id: 5, date: "1994-12-19 16:45", author: "Piotr Siemaneczko", img: Img, content: "Niesamowite piwo nprawde cos pieknego serdecznie polecam ten trunek", rate: 4.35}
-    
-]
 
 const voteStars = [
     {id: "1", isVotted: false},
@@ -38,13 +29,25 @@ class CommentSection extends Component{
         voteStars: voteStars,
 
 
-        addCommentSpinner: false
+        addCommentSpinner: false,
+        addCommentPrompt: false
     }
-    componentDidUpdate(prevProps){
-        if(prevProps.addCommentErrors !== this.props.addCommentErrors){
+    componentWillReceiveProps(nextProps){
+        if(nextProps.addCommentErrors !== this.props.addCommentErrors){
             this.setState({addCommentSpinner: false});
         }
+        if(nextProps.addCommentResult !== this.props.addCommentResult && 
+            nextProps.addCommentResult === true){
+            this.setState({addCommentPrompt: true});
+            this.props.loadBeer(this.props.beerId);
+
+            setTimeout(() => {
+                this.setState({addCommentPrompt: false});
+                this.props.addCommentClear(null, []);
+            }, 3500);
+        }
     }
+   
 
     showAddComments = () => {
         this.setState({showAddComments: true});
@@ -101,39 +104,50 @@ class CommentSection extends Component{
             this.props.addComment(author.id, this.state.commentValue, findIndexValue(window.location.href), this.state.rateValue);
         }
     }
-
+    isUserInCommentList = () => {
+        const actualUser = JSON.parse(localStorage.getItem('loggedUserData'));
+        for(let key in this.props.ratings){
+            if(this.props.ratings[key].user.username === actualUser.username){
+                return true;
+            }
+        }
+        return false;
+    }
     render(){
+        const isUserInComments = this.isUserInCommentList();
         return(
             <Aux>
             <div className="comment-section">
+            
             <h2>Komentarze użytkowników</h2>
             <div className="comments">
-            {comments.map( c => {
-                return (
-                    <div key={c.id} className="comment">
-                        <p>
-                            <b>{c.author}</b>
-                            <span>{c.date}</span>
-                        </p>
-                        <div className="comment-content">
-                            <div style={{backgroundImage: `url(${Img})`}} className="comment-avatar">
+            
+                {this.props.ratings.length > 0 ? this.props.ratings.map( c => {
+                    return (
+                        <div key={c.id} className="comment">
+                            <p>
+                                <b>{c.user.username}</b>
+                                <span>{c.creationDate.slice(0, 10)}</span>
+                            </p>
+                            <div className="comment-content">
+                                <div style={{backgroundImage: `url(${Img})`}} className="comment-avatar">
+                                </div>
+                                <article>
+                                    {c.content}
+                                </article>
+                                
                             </div>
-                            <article>
-                                {c.content}
-                            </article>
-                            
+                            <div className="comments-stars">
+                                <Stars fontSize="24px" rate={c.ratingValue}/>
+                                <p><b>{c.ratingValue}</b></p>
+                            </div>
+                        
                         </div>
-                        <div className="comments-stars">
-                            <Stars fontSize="24px" rate={c.rate}/>
-                            <p><b>{c.rate}</b></p>
-                        </div>
-                       
-                    </div>
-                );
-            })}
+                    );
+                }) : <p className="no-comments">Brak komentarzy</p>}
             </div>
             
-            
+            {isUserInComments ? <p className="commented-prompt">Te piwo zostało ocenione przez Ciebie</p> : 
             <Transition 
                 mountOnEnter 
                 unmountOnExit 
@@ -141,6 +155,7 @@ class CommentSection extends Component{
                 timeout={1000}>
                     {state => (
                             <AddCommentSection 
+                            addCommentResult={this.state.addCommentPrompt}
                             addCommentErrors={this.props.addCommentErrors}
                             addCommentSpinner={this.state.addCommentSpinner}
                             vote={e => this.changeRateHandler(e)}
@@ -154,17 +169,18 @@ class CommentSection extends Component{
                             validationError={this.state.validationError}
                             />
                         )}
-            </Transition>
-
+            </Transition>}
             
+
+            {!isUserInComments ? 
             <Button 
             show={!this.state.showAddComments} 
             click={this.showAddComments} 
             title="Oceń piwo" 
-            btnClass="add-comment-btn"/>
+            btnClass="add-comment-btn"/>  : null}
          
             
-
+        
             
 
             

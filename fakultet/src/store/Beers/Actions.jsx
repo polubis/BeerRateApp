@@ -102,8 +102,25 @@ export const addBeerActionCreator = (breweryId, history, copiedCore, copiedOther
       
     }
 }
-export const addBeerPictureActionCreator = () => {
-    return dispatch => {
 
+export const getTopBeers = (getTopBeersErrors, topBeers, fetchedGroups) => {
+    return {
+        type: actionsTypes.GET_TOP_BEERS,
+        getTopBeersErrors: getTopBeersErrors,
+        topBeers: topBeers,
+        fetchedGroups: fetchedGroups
+    }
+}
+export const getTopBeersActionCreator = () => {
+    return dispatch => {
+        axios.get("/api/beer/best").then(response => {
+            axios.get("/api/brewinggroup").then(secondResponse => {
+                dispatch(getTopBeers([], response.data, secondResponse.data));
+            }).catch(error => {
+                dispatch(getTopBeers(["Błąd serwera"], [], []));
+            })
+        }).catch(error => {
+            dispatch(getTopBeers(["Błąd serwera"], [], []));
+        })
     }
 }

@@ -8,6 +8,9 @@ export const initialState = {
     addGroupErrors: [],
     addGroupResult: null,
 
+    addPictureErrors: [],
+    addPictureResult: null,
+
     loadedBeerGroup: null,
     loadedBeerGroupErrors: []
 }

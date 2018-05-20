@@ -43,7 +43,7 @@ class Ranks extends Component{
         this.props.fetchAllBeersErrors([]);
     }
     render(){
-        console.log(this.props.loadedBeers);
+        console.log(this.state.searchedItems);
         return(
             <Aux>
                 <Searcher
@@ -77,7 +77,7 @@ class Ranks extends Component{
                             <tr key={tr.place}>
                                 <RankStats 
                                 place={index+1}
-                                rate={tr.averageOfRating} />
+                                rate={tr.averageOfRatings} />
                                 
                                 <RankBeerDetails 
                                 alkPercent={tr.alcohol}
@@ -87,7 +87,7 @@ class Ranks extends Component{
                                 img={Beers}
                                 brewery={tr.brewery.name}
                                 group="Bracia"
-                                rate={tr.averageOfRating}
+                                rate={tr.averageOfRatings}
                                 name={tr.name}
                                 />
 

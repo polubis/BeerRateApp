@@ -11,6 +11,9 @@ const addComment = props => (
         {props.addCommentErrors.length > 0 ? 
         <p className="serwer-error">{props.addCommentErrors[0]}</p> : null}
         
+        {props.addCommentResult ? 
+        <p className="succ-add-prompt">Pomyślnie dodano opinie</p> : null}
+
         <p className="add-comment-header">
            
             <b>Dodaj opinie</b>

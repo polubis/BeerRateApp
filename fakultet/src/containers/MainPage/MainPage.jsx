@@ -14,9 +14,11 @@ class MainPage extends Component {
     state = {
         addGroupModal: false,
         addBreweryModal: false,
-        addBeerModal: false
+        addBeerModal: false,
+        spinner: true
     }
 
+    
     logout = () => {
         localStorage.clear();
         this.props.history.push('/');
@@ -102,6 +104,7 @@ class MainPage extends Component {
                     addBreweryValidationArray={addBreweryValidationArray}
                     handleToggleAddBreweryModal={this.handleToggleAddBreweryModal}
                     handleToggleAddGroupModal={this.handleToggleAddGroupModal} />
+
                 </Chaos> : null }   
 
                 {this.state.addBeerModal ? 

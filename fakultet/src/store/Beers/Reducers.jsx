@@ -11,7 +11,11 @@ export const initialState = {
     loadedBeerErrors: [],
 
     addBeerResult: null,
-    addBeerErrors: []
+    addBeerErrors: [],
+    
+    topBeers: [],
+    getTopBeersErrors: [],
+    fetchedGroups: []
 }
 
 
@@ -31,6 +35,10 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, { loadedBeerErrors: action.loadedBeerErrors })
         case actionsTypes.ADD_BEER:
             return updateObject(state, {addBeerResult: action.addBeerResult, addBeerErrors: action.addBeerErrors})
+        case actionsTypes.GET_TOP_BEERS:
+            return updateObject(state, {getTopBeersErrors: action.getTopBeersErrors, topBeers: action.topBeers, 
+                fetchedGroups: action.fetchedGroups})
+        
         default:
             break;
     }

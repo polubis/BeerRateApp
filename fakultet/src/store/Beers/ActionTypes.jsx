@@ -10,3 +10,5 @@ export const LOAD_BEER_ERRORS = "LOAD_BEER_ERRORS";
 
 
 export const ADD_BEER = "ADD_BEER";
+
+export const GET_TOP_BEERS = "GET_TOP_BEERS";

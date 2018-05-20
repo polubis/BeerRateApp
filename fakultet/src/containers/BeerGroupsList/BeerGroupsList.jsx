@@ -150,7 +150,10 @@ class BeerGroupList extends Component{
                                     <p>Dystrybucja: <b className="orange-link">regionalna</b></p>
                                     <Link to={"/grupy/" + i.id} className="orange-link show-more-button">Zobacz wiecej</Link>
                                 </Aux>
-                            : <p className="empty-back-cart-data">Brak danych</p>}
+                            : <Aux>
+                                <p className="empty-back-cart-data">Brak danych</p>
+                                <Link to={"/grupy/" + i.id} className="orange-link show-more-button">Zobacz wiecej</Link>
+                              </Aux>}
 
                             
                             

@@ -15,9 +15,10 @@ import { changingArray } from '../../services/changingArray';
 class BeerDetails extends Component{
     state = {
         spinner: true, 
-        beers: []
+        beers: [],
+        ratings: []
     }
-    componentDidMount(){
+    componentDidMount(){ 
         this.props.loadBeer(findIndexValue(window.location.href));
     }
 
@@ -29,8 +30,13 @@ class BeerDetails extends Component{
         if(prevProps.loadedBeer !== undefined && this.state.beers.length === 0) {
             const stop = 5;
             this.setState({beers: prevProps.loadedBeer.brewery.beers ? 
-                changingArray(stop, prevProps.loadedBeer.brewery.beers) : []});
+                changingArray(stop, prevProps.loadedBeer.brewery.beers) : [], ratings: prevProps.loadedBeer.ratings});
         }
+    }
+    addRateToArray = rate => {
+        const newRatings = [...this.state.ratings];
+        newRatings.push(rate);
+        this.setState({ratings: newRatings});
     }
     render(){
         return(
@@ -39,7 +45,8 @@ class BeerDetails extends Component{
                 {this.state.spinner ? <Spinner color="white" spinnerContent="trwa ładowanie"/> : 
                 this.props.loadedBeerErrors.length > 0 ? <NotFoundResult message={this.props.loadedBeerErrors[0]}/> : 
                 <Aux>
-                    <TopContent 
+                    <TopContent
+                    commentsLength={this.state.ratings.length} 
                     description={this.props.loadedBeer.description}
                     name={this.props.loadedBeer.name}
                     averageOfRatings={this.props.loadedBeer.averageOfRatings}
@@ -58,7 +65,12 @@ class BeerDetails extends Component{
                         brewery={this.props.loadedBeer.brewery}
                         beers={this.state.beers}
                         />
-                        <CommentSection />
+
+                        <CommentSection 
+                        beerId={this.props.loadedBeer.id}
+                        loadBeer={this.props.loadBeer}
+                        addRateToArray={this.addRateToArray}
+                        ratings={this.state.ratings} />
 
 
                     

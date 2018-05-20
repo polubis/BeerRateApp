@@ -36,25 +36,69 @@ export const addGroup = (addGroupErrors, addGroupResult) => {
     }
 }   
 
-export const addGroupActionCreator = (formObject, history) => {
+export const addGroupActionCreator = (formObject, history, files) => {
     return dispatch => {
         axios.post('/api/brewinggroup/add', formObject).then(response => {
-            dispatch(addGroup([], true));
-            setTimeout(() => {
-                history.push("/grupy");
-                dispatch(fetchAllGroupsActionCreator());
-            }, 1500);
+            if(files.length > 0){
+                dispatch(addPictureActionCreator(files, response.data.successResult.id, history));
+            }
+            
+            else{
+                dispatch(addGroup([], true));
+                setTimeout(() => {
+                    history.push("/grupy");
+                    dispatch(fetchAllGroupsActionCreator());
+                }, 1500);
+            }
+            
             
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
-        
-            
             dispatch(addGroup(error.response.status === 404 ? 
             array : error.response.data.errors, false));
         })
     }
 }
+
+export const addPicture = (addPictureResult, addPictureErrors) => {
+    return {
+        type: actionsTypes.ADD_PICTURE,
+        addPictureResult: addPictureResult,
+        addPictureErrors: addPictureErrors
+    }
+}
+
+export const addPictureActionCreator = (files, groupId, history) => {
+    return dispatch => {
+        let formData = new FormData();
+        formData.append("brewingGroupPicture", files[0]);
+        formData.append("brewingGroupId", groupId);
+        axios({
+            method: 'post',
+            url: '/api/brewinggroup/addpicture',
+            data: formData,
+            config: { headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(response => {
+            console.log(response.data);
+            dispatch(addGroup([], true));
+            setTimeout(() => {
+                history.push("/grupy");
+                dispatch(fetchAllGroupsActionCreator());
+            }, 1500);
+        }).catch(error => {
+            const array = [];
+            array.push("Błąd serwera");
+            dispatch(addGroup(error.response.status === 404 ? 
+            array : error.response.data.errors, false));
+        })
+
+
+    }
+}
+
+
+
 
 
 export const loadGroup = loadedBeerGroup => {

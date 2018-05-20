@@ -12,5 +12,9 @@
     width: 100px !important;
     height: 100px !important;
     border-radius: 50%;
+    cursor: pointer;
+}
+.slider-container div img:hover{
+    transform: scale(1.1);
 }
 

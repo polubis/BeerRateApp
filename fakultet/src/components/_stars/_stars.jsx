@@ -5,7 +5,6 @@ import Aux from '../../hoc/auxilary';
 import { Link } from 'react-router-dom'; 
 const stars = props => {
     const resultArray = calculatingRateOnStars(props.rate.toString());
-    console.log(resultArray);
     return(
     <div
     style={{fontSize: props.fontSize,

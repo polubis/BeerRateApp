@@ -5,75 +5,50 @@
     box-sizing: border-box;
     height: 100%;
     cursor: pointer;
+    position: relative;
     padding: 0 5px;
 }
-.carousel-bar-block img{
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    margin-top: 30px;
-}
-
-.carousel-bar-block div{
-    width: 100%;
-}
-.carousel-bar-block div h2{
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.carousel-bar-block div h2 span{
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    position: relative;
-}
-.carousel-bar-block div h2 i{
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.carousel-bar-block div h2 span b{
+.litle-beer > b{
+    font-size: 24px;
+    color: lightgreen;
     position: absolute;
-    top: -55px;
+    bottom: -35px;
     left: 0;
-    border-radius: 50%;
-    right: 0;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(72, 175, 25, 0.5);
+    right: 0;
+    text-align: center;
 }
-
-.carousel-bar-block div p{
-    padding: 0 10px;
+.litle-beer{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
     position: relative;
-    font-size: 14px;
-    text-align: justify;
+    margin: 10px 20px 0 0;
 }
-.carousel-bar-block div p b{
-    font-size: 18px;
+.stars-beer-container{
     position: absolute;
-    left: 10px;
-    
-    bottom: -30px;
+    width: 140px;
+    font-size: 24px;
+    top: 5px;
+    right: 5px;
 }
 
-.cart-back-container{
-    width: 100%;
-    height: 90%;
-    position: relative;
-    background-color: rgba(0,0,0,0.6);
-}
 .cart-back-container .orange-link{
     position: absolute;
-    top: -55px;
-    font-size: 20px;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    text-decoration: none;
+    font-size: 18px;
+    width: 160px;
     text-align: center;
-    width: 100%;
+    margin: 0 auto;
+}
+.beer-header-container{
+    margin-top: 30px;
+}
+.beer-desc-container{
+    width: 75%;
 }

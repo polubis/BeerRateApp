@@ -38,6 +38,9 @@ class BreweriesList extends Component {
         }
         this.setState({searchedItems: resultArray, searchValue: event.target.value});
     }
+    redirectToBeer = e => {
+        this.props.history.push("/piwa/" + e.target.id);
+    }
     render() { 
         return ( 
             <Aux>
@@ -61,6 +64,7 @@ class BreweriesList extends Component {
                     return (
                         i.brewingGroup ? 
                         <BrewerySingleItem 
+                        redirectToBeer={e => this.redirectToBeer(e)}
                         key={i.id} 
                         id={i.id}
                         name={i.name}

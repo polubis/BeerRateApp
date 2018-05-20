@@ -51,6 +51,7 @@ class BeersList extends Component{
     }
 
     render(){
+        console.log(this.state.searchedItems);
         return(
             
 
@@ -104,7 +105,8 @@ class BeersList extends Component{
                                         <Stars btnOn={true} show={true} fontSize="26px" 
                                         width="80%" rate={i.averageOfRatings} beerId={i.id}/>
                                         {i.averageOfRatings !== 0 ? 
-                                        <p>Oddano <b className="orange-link">135</b> głosów</p> : null}
+                                        <p>Oddano <b className="orange-link">{i.ratings ? 
+                                        i.ratings.length : 0}</b> głosów</p> : null}
                                     </div>
                                 </div>
                                 <BeerDetailCart 

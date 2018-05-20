@@ -37,6 +37,7 @@ class BeerGroups extends Component {
     }
 
     render() { 
+        console.log(this.props.loadedBeerGroup);
         return ( 
             <div className="beer-groups-container">
                 {this.state.spinner ? 
@@ -59,9 +60,12 @@ class BeerGroups extends Component {
                         address={this.props.loadedBeerGroup.address} 
                         createDate={this.props.loadedBeerGroup.createDate.slice(0, 10)} />
 
-                        <h2 className="beer-group-main-header">Browary</h2>
-
-                        <Carousel items={this.props.loadedBeerGroup.breweries}/>
+                        {this.props.loadedBeerGroup.breweries.length > 0 ? 
+                        <Aux>
+                            <h2 className="beer-group-main-header">Browary</h2>
+                            <Carousel items={this.props.loadedBeerGroup.breweries}/>
+                        </Aux> : null}
+                        
                         <div className="awards-holder">
                             <Awards />
                         </div>

@@ -26,7 +26,7 @@ const topContent = props => (
                 <Stars fontSize="24px" rate={props.averageOfRatings}/>
                 <b>{props.averageOfRatings}</b>
             </div>
-            <p><b>135 głosów</b></p>
+            <p><b>Liczba opini: {props.commentsLength}</b></p>
             </Aux> }
             
 

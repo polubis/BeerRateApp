@@ -45,7 +45,8 @@ const brewerySingleItem = props => {
                         return (
                             <div key={i.id}>
                                 {i.array.map(j => {
-                                    return <img key={j.id} src={BreweryIcon} alt="Przykład" />;
+                                    return <img id={j.id} onClick={props.redirectToBeer} 
+                                    key={j.id} src={BreweryIcon} alt="Przykład" />;
                                 })}
                             </div>
                         );

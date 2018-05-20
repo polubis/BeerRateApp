@@ -92,4 +92,16 @@
    
     
 }
+.no-comments{
+    font-size: 24px;
+    text-align: center;
+    color: tomato;
+}
+.commented-prompt{
+    color: tomato;
+    font-size: 24px;
+    position: absolute;
+    bottom: -100px;
+    left: 20px;
 
+}

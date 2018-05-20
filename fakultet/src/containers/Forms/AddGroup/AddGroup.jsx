@@ -76,14 +76,14 @@ class AddGroup extends Component {
                 CreateDate: this.state.currentValidation[2].value,
                 BreweriesIds: []
             };
-            this.props.addGroup(formObject, this.props.history);
+            this.props.addGroup(formObject, this.props.history, this.state.droppedFile);
             setTimeout( () => {
                 this.props.closeModal();
             }, 1500);
         }
     }
     componentWillUnmount(){
-        this.props.clearGroupErrors([]);
+        this.props.clearGroupErrors([], null);
     }
 
     render() { 
@@ -167,14 +167,18 @@ class AddGroup extends Component {
 const mapStateToProps = state => {
     return {
         addGroupErrors: state.BeerGroupsReducer.addGroupErrors,
-        addGroupResult: state.BeerGroupsReducer.addGroupResult
+        addGroupResult: state.BeerGroupsReducer.addGroupResult,
+        
+        addPictureResult: state.BeerGroupsReducer.addPictureResult,
+        addPictureErrors: state.BeerGroupsReducer.addPictureErrors
+
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addGroup: (formObject, history) => dispatch(addGroupActionCreator(formObject, history)),
-        clearGroupErrors: (errors) => dispatch(addGroup(errors))
+        addGroup: (formObject, history, files) => dispatch(addGroupActionCreator(formObject, history, files)),
+        clearGroupErrors: (errors, result) => dispatch(addGroup(errors, result))
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AddGroup));

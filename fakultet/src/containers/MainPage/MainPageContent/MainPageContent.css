@@ -4,6 +4,7 @@
     box-sizing: border-box;
     color: white;
     display: flex;
+    min-height: 100vh;
     flex-flow: column;
 }
 .main-page-content-container{

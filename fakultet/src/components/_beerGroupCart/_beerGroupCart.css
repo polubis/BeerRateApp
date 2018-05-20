@@ -7,6 +7,7 @@
 }
 .rank-steirways h1{
     text-align: center;
+    color: tomato;
 
 }
 .rank-steirways h2{
@@ -39,10 +40,12 @@
     text-align: justify;
 }
 
-.first-bar-container article span{
+.first-bar-container article a{
     width: 120px;
     position: absolute;
-    bottom: -25px;
+    text-decoration: none;
+    font-size: 18px;
+    bottom: -35px;
     right: 0;
 }
 .oth-beers-button{
@@ -77,10 +80,6 @@
     box-sizing: border-box;
     font-size: 22px;
 }
-.company-story-container article span{
-    margin-left: 20px;
-}
-
 
 @keyframes animate-info{
     0%{

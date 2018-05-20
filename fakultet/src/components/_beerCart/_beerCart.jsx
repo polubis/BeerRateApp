@@ -5,21 +5,24 @@ import FlipCart from '../UI/_flipCart/_flipCart';
 import Aux from '../../hoc/auxilary';
 import Awards from '../_awards/_awards';
 import Stars from '../_stars/_stars';
-
+import { Link } from 'react-router-dom';
 
 const beerCart = props => {
     const flipFront = ( 
         <div height={props.height} className="carousel-bar-block">
-        <img src={Beers} alt="Piwo" />
-            <div>
-            <h2>{props.title} 
-                <span>
+            <div className="litle-beer" style={{backgroundImage: `url(${Beers})`}}>
                 <b>{props.rate}</b>
-                <Stars rate={props.rate}/>
-                </span>
-            </h2>
-            <p>{props.content} <b className="orange-link">Lagger</b>
-            </p>
+            </div>
+            <div className="stars-beer-container">
+                <Stars rate={props.rate === 0 ? 0.1 : props.rate} />
+            </div>
+
+            <div className="beer-desc-container">
+                <h2 className="beer-header-container">
+                    {props.title} 
+                </h2>
+                <p>{props.content}</p>
+                <b className="orange-link">Lagger</b>
             </div>           
         </div> 
        
@@ -28,7 +31,7 @@ const beerCart = props => {
     const flipBack = (
         <div className="cart-back-container">
             <Awards noHeader={true}/>
-            <p className="orange-link">Zobacz wiecej</p>
+            <Link to={`/piwa/${props.id}`} className="orange-link">Zobacz wiecej</Link>
         </div>
     );
     return(
