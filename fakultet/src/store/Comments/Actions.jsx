@@ -18,10 +18,8 @@ export const addCommentActionCreator = (authorId, content, beerId, rate) => {
             BeerId: beerId,            
             UserId: authorId
         }
-        console.log(objectToAdd);
 
         axios.post('/api/rating/add', objectToAdd).then(response => {
-            console.log(response.data);
             dispatch(addComment(true, []));
 
         }).catch(error => {

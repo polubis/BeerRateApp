@@ -70,6 +70,8 @@
     padding: 15px;
     width: 40%;
     margin: 100px auto 0 auto;
+    text-decoration: none;
+    text-align: center;
     border: 0;
     background-color: seagreen;
     color: white;

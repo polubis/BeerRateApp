@@ -19,7 +19,6 @@ export const fetchAllBreweriesActionCreator = () => {
     return dispatch => {
        
         axios.get('/api/brewery').then(response => {
-            console.log(response.data);
             dispatch(fetchAllBreweries(response.data));
             dispatch(loadingBreweriesErrors([]));
         }).catch(error => {
@@ -65,17 +64,11 @@ export const loadBreweryActionCreator = id => {
 
 
 
-export const addBrewery = addBreweryResult => {
+export const addBrewery = (addBreweryErrors, addBreweryResult) => {
     return {
         type: actionsTypes.ADD_BREWERY,
+        addBreweryErrors: addBreweryErrors,
         addBreweryResult: addBreweryResult
-    }
-}
-
-export const fetchBreweryErrors = addBreweryErrors => {
-    return {
-        type: actionsTypes.FETCH_ADD_BREWERY_ERRORS,
-        addBreweryErrors: addBreweryErrors
     }
 }
 
@@ -88,21 +81,47 @@ export const addBreweryActionCreator = (name, desc, address, date, brewingGroup,
             CreateDate: date,
             BrewingGroupId: brewingGroup.id
         };
-
         axios.post("/api/brewery/add", objectToSend).then(response => {
-            dispatch(addBrewery(true));
-
+            
             setTimeout( () => {
                 history.push("/browary");
-                dispatch(addBrewery(null));
+                dispatch(addBrewery([], true));
             }, 1500);
-            dispatch(fetchAllBreweriesActionCreator());
+
         }).catch(error => {
+            console.log(error);
             const array = [];
             array.push("Błąd serwera");
-
-            dispatch(fetchBreweryErrors(error.response.status === 404 ? 
-            array : error.response.data.errors));
+            dispatch(addBrewery(array, false));
         })
     }
 }
+/*
+export const addBreweryPicture = (files, groupId, history) => {
+    return dispatch => {
+        let formData = new FormData();
+        formData.append("brewingGroupPicture", files[0]);
+        formData.append("brewingGroupId", groupId);
+        axios({
+            method: 'post',
+            url: '/api/brewinggroup/addpicture',
+            data: formData,
+            config: { headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(response => {
+            dispatch(addGroup([], true));
+            setTimeout(() => {
+                history.push("/grupy");
+                dispatch(fetchAllGroupsActionCreator());
+            }, 1500);
+        }).catch(error => {
+            const array = [];
+            array.push("Błąd serwera");
+            dispatch(addGroup(!error.hasOwnProperty('status') ? array : 
+                error.response.data.errors[0].value, false));
+        })
+
+
+    }
+}
+
+*/

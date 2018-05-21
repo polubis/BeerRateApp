@@ -55,8 +55,8 @@ export const addGroupActionCreator = (formObject, history, files) => {
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
-            dispatch(addGroup(error.response.status === 404 ? 
-            array : error.response.data.errors, false));
+            dispatch(addGroup(!error.hasOwnProperty('status') ? array : 
+                error.response.data.errors[0].value, false));
         })
     }
 }
@@ -80,7 +80,6 @@ export const addPictureActionCreator = (files, groupId, history) => {
             data: formData,
             config: { headers: {'Content-Type': 'multipart/form-data'}}
         }).then(response => {
-            console.log(response.data);
             dispatch(addGroup([], true));
             setTimeout(() => {
                 history.push("/grupy");
@@ -89,8 +88,8 @@ export const addPictureActionCreator = (files, groupId, history) => {
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
-            dispatch(addGroup(error.response.status === 404 ? 
-            array : error.response.data.errors, false));
+            dispatch(addGroup(!error.hasOwnProperty('status') ? array : 
+                error.response.data.errors[0].value, false));
         })
 
 

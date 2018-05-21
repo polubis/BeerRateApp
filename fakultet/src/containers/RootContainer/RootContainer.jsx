@@ -16,6 +16,7 @@ import BreweriesList from '../BreweriesList/BreweriesList';
 import BreweryDetails from '../BreweryDetails/BreweryDetails';      
 import BeerDetails from '../BeerDetails/BeerDetails';
 import AddBeer from '../Forms/AddBeer/AddBeer';
+import ScrollFixer from '../../hoc/scrollFixer';
 class RootContainer extends Component {
 
 
@@ -37,12 +38,17 @@ class RootContainer extends Component {
         return ( 
             <div className="root-container">
                 <Router>
+                <ScrollFixer>
                     <Switch>
+                    
+                        
                         <Route path="/" exact component={HomePage} />
                         {responseObject ? <MainPage>
                             {afterLogingInRoutes}
                         </MainPage> : null}
                     </Switch>
+                    </ScrollFixer>
+                    
                 </Router>
             </div>
          )

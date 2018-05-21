@@ -76,7 +76,8 @@ class MainPageContent extends Component {
                         <LeftRank beers={this.props.topBeers} 
                         />
 
-                        <BeerGroupCart group={this.state.randomizedItems} 
+                        <BeerGroupCart 
+                        group={this.state.randomizedItems} 
                         beer={this.state.sugestedBeers[this.state.randomizedBeer]} 
                         changeBeer={this.changeBeer}/>
                     </div>

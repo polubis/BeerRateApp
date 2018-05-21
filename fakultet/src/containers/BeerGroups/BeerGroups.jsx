@@ -10,34 +10,42 @@ import { findIndexValue } from '../../services/concatingUrlPath';
 import Spinner from '../../components/UI/_spinner/_spinner';
 import Aux from '../../hoc/auxilary';
 import NotFoundResult from '../../components/UI/_notFoundResult/_notFoundResult';
-
-const leftRank = [
-    {id:1, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
-    {id:2, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
-    {id:3, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
-    {id:4, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
-    {id:5, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
-    {id:6, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43},
-    {id:7, content: "Piwo przeznaczone do picia w słoneczne dni. Wyjątkowo gasi pragnienie i wspomaga apetyt  na rozpalenie grila", title: "Łomża", rate: 4.43}
-]
+import { groups } from '../../consts/links/pictures';
 
 class BeerGroups extends Component {
     state = {
-        spinner: true
+        spinner: true,
+        beers: []
+
     }
     componentWillReceiveProps(prevProps){
         if(prevProps.loadedBeerGroup !== this.props.loadedBeerGroup || 
             prevProps.loadedBeerGroupErrors !== this.props.loadedBeerGroupErrors){
-            this.setState({spinner: false});
+            this.setState({spinner: false, beers: this.transformIntoBeerArray(prevProps.loadedBeerGroup)});
         }
     }
-
+    transformIntoBeerArray = group => {
+        const breweries = [];
+        for(let key in group.breweries){
+            if(group.breweries[key])
+            breweries.push(group.breweries[key]);
+        }
+        const beers = [];
+        for(let key in breweries){
+            if(breweries[key].beers.length > 0){
+                for(let keyo in breweries[key].beers){
+                    beers.push(breweries[key].beers[keyo]);
+                }
+            }
+        }
+        return beers;
+        
+    }
     componentDidMount(){
         this.props.loadGroup(findIndexValue(window.location.href));
     }
 
     render() { 
-        console.log(this.props.loadedBeerGroup);
         return ( 
             <div className="beer-groups-container">
                 {this.state.spinner ? 
@@ -51,8 +59,14 @@ class BeerGroups extends Component {
                     <div className="left-content-beer-groups">
                         <h1 className="beer-group-main-header">Grupa piwowarska - {this.props.loadedBeerGroup.name}  </h1>
                         <p className="beer-group-story-paragraph"><b className="orange-link">Historia</b></p>
-                        <div className="beer-group-story-block">
-                            {this.props.loadedBeerGroup.description}
+                        <div style={{backgroundImage: `url(${this.props.loadedBeerGroup.brewingGroupPicture ? 
+                            groups + 
+                            this.props.loadedBeerGroup.brewingGroupPicture.pictureName : null})`}} 
+                            className="beer-group-story-block">
+                            <article>
+                                {this.props.loadedBeerGroup.description}
+                            </article>
+
                         </div>
                         
                         <BeerFormGroupInfo 
@@ -63,7 +77,7 @@ class BeerGroups extends Component {
                         {this.props.loadedBeerGroup.breweries.length > 0 ? 
                         <Aux>
                             <h2 className="beer-group-main-header">Browary</h2>
-                            <Carousel items={this.props.loadedBeerGroup.breweries}/>
+                            <Carousel items={this.props.loadedBeerGroup.breweries} />
                         </Aux> : null}
                         
                         <div className="awards-holder">
@@ -72,8 +86,15 @@ class BeerGroups extends Component {
                     </div>
                 
                     <div className="right-content-beer-groups">
-                        {leftRank.map(b => {
-                            return <BeerCart content={b.content} key={b.id} title={b.title} rate={b.rate}/>
+                        {this.state.beers.map(b => {
+                            return <BeerCart 
+                            id={b.id}
+                            content={b.description} 
+                            key={b.id} 
+                            title={b.name} 
+                            rate={b.averageOfRatings.toFixed(2)} 
+                            beerPicture={b.beerPicture}
+                            kindOf={b.kindOf} />
                         })}
                     </div>
                 </Aux>}

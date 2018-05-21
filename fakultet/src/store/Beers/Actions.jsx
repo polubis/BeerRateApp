@@ -82,19 +82,21 @@ export const addBeerActionCreator = (breweryId, history, copiedCore, copiedOther
             Price: copiedCore[3].val,
             Color: copiedOther[0].val,
             Country: copiedOther[1].val,
-            Ibu: copiedOther[2].val,
-            Blg: copiedOther[3].val,
+            Ibu: copiedOther[2].val === "" ? 0 : copiedOther[2].val,
+            Blg: copiedOther[3].val === "" ? 0 : copiedOther[3].val,
             Type: copiedOther[4].val,
             Distribution: copiedOther[5].val,
             KindOf: copiedOther[6].val,
             BreweryId: breweryId
         }
-        axios.post("/api/beer/add", objectToSend).then(response => { 
+        console.log(objectToSend);
+        axios.post("/api/beer/add", objectToSend).then(response => {
             dispatch(addBeer(true, []));
             setTimeout(() => {
-                history.push("/api/piwa/" + response.data.successResult.id);
+                history.push("piwa/" + response.data.successResult.id);
             }, 2000);
         }).catch(error => {
+            console.log(error.response);
             const array = [];
             array.push("Wystąpił błąd podczas dodawania piwa");
             dispatch(addBeer(false, array));

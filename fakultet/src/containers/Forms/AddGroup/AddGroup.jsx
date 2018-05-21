@@ -18,6 +18,13 @@ class AddGroup extends Component {
         incorrectPictureError: "",
         showAddSpinner: false
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.addGroupResult === true){
+            setTimeout(() => {
+                this.props.closeModal();
+            }, 1500);
+        }
+    }
     componentDidUpdate(prevProps){
         if(prevProps.addGroupErrors !== this.props.addGroupErrors){
             this.setState({showAddSpinner: false});
@@ -77,9 +84,7 @@ class AddGroup extends Component {
                 BreweriesIds: []
             };
             this.props.addGroup(formObject, this.props.history, this.state.droppedFile);
-            setTimeout( () => {
-                this.props.closeModal();
-            }, 1500);
+            
         }
     }
     componentWillUnmount(){
@@ -97,6 +102,7 @@ class AddGroup extends Component {
                 <div className="add-group-form-left">
                     {this.props.addGroupErrors.length > 0 ? 
                     <p className="serwer-error">{this.props.addGroupErrors[0]}</p> : null}
+                    
                     <h2>Formularz dodawania grupy</h2>
                     
                     <div className="form-left-content">

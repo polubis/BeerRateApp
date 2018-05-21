@@ -6,6 +6,10 @@ import GroupIcon from '../../../assets/icons/brewery-group.png';
 import { Link } from 'react-router-dom';
 import { changingArray } from '../../../services/changingArray';
 import Aux from '../../../hoc/auxilary';
+import { beers, breweries } from '../../../consts/links/pictures';
+import EmptyBeerIcon from '../../../assets/empty-beer.png';
+
+
 const brewerySingleItem = props => {
     let twoDArray = null;
     if(props.beers.length > 0)
@@ -17,7 +21,7 @@ const brewerySingleItem = props => {
         <div className="brewery-single-item-long">
             <div>   
                 <div>
-                    <img src={BreweryIcon} alt="Ikona browaru" />
+                    <img src={props.breweryPicture ? breweries + props.breweryPicture.pictureName : BreweryIcon} alt="Ikona browaru" />
                 </div>
                 <p className="brewery-title brewery-name">
                     {props.name}
@@ -46,7 +50,7 @@ const brewerySingleItem = props => {
                             <div key={i.id}>
                                 {i.array.map(j => {
                                     return <img id={j.id} onClick={props.redirectToBeer} 
-                                    key={j.id} src={BreweryIcon} alt="Przykład" />;
+                                    key={j.id} src={j.beerPicture ? beers + j.beerPicture.pictureName : EmptyBeerIcon} alt="Przykład" />;
                                 })}
                             </div>
                         );

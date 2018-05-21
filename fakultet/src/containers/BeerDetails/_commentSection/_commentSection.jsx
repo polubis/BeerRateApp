@@ -39,7 +39,7 @@ class CommentSection extends Component{
         if(nextProps.addCommentResult !== this.props.addCommentResult && 
             nextProps.addCommentResult === true){
             this.setState({addCommentPrompt: true});
-            this.props.loadBeer(this.props.beerId);
+            this.props.loadBeer(this.props.loadBeerId);
 
             setTimeout(() => {
                 this.setState({addCommentPrompt: false});

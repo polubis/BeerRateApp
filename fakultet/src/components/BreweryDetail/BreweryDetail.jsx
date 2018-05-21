@@ -6,7 +6,8 @@ import Informations from './Informations/Informations';
 
 const breweryDetail = props => (
     <div className="brewery-details-top">
-        <Informations brewingGroup={props.brewingGroup} 
+        <Informations breweryPicture={props.breweryPicture}
+        brewingGroup={props.brewingGroup} 
         beersCount={props.beersCount} name={props.name} desc={props.desc}/>
      
 

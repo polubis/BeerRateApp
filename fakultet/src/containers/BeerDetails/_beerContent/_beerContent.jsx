@@ -24,7 +24,7 @@ const beerContent = props => (
                 />
             </div>
             
-            <BeerGroup />
+            <BeerGroup group={props.group}/>
             
             <div className="brewery-group-line">
                 <div className="group-image-title">
@@ -39,7 +39,7 @@ const beerContent = props => (
                 description={props.brewery.description}
                 beers={props.beers}
                 brewingGroup={brewingGroup}
-                
+                redirectToBeer={props.redirectToBeer}
                 />
             </div>
 

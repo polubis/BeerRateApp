@@ -6,7 +6,7 @@ import Image from '../../../assets/modal/modal-group.jpg';
 import GroupIcon from '../../../assets/icons/brewery-group.png';
 import BeerIcon from '../../../assets/icons/beer-icon.png';
 import MapIcon from '../../../assets/beer-group-details/map.png';
-
+import { breweries } from '../../../consts/links/pictures';
 
 const informations = props => (
         <Aux>
@@ -23,7 +23,7 @@ const informations = props => (
                 MapIcon={MapIcon}
                 GroupIcon={GroupIcon}/>     
             </div>
-            <div style={{backgroundImage: `url(${Image})`}} className="details-right-picture">
+            <div style={{backgroundImage: `url(${props.breweryPicture ? breweries + props.breweryPicture.pictureName : Image})`}} className="details-right-picture">
             </div>                
         </Aux>
 );

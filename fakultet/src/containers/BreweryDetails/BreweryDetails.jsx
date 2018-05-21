@@ -11,6 +11,8 @@ import NotFoundResult from '../../components/UI/_notFoundResult/_notFoundResult'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { beers } from '../../consts/links/pictures'; 
+
 class BreweryDetails extends Component{
     state = {
         spinner: true,
@@ -47,6 +49,7 @@ class BreweryDetails extends Component{
         this.setState({showDetailsArray: newShowDetails});        
     }
     render(){
+        console.log(this.props.loadedBrewery);
         const settings = {
             speed: 500,
             slidesToShow: 1,
@@ -64,6 +67,7 @@ class BreweryDetails extends Component{
 
                     <Aux>
                         <BreweryDetail 
+                        breweryPicture={this.props.loadBrewery.breweryPicture}
                         name={this.props.loadedBrewery.name} 
                         desc={this.props.loadedBrewery.description}
                         beersCount={this.props.loadedBrewery.beers !== null ? 

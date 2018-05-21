@@ -1,15 +1,15 @@
 import React from 'react';
 import Aux from '../../hoc/auxilary';
 import './_breweryDetails.css';
-import Breweries from '../../assets/beers.jpg';
-
+import { breweries } from '../../consts/links/pictures';
 
 
 const breweryDetails = props => (
     <Aux>
     <div className="breweries-details-container">
         <div className="brew-img-holder">
-            <img src={Breweries} alt="Browar" />
+            {props.breweryPicture ? 
+            <img src={breweries + props.breweryPicture} alt="Browar" /> : null}
         </div>
         <article>
             <p className="orange-link">{props.name} </p>

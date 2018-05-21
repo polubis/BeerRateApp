@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './_carousel.css';
 import BreweryDetails from '../../_breweryDetails/_breweryDetails';
-import Aux from '../../../hoc/auxilary';
-        
-
+import Aux from '../../../hoc/auxilary';        
 
 class Carousel extends Component{
     state = { 
@@ -25,7 +23,8 @@ class Carousel extends Component{
             const newObjectsToMap = [];
             for(let k = 0; k < incomingItems.length; k++){
                 newObjectsToMap.push({id: k, item: <BreweryDetails name={incomingItems[k].name}
-                    description={incomingItems[k].description} id={incomingItems[k].id} />})
+                    description={incomingItems[k].description} breweryPicture={incomingItems[k].breweryPicture} 
+                    id={incomingItems[k].id} />})
             }
             this.setState({objectsToMap: newObjectsToMap});
         }

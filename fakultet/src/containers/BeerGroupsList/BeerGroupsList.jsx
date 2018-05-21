@@ -22,6 +22,10 @@ import { connect } from 'react-redux';
 import { fetchAllGroupsActionCreator } from '../../store/BeerGroups/Actions';
 import Aux from '../../hoc/auxilary';
 import Spinner from '../../components/UI/_spinner/_spinner';
+import { groups } from '../../consts/links/pictures';
+import { beers } from '../../consts/links/pictures';
+
+
 class BeerGroupList extends Component{
     state = {
         showAwardDesc: false,
@@ -84,11 +88,10 @@ class BeerGroupList extends Component{
 
                 {this.state.loadingSpinner ? <Spinner spinnerContent="trwa ładowanie..."/> : null}
 
-                
-                    
                 {this.props.loadingAllGroupsErrors.length === 0 ? this.state.searchedItems.map(i => {
                     return <FlipCart key={i.id} margin="20px 20px 20px 20px" height="400px" width="290px" front={
-                    <div style={{backgroundImage: `url(${BeerFactory})`}} className="beer-group-block">
+                    <div style={{backgroundImage: `url(${i.brewingGroupPicture ? 
+                    groups + i.brewingGroupPicture.pictureName : BeerFactory})`}} className="beer-group-block">
                         <img src={BreweryGroup} className="capsel-type" alt="Grupa piwowarska" />                    
                         <div className="main-content-container">
                             <h3 className="orange-link">{i.name}</h3>
@@ -135,21 +138,40 @@ class BeerGroupList extends Component{
                                         <article>{this.state.awardDescContent.desc}</article>
                                     </div> : null}
                                     <img src={BeerIcon} className="capsel-type" alt="Marki piw" />
+
                                     <MinAwards out={this.closeAwardOnMouseOutHandler} clicked={e => this.showAwardDescClickHandler(e)} items={awardArray}/>
                                     <h2>Flagowy produkt</h2>
                                     <p>Czas na <b className="orange-link">{i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
                                     i.breweries[0].beers[0].name : null : null}</b></p>
                                     <article>
-                                    <img src={Beers} alt="Piwa" />
+
+                                    {i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
+                                    i.breweries[0].beers[0].beerPicture ?  <img src={beers + i.breweries[0].beers[0].beerPicture.pictureName} 
+                                    alt="Piwa" /> : null 
+                                    : null : null}
+                                    
+
+
                                     {i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
                                     i.breweries[0].beers[0].description : null : null}
         
                                     </article>
-                                    <p>Typ: <b className="orange-link">lagger</b></p>
-                                    <p>Rodzaj: <b className="orange-link">przeniczne</b></p>
-                                    <p>Dystrybucja: <b className="orange-link">regionalna</b></p>
+                                    
+                                    <p>Typ: <b className="orange-link">{
+                                    i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
+                                    i.breweries[0].beers[0].type ? i.breweries[0].beers[0].type : "Nie podano" 
+                                    : null : null}</b></p>
+
+                                    <p>Rodzaj: <b className="orange-link">{
+                                    i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
+                                    i.breweries[0].beers[0].kindOf ? i.breweries[0].beers[0].kindOf : "Nie podano" : null : null}</b></p>
+                                    
+                                    <p>Dystrybucja: <b className="orange-link">{
+                                    i.breweries.length > 0 ? i.breweries[0].beers.length > 0 ? 
+                                    i.breweries[0].beers[0].distribution ? i.breweries[0].beers[0].distribution : "Nie podano" : null : null}</b></p>
                                     <Link to={"/grupy/" + i.id} className="orange-link show-more-button">Zobacz wiecej</Link>
                                 </Aux>
+
                             : <Aux>
                                 <p className="empty-back-cart-data">Brak danych</p>
                                 <Link to={"/grupy/" + i.id} className="orange-link show-more-button">Zobacz wiecej</Link>

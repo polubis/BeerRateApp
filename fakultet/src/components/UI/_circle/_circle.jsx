@@ -13,12 +13,12 @@ class Circle extends Component{
     componentDidMount(){
         const items = [
             {id: 0, name: "Kraj", value: this.props.country, classVal: false, deg: 45, desc: "Piwo produkowane jest w Polsce. Produkcje rozpoczeto w 1994 roku i trwa do dzis"},
-            {id: 1, name: "Dystrybucja", value: "Regionalna",classVal: false, deg: 90, desc: "Dystrybucja regionalna. W okolicach miasteczka Bronowice"},
-            {id: 2, name: "Typ", value: "Przeniczne",classVal: false, deg: 135, desc: "Piwo Tyskie jest typowym Przenicznym piwem."},
+            {id: 1, name: "Dystrybucja", value: this.props.distribution,classVal: false, deg: 90, desc: "Dystrybucja regionalna. W okolicach miasteczka Bronowice"},
+            {id: 2, name: "Typ", value: this.props.kindOf,classVal: false, deg: 135, desc: "Piwo Tyskie jest typowym Przenicznym piwem."},
             {id: 3, name: "Kolor", value: this.props.color,classVal: false, deg: 180, desc: "Posiada ciemno-brązową barwe, która po wlaniu do szklanki zmienia kolor"},
-            {id: 4, name: "Rodzaj", value: "Lagger",classVal: false, deg: 225, desc:"Piwo Tyskie to typowy Lagger"},
-            {id: 5, name: "IBU", value: this.props.ibu + " %",classVal: false, deg: 270, desc: "Współczynnik IBU czyli poziom goryczy jest w tym piwie wyjątkowo niski. Wynosi. 4.5%"},
-            {id: 6, name: "Cena", value: this.props.price + " zł",classVal: false, deg: 315, desc: "Cena w wiekszosci sklepow waha sie pomidzy 2,30 zł a 4 zł"},
+            {id: 4, name: "Rodzaj", value: this.props.type, classVal: false, deg: 225, desc:"Piwo Tyskie to typowy Lagger"},
+            {id: 5, sp: " %", name: "IBU", value: this.props.ibu,classVal: false, deg: 270, desc: "Współczynnik IBU czyli poziom goryczy jest w tym piwie wyjątkowo niski. Wynosi. 4.5%"},
+            {id: 6, sp: " zł", name: "Cena", value: this.props.price,classVal: false, deg: 315, desc: "Cena w wiekszosci sklepow waha sie pomidzy 2,30 zł a 4 zł"},
             {id: 7, name: "Zawartośc alkoholu", value: this.props.alcohol  + " %",classVal: false, deg: 360, desc: "Posiada 4.5% zawartośc alkoholu. Jest bardzo długo ważone"},
         ]
         if(this.state.items.length === 0){
@@ -51,7 +51,7 @@ class Circle extends Component{
                             {this.state.items.map(i => {
                                 return <li style={{transform: `rotate(-${this.state.actualBlock}deg)`}} className={i.classVal ? "hiddenCircle" : null} 
                                     onClick={() => this.changeClassOnClick(i.id)} 
-                                    key={i.name}><span>{i.name}</span><b> {i.value}</b></li>
+                                    key={i.name}><span>{i.name}</span><b> {i.value === 0 ? null : i.value} {(i.value !== 0 && i.sp) ? i.sp : null}</b></li>
                             })}
                         </ul>
                     </div>

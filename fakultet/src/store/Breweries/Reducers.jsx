@@ -32,15 +32,9 @@ const reducer = (state = initialState, action) => {
 
 
         case actionsTypes.ADD_BREWERY:
-            return updateObject(state, { addBreweryErrors: [],
+            return updateObject(state, { addBreweryErrors: action.addBreweryErrors,
                 addBreweryResult: action.addBreweryResult })
         
-        case actionsTypes.FETCH_ADD_BREWERY_ERRORS:
-            return updateObject(state, { addBreweryErrors: action.addBreweryErrors, 
-                addBreweryResult: false })
-            
-
-
         default:
             break;
     }

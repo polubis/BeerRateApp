@@ -23,11 +23,16 @@ class Ranks extends Component{
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.loadedBeers !== this.props.loadedBeers){
-            this.setState({loadRankSpinner: false, searchedItems: nextProps.loadedBeers});
+            this.setState({loadRankSpinner: false, searchedItems: this.sortByRate(nextProps.loadedBeers)});
         }
         if(nextProps.loadingAllBeersErrors !== this.props.loadingAllBeersErrors){
             this.setState({loadRankSpinner: false});
         }
+    }
+    sortByRate = beers => {
+        const newBeers = [...beers];
+        newBeers.sort((a, b) => parseFloat(b.averageOfRatings) - parseFloat(a.averageOfRatings));
+        return newBeers;
     }
     searchOnChangeHandler = event => {
         let resultArray = [];
@@ -43,7 +48,6 @@ class Ranks extends Component{
         this.props.fetchAllBeersErrors([]);
     }
     render(){
-        console.log(this.state.searchedItems);
         return(
             <Aux>
                 <Searcher
@@ -77,17 +81,17 @@ class Ranks extends Component{
                             <tr key={tr.place}>
                                 <RankStats 
                                 place={index+1}
-                                rate={tr.averageOfRatings} />
+                                rate={tr.averageOfRatings.toFixed(2)} />
                                 
                                 <RankBeerDetails 
                                 alkPercent={tr.alcohol}
-                                dystrybution={tr.dystrybution}
+                                dystrybution={tr.distribution}
+                                kindOf={tr.kindOf}
                                 type={tr.type}
-                                material={tr.material}
                                 img={Beers}
                                 brewery={tr.brewery.name}
                                 group="Bracia"
-                                rate={tr.averageOfRatings}
+                                rate={tr.averageOfRatings.toFixed(2)}
                                 name={tr.name}
                                 />
 

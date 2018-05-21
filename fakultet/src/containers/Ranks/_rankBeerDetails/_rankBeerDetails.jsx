@@ -26,13 +26,13 @@ const rankBeerDetails = props => (
                 <b>
                     Rodzaj
                 </b>
-                <i className="orange-link">{props.type}</i>
+                <i className="orange-link">{props.kindOf}</i>
             </p>
             <p>
                 <b>
                     Typ: 
                 </b>
-                <i className="orange-link">{props.material}</i>
+                <i className="orange-link">{props.type}</i>
             </p>
             <p>
                 <b>

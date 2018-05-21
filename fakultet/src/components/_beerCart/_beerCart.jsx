@@ -6,11 +6,12 @@ import Aux from '../../hoc/auxilary';
 import Awards from '../_awards/_awards';
 import Stars from '../_stars/_stars';
 import { Link } from 'react-router-dom';
-
+import { beers } from '../../consts/links/pictures';
 const beerCart = props => {
     const flipFront = ( 
         <div height={props.height} className="carousel-bar-block">
-            <div className="litle-beer" style={{backgroundImage: `url(${Beers})`}}>
+            <div className="litle-beer" 
+            style={{backgroundImage: `url(${props.beerPicture ? beers + props.beerPicture.pictureName : null})`}}>
                 <b>{props.rate}</b>
             </div>
             <div className="stars-beer-container">
@@ -22,7 +23,8 @@ const beerCart = props => {
                     {props.title} 
                 </h2>
                 <p>{props.content}</p>
-                <b className="orange-link">Lagger</b>
+                {props.kindOf ? 
+                    <b className="orange-link">{props.kindOf}</b> : null}
             </div>           
         </div> 
        

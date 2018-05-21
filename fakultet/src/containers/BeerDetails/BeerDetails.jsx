@@ -11,6 +11,7 @@ import CommentSection from './_commentSection/_commentSection';
 import BeerContent from './_beerContent/_beerContent';
 import TopContent from './_topContent/_topContent';
 import { changingArray } from '../../services/changingArray';
+import { withRouter } from 'react-router-dom';
 
 class BeerDetails extends Component{
     state = {
@@ -27,16 +28,19 @@ class BeerDetails extends Component{
             prevProps.loadedBeerErrors !== this.props.loadedBeerErrors){
             this.setState({spinner: false});
         }
-        if(prevProps.loadedBeer !== undefined && this.state.beers.length === 0) {
-            const stop = 5;
-            this.setState({beers: prevProps.loadedBeer.brewery.beers ? 
-                changingArray(stop, prevProps.loadedBeer.brewery.beers) : [], ratings: prevProps.loadedBeer.ratings});
+        if(prevProps.loadedBeer !== undefined) {
+            this.setState({beers:  prevProps.loadedBeer.brewery.beers, 
+                ratings: prevProps.loadedBeer.ratings});
         }
     }
     addRateToArray = rate => {
         const newRatings = [...this.state.ratings];
         newRatings.push(rate);
         this.setState({ratings: newRatings});
+    }
+    redirectToBeer = e => {
+        this.props.history.push("/piwa/" + e.target.id);
+        this.props.loadBeer(e.target.id);
     }
     render(){
         return(
@@ -49,11 +53,12 @@ class BeerDetails extends Component{
                     commentsLength={this.state.ratings.length} 
                     description={this.props.loadedBeer.description}
                     name={this.props.loadedBeer.name}
-                    averageOfRatings={this.props.loadedBeer.averageOfRatings}
+                    averageOfRatings={this.props.loadedBeer.averageOfRatings.toFixed(2)}
                     />
                     
                     <div className="content-container">
                         <BeerContent 
+                        id={this.props.loadedBeer.id}
                         name={this.props.loadedBeer.name}
                         alcohol={this.props.loadedBeer.alcohol}
                         blg={this.props.loadedBeer.blg}
@@ -61,14 +66,19 @@ class BeerDetails extends Component{
                         country={this.props.loadedBeer.country}
                         ibu={this.props.loadedBeer.ibu}
                         price={this.props.loadedBeer.price}
-
+                        kindOf={this.props.loadedBeer.kindOf}
+                        type={this.props.loadedBeer.type}
+                        distribution={this.props.loadedBeer.distribution}
+                        
+                        group={this.props.loadedBeer.brewery.brewingGroup}
                         brewery={this.props.loadedBeer.brewery}
                         beers={this.state.beers}
+                        redirectToBeer={e => this.redirectToBeer(e)}
                         />
 
                         <CommentSection 
-                        beerId={this.props.loadedBeer.id}
                         loadBeer={this.props.loadBeer}
+                        loadBeerId={this.props.loadedBeer.id}
                         addRateToArray={this.addRateToArray}
                         ratings={this.state.ratings} />
 
@@ -97,7 +107,7 @@ const mapDispatchToProps = dispatch => {
         loadBeer: (id) => dispatch(loadBeerActionCreator(id))
     };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(BeerDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(BeerDetails));
 
 
 

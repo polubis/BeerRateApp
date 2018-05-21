@@ -8,7 +8,9 @@ const leftRank = props => {
         <h2>Polecane na dziś</h2>
         {props.beers.map(i => {
             return <BeerCart id={i.id} key={i.id} 
-            title={i.name} rate={i.averageOfRatings} content={i.description}/>;
+            title={i.name} rate={i.averageOfRatings} content={i.description}
+            beerPicture={i.beerPicture} kindOf={i.kindOf} 
+            />;
         })}
             
         </div>

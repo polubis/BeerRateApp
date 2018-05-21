@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { fetchAllGroupsActionCreator, 
     loadingGroupError } from '../../../store/BeerGroups/Actions';
 
-import { addBreweryActionCreator } from '../../../store/Breweries/Actions';    
+import { addBreweryActionCreator, addBrewery } from '../../../store/Breweries/Actions';    
 import Spinner from '../../../components/UI/_spinner/_spinner';
 import Director from '../../../assets/beer-group-details/owner-png.png';
 import MapPic from '../../../assets/beer-group-details/map.png';
@@ -36,7 +36,7 @@ class AddBrewery extends Component{
 
 
     }
-    componentWillMount(){
+    componentDidMount(){
         this.props.fetchAllGroups();
     }
     componentWillReceiveProps(prevProps){
@@ -139,17 +139,17 @@ class AddBrewery extends Component{
                 this.state.currentValidation[2].value, this.state.addedGroup, 
                 this.props.history);
 
-            setTimeout( () => {
-                this.props.closeModal();
-            }, 1500)
+        
 
         }
     }
 
     componentWillUnmount(){
-        this.props.loadingGroupError([]);
+        this.props.addBreweryClear([], null);
     }
     render(){
+        console.log(this.props.addBreweryResult);
+        console.log(this.props.addBreweryErrors[0]);
         return(
 
             <Aux>
@@ -165,7 +165,7 @@ class AddBrewery extends Component{
                         <SuccResult show={this.props.addBreweryResult}
                         message="Pomyślnie dodano browar, trwa przekierowywanie..."/> : null}
 
-                    {this.props.addBreweryErrors.length > 0 ?
+                    {this.props.addBreweryResult === false ?
                         <p className="serwer-error">{this.props.addBreweryErrors[0]}</p> : null}
                     
                     <h1 className="form-title">Formularz dodawania browarów</h1>
@@ -364,7 +364,8 @@ const mapDispatchToProps = dispatch => {
         fetchAllGroups: () => dispatch(fetchAllGroupsActionCreator()),
         loadingGroupError: (errors) => dispatch(loadingGroupError(errors)),
 
-        addBrewery: (name, desc, address, date, brewingGroup, history) => dispatch(addBreweryActionCreator(name, desc, address, date, brewingGroup, history))
+        addBrewery: (name, desc, address, date, brewingGroup, history) => dispatch(addBreweryActionCreator(name, desc, address, date, brewingGroup, history)),
+        addBreweryClear: (errors, result) => dispatch(addBrewery(errors, result))
         
     };
 }

@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 import NotFound from '../../components/UI/_notFoundResult/_notFoundResult';
 import Spinner from '../../components/UI/_spinner/_spinner';
 import Aux from '../../hoc/auxilary';
-
+import { beers, breweries, groups } from '../../consts/links/pictures';
 
 
 
@@ -51,7 +51,6 @@ class BeersList extends Component{
     }
 
     render(){
-        console.log(this.state.searchedItems);
         return(
             
 
@@ -81,35 +80,42 @@ class BeersList extends Component{
                             <div className="beer-block-image-holder-background">
                                 
                                 <p>{i.name}</p>
-                                <div style={{backgroundImage: `url(${Beers})`}} className="beer-block-image-holder">
+                                <div style={{backgroundImage: `url(${i.beerPicture ? beers + i.beerPicture.pictureName : null})`}} className="beer-block-image-holder">
                                 </div>
                                 <div className="beer-min-awards-container">
                                     <MinAwards 
                                     flex="row" 
                                     width="150px" 
                                     height="60px" 
-                                    items={awardArray}/>
-
+                                    items={awardArray} />
                                 </div>
                                 <Link to={`/piwa/${i.id}`} className="show-more-beer">Zobacz wiecej</Link>
 
                             </div>
                             <div className="right-beer-block-container">
                                 <div className="top-beer-block-container">
-                                    <div style={{backgroundImage: `url(${BeerGroup})`}} className="group-block">
+                                    <div style={{backgroundImage: `url(${i.brewery ? i.brewery.brewingGroup ? 
+                                        i.brewery.brewingGroup.brewingGroupPicture ? 
+                                        groups + i.brewery.brewingGroup.brewingGroupPicture.pictureName : null  : null : null})`}} className="group-block">
+
                                         <img className="front-desc-icon" src={GroupIcon} alt="Ikona grup" />
-                                        <p className="front-description">Bracia</p>
+                                        <p className="front-description">{i.brewery ? i.brewery.brewingGroup ? 
+                                        i.brewery.brewingGroup.name : "Brak" : "Brak"}</p>
                                     </div>
+
                                     <div className="rate-block-container">
                                         <h2>Ocena użytkowników</h2>
                                         <Stars btnOn={true} show={true} fontSize="26px" 
-                                        width="80%" rate={i.averageOfRatings} beerId={i.id}/>
+                                        width="80%" rate={i.averageOfRatings.toFixed(2)} beerId={i.id}/>
                                         {i.averageOfRatings !== 0 ? 
                                         <p>Oddano <b className="orange-link">{i.ratings ? 
                                         i.ratings.length : 0}</b> głosów</p> : null}
                                     </div>
                                 </div>
                                 <BeerDetailCart 
+                                distribution={i.distribution}
+                                kindOf={i.kindOf}
+                                type={i.type}
                                 alcohol={i.alcohol}
                                 price={i.price}
                                 blg={i.blg}
@@ -123,7 +129,8 @@ class BeersList extends Component{
                                         <p>Czas na <b className="orange-link">{i.name}</b></p>
                                         {i.description}
                                     </article>
-                                    <div style={{backgroundImage: `url(${Breweries})`}} className="breweries-bottom-block">
+                                    <div style={{backgroundImage: `url(${ i.brewery ? i.brewery.breweryPicture ?  breweries + 
+                                        i.breweryPicture.pictureName : null : null})`}} className="breweries-bottom-block">
                                         <img className="front-desc-icon" src={BreweryIcon} alt="Ikona grup" />
                                         <p className="front-description">{i.brewery.name}</p>
                                     </div>

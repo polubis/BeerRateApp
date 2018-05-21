@@ -42,6 +42,7 @@ class BreweriesList extends Component {
         this.props.history.push("/piwa/" + e.target.id);
     }
     render() { 
+        console.log(this.state.searchedItems);
         return ( 
             <Aux>
                 <Searcher
@@ -63,7 +64,8 @@ class BreweriesList extends Component {
                     
                     return (
                         i.brewingGroup ? 
-                        <BrewerySingleItem 
+                        <BrewerySingleItem
+                        breweryPicture={i.breweryPicture} 
                         redirectToBeer={e => this.redirectToBeer(e)}
                         key={i.id} 
                         id={i.id}
