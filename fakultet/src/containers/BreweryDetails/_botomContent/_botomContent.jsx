@@ -11,15 +11,19 @@ const botomContent  = props => (
             <i onClick={props.toggle} className="fa fa-angle-double-right"></i>
             
 
-            <div className="brew-stars-container">
-                <Stars rate={4.35} fontSize="22px" width="90%"/>
-                <p>Ocena: <b>{props.item.averageOfRatings.toFixed(2) }</b></p>
-                <p>Głosy: <b>133 razy</b></p>
+            <div style={{backgroundColor: props.item.beerPicture ? 'rgba(0,0,0,0.8)' : 'transparent'}} 
+            className="brew-stars-container">
+                <Stars rate={props.item.averageOfRatings > 0 ? props.item.averageOfRatings.toFixed(2) : 0.1} fontSize="22px" width="90%"/>
+                <p>Ocenione na <b>{props.item.averageOfRatings.toFixed(2)}</b></p>
+                <p>Oddano <b>{props.item.ratings ? props.item.ratings.length : 0} głosów</b></p>
             </div>
 
-            <div style={{backgroundImage: `url(${ props.item.beerPicture ? 
-                beers + props.item.beerPicture.pictureName : null})`}} className="slicker-photo">
+            <div className="slicker-photo">
+                <img src={props.item.beerPicture ? 
+                beers + props.item.beerPicture.pictureName : null} />
             </div>
+           
+
             {props.showDetails ? 
                 <div className="beer-details-hover">
                     <BeerDetailCart 
@@ -41,7 +45,9 @@ const botomContent  = props => (
             
            
             <div className="slicker-content">
-                <p>Flagowy produkt</p>
+                {props.bestItem ? props.bestItem.id === props.item.id ? 
+                <p>Flagowy produkt</p> : null : null}     
+
                 <h2>{props.item.name}</h2>
                 <article>
                     {props.item.description}

@@ -82,46 +82,17 @@ export const addBreweryActionCreator = (name, desc, address, date, brewingGroup,
             BrewingGroupId: brewingGroup.id
         };
         axios.post("/api/brewery/add", objectToSend).then(response => {
-            
+            console.log(response.data);
             setTimeout( () => {
                 history.push("/browary");
                 dispatch(addBrewery([], true));
             }, 1500);
 
         }).catch(error => {
-            console.log(error);
+            console.log(error.response);
             const array = [];
             array.push("Błąd serwera");
             dispatch(addBrewery(array, false));
         })
     }
 }
-/*
-export const addBreweryPicture = (files, groupId, history) => {
-    return dispatch => {
-        let formData = new FormData();
-        formData.append("brewingGroupPicture", files[0]);
-        formData.append("brewingGroupId", groupId);
-        axios({
-            method: 'post',
-            url: '/api/brewinggroup/addpicture',
-            data: formData,
-            config: { headers: {'Content-Type': 'multipart/form-data'}}
-        }).then(response => {
-            dispatch(addGroup([], true));
-            setTimeout(() => {
-                history.push("/grupy");
-                dispatch(fetchAllGroupsActionCreator());
-            }, 1500);
-        }).catch(error => {
-            const array = [];
-            array.push("Błąd serwera");
-            dispatch(addGroup(!error.hasOwnProperty('status') ? array : 
-                error.response.data.errors[0].value, false));
-        })
-
-
-    }
-}
-
-*/

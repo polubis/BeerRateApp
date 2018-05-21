@@ -73,7 +73,7 @@ export const addBeer = (addBeerResult, addBeerErrors) => {
         addBeerErrors: addBeerErrors
     }
 }
-export const addBeerActionCreator = (breweryId, history, copiedCore, copiedOther) => {
+export const addBeerActionCreator = (breweryId, history, copiedCore, copiedOther, files) => {
     return dispatch => {
         const objectToSend = {
             Name: copiedCore[0].val,
@@ -89,14 +89,20 @@ export const addBeerActionCreator = (breweryId, history, copiedCore, copiedOther
             KindOf: copiedOther[6].val,
             BreweryId: breweryId
         }
-        console.log(objectToSend);
         axios.post("/api/beer/add", objectToSend).then(response => {
-            dispatch(addBeer(true, []));
-            setTimeout(() => {
-                history.push("piwa/" + response.data.successResult.id);
-            }, 2000);
+
+            if(files.length === 0){
+                dispatch(addBeer(true, []));
+
+                setTimeout(() => {
+                    history.push("piwa/" + response.data.successResult.id);
+                }, 2000);
+            }
+            else{
+                dispatch(addBeerPictureActionCreator(files, response.data.successResult.id, history))
+            }
+            
         }).catch(error => {
-            console.log(error.response);
             const array = [];
             array.push("Wystąpił błąd podczas dodawania piwa");
             dispatch(addBeer(false, array));
@@ -104,6 +110,45 @@ export const addBeerActionCreator = (breweryId, history, copiedCore, copiedOther
       
     }
 }
+
+
+export const addBeerPictureActionCreator = (files, beerId, history) => {
+    return dispatch => {
+        let formData = new FormData();
+        formData.append("beerPicture", files[0]);
+        formData.append("beerId", beerId);
+        axios({
+            method: 'post',
+            url: '/api/beer/addpicture',
+            data: formData,
+            config: { headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(response => {
+            dispatch(addBeer(true, []));
+
+            setTimeout(() => {
+                history.push("piwa/" + beerId);
+            }, 2000);
+        }).catch(error => {
+            const array = [];
+            array.push("Błąd serwera");
+            dispatch(addBeer(false, !error.hasOwnProperty('status') ? array : 
+                error.response.data.errors[0].value));
+        })
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 export const getTopBeers = (getTopBeersErrors, topBeers, fetchedGroups) => {
     return {

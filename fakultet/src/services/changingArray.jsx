@@ -26,6 +26,5 @@ export const changingArray = (stop, beers) => {
 
         mainArray.push({id: i, array: array});
     }        
-    console.log(mainArray);
     return mainArray;
 }

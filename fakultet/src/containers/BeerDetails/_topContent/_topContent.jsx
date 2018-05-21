@@ -4,14 +4,20 @@ import Beer from '../../../assets/piwo.png';
 import Stars from '../../../components/_stars/_stars';
 import Awards from '../../../components/_awards/_awards';
 import Aux from '../../../hoc/auxilary';
+import { beers } from '../../../consts/links/pictures';
 const topContent = props => (
     <div className="top-content-container">
         <div className="top-content-left">
 
             <h1>Piwo {props.name}</h1>
-            <div style={{backgroundImage: `url(${Beer})`}} className="beer-picture">
-            </div>
-            <article>
+            {props.beerPicture ? 
+            <img src={beers + props.beerPicture.pictureName}
+                className="beer-picture"/> : null}
+
+            
+
+           
+            <article style={{width: props.beerPicture ? "70%" : "100%"}}>
                 <h2>Opis produktu</h2>  
                 <div>{props.description}</div>
             </article>

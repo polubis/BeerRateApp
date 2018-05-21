@@ -39,12 +39,12 @@ class CommentSection extends Component{
         if(nextProps.addCommentResult !== this.props.addCommentResult && 
             nextProps.addCommentResult === true){
             this.setState({addCommentPrompt: true});
-            this.props.loadBeer(this.props.loadBeerId);
 
             setTimeout(() => {
                 this.setState({addCommentPrompt: false});
                 this.props.addCommentClear(null, []);
-            }, 3500);
+                this.props.loadBeer(this.props.loadBeerId);
+            }, 2500);
         }
     }
    

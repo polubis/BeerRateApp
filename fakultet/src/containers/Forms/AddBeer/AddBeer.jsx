@@ -130,9 +130,11 @@ class AddBeer extends Component{
         this.setState({addingBeerModal: true, addingBeerSpinner: true});
         const copiedCore = [...this.state.coreItemsValidation];
         const copiedOther = [...this.state.aditionalItemsValidation];
-        this.props.addBeer(id, this.props.history, copiedCore, copiedOther);
+        this.props.addBeer(id, this.props.history, copiedCore, copiedOther, this.state.droppedFile);
     }
-
+    componentWillUnmount(){
+        this.props.addBeerResultChanger(null, []);
+    }
     render(){
         return(
             <form onSubmit={e => this.onSubmitHandler(e)} className="add-beer-form-container">
@@ -247,7 +249,7 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchAllBreweries: () => dispatch(fetchAllBreweriesActionCreator()),
         loadingBreweriesErrors: (errors) => dispatch(loadingBreweriesErrors(errors)),
-        addBeer: (breweryId, history, copiedCore, copiedOther) => dispatch(addBeerActionCreator(breweryId, history, copiedCore, copiedOther)),
+        addBeer: (breweryId, history, copiedCore, copiedOther, files) => dispatch(addBeerActionCreator(breweryId, history, copiedCore, copiedOther, files)),
         addBeerResultChanger: (result, errors) => dispatch(addBeer(result, errors))
     };
 }

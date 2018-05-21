@@ -23,7 +23,8 @@ const informations = props => (
                 MapIcon={MapIcon}
                 GroupIcon={GroupIcon}/>     
             </div>
-            <div style={{backgroundImage: `url(${props.breweryPicture ? breweries + props.breweryPicture.pictureName : Image})`}} className="details-right-picture">
+            <div style={{backgroundImage: `url(${props.breweryPicture ? breweries +
+                props.breweryPicture.pictureName : Image})`}} className="details-right-picture">
             </div>                
         </Aux>
 );

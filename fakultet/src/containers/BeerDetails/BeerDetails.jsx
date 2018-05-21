@@ -54,6 +54,7 @@ class BeerDetails extends Component{
                     description={this.props.loadedBeer.description}
                     name={this.props.loadedBeer.name}
                     averageOfRatings={this.props.loadedBeer.averageOfRatings.toFixed(2)}
+                    beerPicture={this.props.loadedBeer.beerPicture}
                     />
                     
                     <div className="content-container">

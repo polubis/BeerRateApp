@@ -148,8 +148,6 @@ class AddBrewery extends Component{
         this.props.addBreweryClear([], null);
     }
     render(){
-        console.log(this.props.addBreweryResult);
-        console.log(this.props.addBreweryErrors[0]);
         return(
 
             <Aux>

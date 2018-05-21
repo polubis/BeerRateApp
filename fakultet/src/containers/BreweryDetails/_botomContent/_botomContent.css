@@ -4,7 +4,6 @@
     width: 60%;
     padding: 20px;
     box-sizing: border-box;
-    border-left: 1px solid #CC3300;
     display: flex;
     flex-flow: column;
 }
@@ -37,25 +36,33 @@
 .slicker-photo{
     height: 600px;
     width: 33%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+}
+.slicker-photo img{
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 100%;
 }
 
 .brew-stars-container{
     position: absolute;
-    width: 150px;
-    
+    width: 33%;
     left: 0;
     color: white;
-    height: 100px;
+    padding: 35px;
+    box-sizing: border-box;
+    height: 250px;
 }
 .brew-stars-container > p{
-    font-size: 18px;
+    font-size: 26px;
     margin-top: 30px;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing: 2.5px;
+    text-align: center;
 }
 .brew-stars-container > p b{
     color: #CC3300;
+    font-size: 30px;
 }
 .slicker-content p:last-of-type{
     color: rgb(241, 95, 11);

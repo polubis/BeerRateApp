@@ -48,16 +48,26 @@ class BreweryDetails extends Component{
         newShowDetails[index].val = !newShowDetails[index].val;
         this.setState({showDetailsArray: newShowDetails});        
     }
+    findBest = beers => {
+        let best = beers[0];
+        for(let key in beers){
+            if(beers[key].averageOfRatings > best)
+                best = beers[key].averageOfRatings;
+        }
+        return best;
+    }
     render(){
-        console.log(this.props.loadedBrewery);
         const settings = {
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
             infinite: true
         };
+        const bestItem = this.props.loadedBrewery ?
+            this.findBest(this.props.loadedBrewery.beers) : null;
+        
         return(
-           
+            
             <div className="brewery-details-container">
 
                 {this.state.spinner ? <Spinner color="white" spinnerContent="trwa ładowanie... "/> : 
@@ -76,13 +86,18 @@ class BreweryDetails extends Component{
                         
                         <div className="brewery-details-middle">
                             <h1>Produkty</h1>
-                            <Description description={this.props.loadedBrewery.description} />
+                            <Description 
+                            creationDate={this.props.loadedBrewery.brewingGroup.createDate}
+                            address={this.props.loadedBrewery.brewingGroup.address}
+                            bestItem={bestItem}
+                            description={this.props.loadedBrewery.description} />
                         </div> 
                         <div className="brewery-details-bottom"> 
                         <Slider className="brewery-slicker" {...settings}>
                             {this.props.loadedBrewery.beers.map((i,index) => {
                                 return (
                                     <BottomContent
+                                    bestItem={bestItem}
                                     item={i}
                                     key={i.id}
                                     toggle={() => this.changeShowDetails(i.id)}
