@@ -82,17 +82,13 @@ export const addBreweryActionCreator = (name, desc, address, date, brewingGroup,
             BrewingGroupId: brewingGroup.id
         };
         axios.post("/api/brewery/add", objectToSend).then(response => {
-            console.log(response.data);
+            dispatch(addBrewery([], false));
+        }).catch(error => {
             setTimeout( () => {
+                dispatch(fetchAllBreweriesActionCreator());
                 history.push("/browary");
                 dispatch(addBrewery([], true));
             }, 1500);
-
-        }).catch(error => {
-            console.log(error.response);
-            const array = [];
-            array.push("Błąd serwera");
-            dispatch(addBrewery(array, false));
         })
     }
 }

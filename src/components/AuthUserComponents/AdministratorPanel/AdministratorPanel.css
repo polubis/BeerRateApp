@@ -1,0 +1,45 @@
+.administrator-panel{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 300;
+    transition: 1s all linear;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.admin-panel-in{
+    animation: 0.5s animate-admin-panel-in linear forwards;
+}
+.admin-panel-out{
+    animation: 0.5s animate-admin-panel-out linear forwards;
+}
+@keyframes animate-admin-panel-in{
+    0%{
+        height: 0;
+        padding: 0;
+    }
+    50%{
+        height: 50%;
+        padding: 15px;
+    }
+    100%{
+        height: 100%;
+        padding: 50px;
+    }
+}
+
+@keyframes animate-admin-panel-out{
+    0%{
+        height: 100%;
+        padding: 50px;
+    }
+    50%{
+        height: 50%;
+        padding: 15px;
+    }
+    100%{
+        height: 0;
+        padding: 0;
+    }
+}

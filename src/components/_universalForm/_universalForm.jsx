@@ -118,6 +118,7 @@ class UniversalForm extends Component {
         this.setState({showBackdrop: false});
     }
     render() {
+        console.log(this.props.loginResult);
         return (  
             <div style={{padding: this.props.formHeader === "Rejestracja" ? 
             '0 30px' : '30px'}} className="universal-form-container">
@@ -170,7 +171,7 @@ class UniversalForm extends Component {
                     {this.state.loginSpinner ? 
                     <Spinner 
                     spinnerContent="trwa logowanie..."
-                    color="white" fontSize="32px" /> : this.props.loginResult[0] ? 
+                    color="white" fontSize="32px" /> : this.props.loginResult.length > 0 ? 
                     <ErrorPrompt message={this.props.loginResult[0]}/> : null }
                     
 

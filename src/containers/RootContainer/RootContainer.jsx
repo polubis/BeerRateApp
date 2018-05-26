@@ -17,10 +17,15 @@ import BreweryDetails from '../BreweryDetails/BreweryDetails';
 import BeerDetails from '../BeerDetails/BeerDetails';
 import AddBeer from '../Forms/AddBeer/AddBeer';
 import ScrollFixer from '../../hoc/scrollFixer';
+import { connect } from 'react-redux';
+import  { checkIsUserAdmin } from '../../store/Authentication/Actions';
 class RootContainer extends Component {
-
-
+    componentDidMount(){
+        if(this.props.isUserAdmin === null)
+            this.props.checkIsUserAdmin();
+    }
     render() { 
+        console.log(this.props.isUserAdmin);
         const responseObject = JSON.parse(localStorage.getItem('loggedUserData'));
         const afterLogingInRoutes = (
             <Aux>
@@ -40,10 +45,8 @@ class RootContainer extends Component {
                 <Router>
                 <ScrollFixer>
                     <Switch>
-                    
-                        
                         <Route path="/" exact component={HomePage} />
-                        {responseObject ? <MainPage>
+                        {responseObject ? <MainPage isUserAdmin={this.props.isUserAdmin} responseObject={responseObject}>
                             {afterLogingInRoutes}
                         </MainPage> : null}
                     </Switch>
@@ -55,6 +58,19 @@ class RootContainer extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isUserAdmin: state.AuthenticationReducer.isUserAdmin
+    };
+}
 
-export default RootContainer;
+const mapDispatchToProps = dispatch => {
+    return {
+        checkIsUserAdmin: () => dispatch(checkIsUserAdmin())
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(RootContainer);
+
+
+
 

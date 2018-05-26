@@ -2,7 +2,7 @@ import * as actionsTypes from './ActionTypes';
 import axios from '../../axios-instances/AxiosInstance';
 import { afterLogingInPage } from '../../consts/navigationLinks';
 
-export const logingIn = (loginResult) => {
+export const logingIn = loginResult => {
     return {
         type: actionsTypes.LOGING_IN,
         loginResult: loginResult
@@ -16,13 +16,15 @@ export const logingInActionCreator = (logingObject, historyObject) => {
             Username: logingObject[0].value,
             Password: logingObject[1].value
         }
-        const zeroError = [];
         axios.post('/api/account/login', newLogingObject).then(response => {
             if (typeof(Storage) !== "undefined") {
                 localStorage.setItem('loggedUserData', JSON.stringify(response.data.successResult));
             }
-            dispatch(logingIn(zeroError));
-
+            const isUserAdmin = response.data.successResult.username === "administrator" ? true : false;
+            console.log(isUserAdmin);
+            dispatch(logingIn([]));
+            dispatch(checkIsUserAdmin());
+            
             historyObject.push(afterLogingInPage);
         }).catch(error => {
             const array = [];
@@ -33,7 +35,6 @@ export const logingInActionCreator = (logingObject, historyObject) => {
         });
     }
 }
-
 export const register = (registerResult) => {
     return {
         type: actionsTypes.REGISTER,
@@ -53,6 +54,7 @@ export const registerActionCreator = (registerObject, historyObject) => {
         axios.post('api/account/register', formObject).then(response => {
             dispatch(register(zeroError));
             dispatch(changeRegisterStatus(true));
+
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
@@ -63,10 +65,26 @@ export const registerActionCreator = (registerObject, historyObject) => {
         })
     }
 }
-export const changeRegisterStatus = (status) => {
+export const changeRegisterStatus = status => {
     return {
         type: actionsTypes.CHANGE_REGISTER_STATUS,
         registerStatus: status
     };
 }
 
+
+
+export const setUserAdmin = isUserAdmin => {
+    return {
+        type: actionsTypes.SET_USER_ADMIN,
+        isUserAdmin: isUserAdmin
+    }
+}
+
+export const checkIsUserAdmin = () => {
+    return dispatch => {
+        const loggedUser = JSON.parse(localStorage.getItem('loggedUserData'));
+        const isUserAdmin = loggedUser ? loggedUser.username === "administrator" ? true : false : null;
+        dispatch(setUserAdmin(isUserAdmin));
+    }
+}

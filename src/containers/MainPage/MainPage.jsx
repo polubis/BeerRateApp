@@ -8,17 +8,15 @@ import Chaos from '../../components/UI/_chaos/_chaos';
 import AddGroup from '../Forms/AddGroup/AddGroup';
 import { addGroupFormItems, addGroupFormItemsValidationArray , addBreweryItems, addBreweryValidationArray} from '../../consts/HelpfullArrays';
 import AddBrewery from '../Forms/AddBrewery/AddBrewery';
-
-
+import AdministratorPanel from '../../components/AuthUserComponents/AdministratorPanel/AdministratorPanel';
 class MainPage extends Component {
     state = {
         addGroupModal: false,
         addBreweryModal: false,
         addBeerModal: false,
-        spinner: true
+        spinner: true,
+        openAdminPanel: false
     }
-
-    
     logout = () => {
         localStorage.clear();
         this.props.history.push('/');
@@ -63,12 +61,17 @@ class MainPage extends Component {
         this.props.history.push(e.target.id);
     }
 
-    render() { 
+    toggleAdminPanel = () => {
+        this.setState({openAdminPanel: !this.state.openAdminPanel});
+    }
+    render() {  
         return ( 
             <div style={{backgroundImage: `url(${Image})`}} className="main-page-container" >
                 <div className="place-holder-block"></div>
                
                 <Navbar 
+                responseObject={this.props.responseObject}
+                isUserAdmin={this.state.isUserAdmin}
                 redirectToAddBeer={this.redirectToAddBeer}
                 redirect={e => this.redirectToForms(e)}
                 handleToggleAddGroupModal={this.handleToggleAddGroupModal}
@@ -76,10 +79,21 @@ class MainPage extends Component {
                 handleToggleAddBeerModal={this.handleToggleAddBeerModal} />
                 
                 <Sidebar 
+                openAdminPanel={this.state.openAdminPanel}
+                toggleAdminPanel={this.toggleAdminPanel}
+                isUserAdmin={this.props.isUserAdmin}
                 redirect={e => this.redirectToAnotherBlock(e)}
                 logout={this.logout}
                 />
                 
+                {this.props.isUserAdmin === true ? 
+                <AdministratorPanel
+                openAdminPanel={this.state.openAdminPanel}
+                /> : null}
+                
+               
+
+
                 {this.props.children}
 
 

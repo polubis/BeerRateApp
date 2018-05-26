@@ -48,7 +48,11 @@ class AddBrewery extends Component{
         }
         if(prevProps.addBreweryErrors !== this.props.addBreweryErrors || 
         prevProps.addBreweryResult !== this.props.addBreweryResult){
-            this.setState({addBrewerySpinner: false});   
+            this.setState({addBrewerySpinner: false});
+            setTimeout(() => {
+                this.props.closeModal();
+            }, 1500);
+            
         }
     }
     componentDidUpdate(prevProps){
@@ -138,9 +142,6 @@ class AddBrewery extends Component{
                 this.state.currentValidation[3].value, this.state.currentValidation[1].value, 
                 this.state.currentValidation[2].value, this.state.addedGroup, 
                 this.props.history);
-
-        
-
         }
     }
 
@@ -151,15 +152,13 @@ class AddBrewery extends Component{
         return(
 
             <Aux>
-                
-
                 {this.state.redirectToDesc ? 
                 <form
                 style={{backgroundImage: `url(${this.state.droppedFile.length > 0 ?
                     this.state.droppedFile[0].preview : BreweryBackground})`}}
                 onSubmit={e => this.onSubmitSecondFormHandler(e)} className="on-submit-desc-container">
                     
-                    {this.props.addBreweryResult ? 
+                    {this.props.addBreweryResult === true ? 
                         <SuccResult show={this.props.addBreweryResult}
                         message="Pomyślnie dodano browar, trwa przekierowywanie..."/> : null}
 
@@ -187,13 +186,6 @@ class AddBrewery extends Component{
                         <input className="submit-form-button submit-brewery-button" type="submit" value="Dodaj browar" />
                         <button onClick={() => this.setState({redirectToDesc: false})} className="submit-form-button submit-brewery-button">Cofnij</button>
                     </div>
-                        
-                    
-                        
-                   
-
-                    
-                 
                 </form> : 
                 
 

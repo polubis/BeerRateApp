@@ -6,7 +6,7 @@ import BreweryGroupIcon from '../../../../assets/icons/brewery-group.png';
 import Logout from '../../../../assets/icons/logout.png';
 import Cup from '../../../../assets/icons/cup.png';
 import MainPageLogo from '../../../../assets/icons/main-page.png';
-
+import AdminIcon from '../../../../assets/icons/admin-icon.png';
 
 
 
@@ -25,6 +25,12 @@ const sideBar = props => {
                 <i className="fa fa-facebook-f"></i>
                 <i className="fa fa-twitter"></i>
             </div>
+            {props.isUserAdmin === true ? 
+            <div onClick={props.toggleAdminPanel} id="admin-panel" className={`${props.openAdminPanel ? 
+            "side-page-nav-png-icon active-side-bar-item" : "side-page-nav-png-icon"}`}>
+                <img src={AdminIcon} alt="Panel administratora" />
+            </div> : null}
+            
             {sideBarItem.map(i => {
                 
                 return (

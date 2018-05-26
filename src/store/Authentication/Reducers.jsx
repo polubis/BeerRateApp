@@ -4,7 +4,8 @@ import { updateObject } from '../../services/reduxHelper';
 export const initialState = {
     loginResult: [],
     registerResult: [],
-    registerStatus: undefined
+    registerStatus: undefined,
+    isUserAdmin: null
 
 }
 
@@ -17,6 +18,8 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {registerResult: action.registerResult, registerStatus: undefined})
         case actionsTypes.CHANGE_REGISTER_STATUS:
             return updateObject(state, {registerStatus: action.registerStatus})
+        case actionsTypes.SET_USER_ADMIN:
+            return updateObject(state, { isUserAdmin: action.isUserAdmin })
 
         default:
             break;

@@ -23,6 +23,9 @@ const navbar = props => (
         </div>
 
         <Logo  />
+        <div className="logged-user-place">
+            <p>Zalogowano jako: <br/><b>{props.responseObject.username}</b></p>
+        </div>
     </div>
    
 );
