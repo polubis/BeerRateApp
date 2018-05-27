@@ -8,9 +8,14 @@ export const logingIn = loginResult => {
         loginResult: loginResult
     };
 }
+export const changeLoginStatus = loginStatus => {
+    return {
+        type: actionsTypes.CHANGE_LOGIN_STATUS,
+        loginStatus: loginStatus
+    };
+}
 
-
-export const logingInActionCreator = (logingObject, historyObject) => {
+export const logingInActionCreator = (logingObject) => {
     return dispatch => {
         const newLogingObject = {
             Username: logingObject[0].value,
@@ -21,16 +26,18 @@ export const logingInActionCreator = (logingObject, historyObject) => {
                 localStorage.setItem('loggedUserData', JSON.stringify(response.data.successResult));
             }
             const isUserAdmin = response.data.successResult.username === "administrator" ? true : false;
-            console.log(isUserAdmin);
-            dispatch(logingIn([]));
+            dispatch(logingIn([], true));
             dispatch(checkIsUserAdmin());
+            dispatch(changeLoginStatus(true));
+
             
-            historyObject.push(afterLogingInPage);
         }).catch(error => {
             const array = [];
             array.push("Błąd serwera");
+            dispatch(changeLoginStatus(false));
             dispatch(logingIn(!error.hasOwnProperty('status') ? array : 
                 error.response.data.errors[0].valuey));
+                
             
         });
     }

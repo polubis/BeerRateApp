@@ -20,6 +20,12 @@ class UniversalForm extends Component {
         showBackdrop: false, 
         registerSpinner: false
     }
+    componentWillReceiveProps(nextProps){
+        const loggedUser = JSON.parse(localStorage.getItem('loggedUserData'));
+        if(loggedUser){
+            this.props.history.push("/glowna");
+        }
+    }
     componentDidUpdate(prevProps){
         if(prevProps.registerResult !== this.props.registerResult ||
             prevProps.loginResult !== this.props.loginResult ||
@@ -111,7 +117,7 @@ class UniversalForm extends Component {
             this.props.Register(this.state.validationResultArray, this.props.history);
         }
         if(this.props.formHeader === "Zaloguj się"){
-            this.props.Loging(this.state.validationResultArray, this.props.history);
+            this.props.Loging(this.state.validationResultArray);
         }
     }
     closeBackdrop = () => {
@@ -194,13 +200,14 @@ const mapStateToProps = state => {
     return {
         registerResult: state.AuthenticationReducer.registerResult,
         loginResult: state.AuthenticationReducer.loginResult,
-        registerStatus: state.AuthenticationReducer.registerStatus
+        registerStatus: state.AuthenticationReducer.registerStatus,
+        loginStatus: state.AuthenticationReducer.loginStatus
     };
 }
 const mapDispatchToProps = dispatch => {
     return {
         Register: (registerObject, historyObject) => dispatch(registerActionCreator(registerObject, historyObject)),
-        Loging: (logingObject, historyObject) => dispatch(logingInActionCreator(logingObject, historyObject))
+        Loging: (logingObject) => dispatch(logingInActionCreator(logingObject))
 
     };
 }

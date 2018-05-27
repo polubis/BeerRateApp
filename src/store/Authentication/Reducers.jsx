@@ -5,7 +5,8 @@ export const initialState = {
     loginResult: [],
     registerResult: [],
     registerStatus: undefined,
-    isUserAdmin: null
+    isUserAdmin: null,
+    loginStatus: null
 
 }
 
@@ -20,7 +21,8 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {registerStatus: action.registerStatus})
         case actionsTypes.SET_USER_ADMIN:
             return updateObject(state, { isUserAdmin: action.isUserAdmin })
-
+        case actionsTypes.CHANGE_LOGIN_STATUS:
+            return updateObject(state, { loginStatus: action.loginStatus })
         default:
             break;
     }
