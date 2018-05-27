@@ -80,3 +80,18 @@ export const aditionalItems = [
     {id: 9, label: "Dystrybucja", holder: "wprowadź sposób dystrybucji...", min: 3, max: 255, req: false, type: ""},
     {id: 10, label: "Rodzaj", holder: "wprowadź rodzaj piwa...", min: 3, max: 255, req: false, type: ""}
 ]
+
+//jednak nie potrzeba
+// export const editAccount = [
+//     {id: 0, label: "Login", holder: "login użytkownika..", min: 5, max: 25, req: true, type: "text", value: JSON.parse(localStorage.getItem('loggedUserData')).username},
+//     {id: 1, label: "Email", holder: "wprowadź email..", min: 5, max: 255, req: true, type: "email", value: JSON.parse(localStorage.getItem('loggedUserData')).email},
+//     {id: 2, label: "Hasło", holder: "wprowadź hasło...", min: null, max: 20, req: true, type: "password", value: ""},
+//     {id: 3, label: "Powtórz hasło", holder: "wprowadź powtórzone hasło..", min: null, max: 20, req: true, type: "password", value: ""}
+// ]
+
+export const editAccount = [
+    {id: 0, label: "Login", holder: "login użytkownika..", min: 5, max: 25, req: true, type: "text"},
+    {id: 1, label: "Email", holder: "wprowadź email..", min: 5, max: 255, req: true, type: "email"},
+    {id: 2, label: "Hasło", holder: "wprowadź hasło...", min: null, max: 20, req: true, type: "password"},
+    {id: 3, label: "Powtórz hasło", holder: "wprowadź powtórzone hasło..", min: null, max: 20, req: true, type: "password"}
+]

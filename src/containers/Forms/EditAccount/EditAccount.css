@@ -1,0 +1,52 @@
+.edit-account-form-container{
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+    position: relative;
+    transition: 1s all ease-in-out;
+}
+
+.edit-account-form-container label {
+    width: 30%;
+    display: inline-block;
+    color: white;
+}
+
+.edit-account-form-container h1{
+    color: rgb(214, 207, 207);
+    letter-spacing: 1px;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing: 2px;
+    margin-bottom: 101px;
+}
+
+.edit-account-form-container h2{
+    color: rgb(214, 207, 207);
+    letter-spacing: 1px;
+    font-family: 'Berkshire Swash', cursive;
+    letter-spacing: 2px;
+}
+
+
+.edit-account-form-container .main-div div {
+    flex: 1;
+}
+.edit-account-form-container .main-div {
+    display: flex;
+}
+.edit-account-form-container .drag-and-drop-container {
+    position: relative;
+    margin-top: 20%;
+}
+
+.edit-account-form-container .subm-butt {
+    margin-top: -250px;
+}
+
+.edit-account-form-container .delete-pic-button{
+    position: relative;
+    bottom: 250px;
+    left: 200px;
+    padding: 20px;
+}
