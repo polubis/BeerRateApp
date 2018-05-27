@@ -56,6 +56,10 @@ class MainPage extends Component {
         this.props.history.push("/nowepiwo");
     }
 
+    redirectToEditAccount = () => {
+        this.props.history.push("/editAccount");
+    }
+
     redirectToGroupList = e => {
         this.setState({addBreweryModal: false});
         this.props.history.push(e.target.id);
@@ -73,6 +77,7 @@ class MainPage extends Component {
                 responseObject={this.props.responseObject}
                 isUserAdmin={this.state.isUserAdmin}
                 redirectToAddBeer={this.redirectToAddBeer}
+                redirectToEditAccount={this.redirectToEditAccount}
                 redirect={e => this.redirectToForms(e)}
                 handleToggleAddGroupModal={this.handleToggleAddGroupModal}
                 handleToggleAddBreweryModal={this.handleToggleAddBreweryModal}

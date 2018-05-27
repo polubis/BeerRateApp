@@ -19,6 +19,7 @@ const sideBar = props => {
         {id: 4, name: "cup", img:Cup, alt:"Rankingi", adress: "rankingi"},
         {id: 5, name: "logout", img:Logout, alt:"Wyloguj", adress: "wyloguj"}
     ];
+    console.log(props);
     return(
         <nav className="side-page-nav">
             <div className="socials-container">

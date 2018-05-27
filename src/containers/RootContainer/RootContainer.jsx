@@ -16,6 +16,7 @@ import BreweriesList from '../BreweriesList/BreweriesList';
 import BreweryDetails from '../BreweryDetails/BreweryDetails';      
 import BeerDetails from '../BeerDetails/BeerDetails';
 import AddBeer from '../Forms/AddBeer/AddBeer';
+import EditAccount from '../Forms/EditAccount/EditAccount';
 import ScrollFixer from '../../hoc/scrollFixer';
 import { connect } from 'react-redux';
 import  { checkIsUserAdmin } from '../../store/Authentication/Actions';
@@ -36,6 +37,7 @@ class RootContainer extends Component {
                 <Route path="/browary" exact component={BreweriesList} />
                 <Route path="/browary/:id" exact component={BreweryDetails} />
                 <Route path="/nowepiwo" exact component={AddBeer} />
+                <Route path="/editAccount" exact component={EditAccount} />
                 <Route path="/piwa/:id" exact component={BeerDetails} />
             </Aux>
         );

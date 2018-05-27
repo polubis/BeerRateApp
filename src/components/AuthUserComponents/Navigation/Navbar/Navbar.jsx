@@ -24,7 +24,7 @@ const navbar = props => (
 
         <Logo  />
         <div className="logged-user-place">
-            <p>Zalogowano jako: <br/><b>{props.responseObject.username}</b></p>
+            <p>Zalogowano jako: <br/><b>{props.responseObject.username}</b> <i onClick={props.redirectToEditAccount} class="fa fa-pencil" aria-hidden="true"></i></p>
         </div>
     </div>
    
