@@ -25,7 +25,6 @@ class RootContainer extends Component {
             this.props.checkIsUserAdmin();
     }
     render() { 
-        console.log(this.props.isUserAdmin);
         const responseObject = JSON.parse(localStorage.getItem('loggedUserData'));
         const afterLogingInRoutes = (
             <Aux>

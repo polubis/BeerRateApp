@@ -88,6 +88,7 @@ class MainPage extends Component {
                 
                 {this.props.isUserAdmin === true ? 
                 <AdministratorPanel
+                toggleAdminPanel={this.toggleAdminPanel}
                 openAdminPanel={this.state.openAdminPanel}
                 /> : null}
                 
