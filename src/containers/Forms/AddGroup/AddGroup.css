@@ -29,11 +29,11 @@
     position: relative;
 }
 
-.add-group-form-left h2{
+.add-group-form-left h1{
     padding-bottom: 7.5px;
     position: absolute;
     color: white;
-    top: -80px;
+    top: -100px;
 }
 .form-left-content{
     width: 100%;

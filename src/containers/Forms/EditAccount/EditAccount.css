@@ -35,6 +35,7 @@
 .edit-account-form-container .main-div {
     display: flex;
 }
+
 .edit-account-form-container .drag-and-drop-container {
     position: relative;
     margin-top: 20%;

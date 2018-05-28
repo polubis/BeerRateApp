@@ -7,7 +7,7 @@ import { validateOneInput, validateTwoTheSameInputs } from '../../services/valid
 import Backdrop from '../UI/_backdrop/_backdrop';
 import Spinner from '../UI/_spinner/_spinner';
 import { withRouter } from 'react-router-dom';
-import { measuringTextStrength } from '../../services/measuringTextStrength';
+import { measuringTextStrength } from '../../services/measuringTextStrength';  
 import Checkbox from '../UI/_checkbox/_checkbox';
 import { connect } from 'react-redux';
 import { logingInActionCreator, registerActionCreator } from '../../store/Authentication/Actions';
@@ -124,7 +124,6 @@ class UniversalForm extends Component {
         this.setState({showBackdrop: false});
     }
     render() {
-        console.log(this.props.loginResult);
         return (  
             <div style={{padding: this.props.formHeader === "Rejestracja" ? 
             '0 30px' : '30px'}} className="universal-form-container">

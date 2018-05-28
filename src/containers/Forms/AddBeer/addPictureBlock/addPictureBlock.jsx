@@ -3,7 +3,6 @@ import "./addPictureBlock.css";
 import DragAndDrop from '../../../../components/UI/_dragAndDrop/_dragAndDrop';
 import Aux from '../../../../hoc/auxilary';
 const addPictureBlock = props => {
-  
     return (
         <div className="pic-part-container">
             <h2>Podgląd dodanej treści</h2>
@@ -35,13 +34,13 @@ const addPictureBlock = props => {
                     : null
                     }
                     
-                    {(props.aditionalItems[2].val && props.coreItems[2].error === "") ? 
-                    <li>{props.coreItems[2].val} %<span>% Ibu</span></li>
+                    {(props.aditionalItems[2].val && props.aditionalItems[2].error === "") ? 
+                    <li>{props.aditionalItems[2].val} %<span>% Ibu</span></li>
                     : null
                     }
 
-                    {(props.aditionalItems[3].val && props.coreItems[3].error === "") ? 
-                    <li>{props.coreItems[3].val} %<span>% Blg</span></li>
+                    {(props.aditionalItems[3].val && props.aditionalItems[3].error === "") ? 
+                    <li>{props.aditionalItems[3].val} %<span>% Blg</span></li>
                     : null
                     }
                 </ul>

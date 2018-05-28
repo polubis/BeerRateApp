@@ -36,7 +36,9 @@ class HomePage extends Component {
         }
         for(let i = 0; i < registerFormValidationItems.length-1; i++){
             registerFormValidationItems[i].error = undefined;
-            registerFormValidationItems[i].value = "";
+            registerFormValidationItems[i].value = ""; 
+            if(registerFormValidationItems[i].strength !== undefined)
+                registerFormValidationItems[i].strength = null;
         }
         registerFormValidationItems[registerFormValidationItems.length-1].value = false;
         this.setState({actualBlock: event.target.id ? event.target.id : "Rejestracja"});

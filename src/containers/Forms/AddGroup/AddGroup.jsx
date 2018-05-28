@@ -103,7 +103,7 @@ class AddGroup extends Component {
                     {this.props.addGroupErrors.length > 0 ? 
                     <p className="serwer-error">{this.props.addGroupErrors[0]}</p> : null}
                     
-                    <h2>Formularz dodawania grupy</h2>
+                    <h1>Formularz dodawania grupy</h1>
                     
                     <div className="form-left-content">
                         <label>Historia grupy *</label>
