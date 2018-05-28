@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { addCommentActionCreator, addComment } from '../../../store/Comments/Actions';
 import { findIndexValue } from '../../../services/concatingUrlPath';
 
-
 const voteStars = [
     {id: "1", isVotted: false},
     {id: "2", isVotted: false},
@@ -19,7 +18,6 @@ const voteStars = [
     {id: "4", isVotted: false},
     {id: "5", isVotted: false}
 ];
-
 class CommentSection extends Component{
     state = {
         commentValue: "",
@@ -75,11 +73,10 @@ class CommentSection extends Component{
         }
 
     }
-
     changeRateHandler = e => {
         const newVotes = [...this.state.voteStars];
         for(let key in voteStars){
-            if(voteStars[key].id === e.target.id){
+            if(voteStars[key].id <= Number(e.target.id)){
                 voteStars[key].isVotted = true;
             }
             else{

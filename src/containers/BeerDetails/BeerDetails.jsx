@@ -28,7 +28,7 @@ class BeerDetails extends Component{
             prevProps.loadedBeerErrors !== this.props.loadedBeerErrors){
             this.setState({spinner: false});
         }
-        if(prevProps.loadedBeer !== undefined) {
+        if(prevProps.loadedBeer !== undefined && prevProps.loadedBeer) {
             this.setState({beers:  prevProps.loadedBeer.brewery.beers, 
                 ratings: prevProps.loadedBeer.ratings});
         }

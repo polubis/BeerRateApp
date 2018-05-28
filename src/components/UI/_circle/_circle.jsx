@@ -49,7 +49,8 @@ class Circle extends Component{
                         <ul className="circle" style={{transform: `rotate(${this.state.actualBlock}deg)`}}>
                         
                             {this.state.items.map(i => {
-                                return <li style={{transform: `rotate(-${this.state.actualBlock}deg)`}} className={i.classVal ? "hiddenCircle" : null} 
+                                return <li style={{transform: `rotate(-${this.state.actualBlock}deg)`}} 
+                                   
                                     onClick={() => this.changeClassOnClick(i.id)} 
                                     key={i.name}><span>{i.name}</span><b> {i.value === 0 ? null : i.value} {(i.value !== 0 && i.sp) ? i.sp : null}</b></li>
                             })}
